@@ -4,241 +4,80 @@
 <meta charset="UTF-8">
 <title>JOTHIZ | தூய்மை • தரம் • நம்பிக்கை</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#eef7f1;color:#2f3e34;}
-
-/* HEADER */
-header{
-    background:linear-gradient(135deg,#1b5e20,#3a7d44);
-    color:#fff;
-    padding:42px 20px;
-    text-align:center;
-}
-.logo{width:78px;margin-bottom:8px;}
-header h1{font-size:38px;font-weight:700;}
+body{background:#f4faf6;color:#2f3e34;}
+header{background:linear-gradient(135deg,#0f3d23,#2e7d32);color:#fff;padding:48px 20px;text-align:center;}
+.logo{width:90px;margin-bottom:10px;}
+header h1{font-size:42px;font-weight:700;letter-spacing:2px;}
 header p{font-size:15px;opacity:.95}
-
-/* COMMON */
-.container{max-width:1100px;margin:auto;padding:34px 20px;}
-.section-title{text-align:center;margin-bottom:18px;}
-.section-title h2{font-size:26px;color:#1b5e20;}
+.container{max-width:1100px;margin:auto;padding:40px 20px;}
+.section-title{text-align:center;margin-bottom:26px;}
+.section-title h2{font-size:28px;color:#1b5e20;margin-bottom:6px;}
 .section-title p{font-size:14px;color:#5a6f62}
-
-/* QUOTES */
-.marquee{
-    background:#e6f2ea;
-    padding:10px 0;
-    overflow:hidden;
-    white-space:nowrap;
-    border-bottom:1px solid #d2e4d9;
-}
-.marquee span{
-    display:inline-block;
-    padding-left:100%;
-    animation:marquee 22s linear infinite;
-    font-size:14px;
-    color:#1b5e20;
-    font-weight:500;
-}
-@keyframes marquee{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-100%);}
-}
-
-/* PRODUCTS */
-.services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:18px;
-}
-.card{
-    background:#f9fffb;
-    padding:22px;
-    border-radius:14px;
-    box-shadow:0 6px 14px rgba(0,0,0,.06);
-    text-align:center;
-}
-.card h3{color:#256c3a;font-size:16px;margin-bottom:6px;}
+.marquee{background:#e1f2e8;padding:12px 0;overflow:hidden;white-space:nowrap;border-bottom:1px solid #cfe6d6;}
+.marquee span{display:inline-block;padding-left:100%;animation:marquee 22s linear infinite;font-size:14px;color:#1b5e20;font-weight:500;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+.card{background:#ffffff;padding:26px;border-radius:16px;box-shadow:0 10px 22px rgba(0,0,0,.08);text-align:center;}
+.card h3{color:#1b5e20;font-size:17px;margin-bottom:8px;}
 .card p{font-size:14px;color:#4f5f55;}
-
-/* PRICE LIST */
-.price-box{
-    background:#f9fffb;
-    border-radius:14px;
-    box-shadow:0 6px 14px rgba(0,0,0,.06);
-    overflow:hidden;
-}
-.price-box table{
-    width:100%;
-    border-collapse:collapse;
-}
-.price-box th{
-    background:#2e7d32;
-    color:#fff;
-    padding:12px;
-    font-size:15px;
-}
-.price-box td{
-    padding:12px;
-    text-align:center;
-    font-size:14px;
-    border-bottom:1px solid #ddebe2;
-}
+.price-box{background:#ffffff;border-radius:16px;box-shadow:0 10px 22px rgba(0,0,0,.08);overflow:hidden;}
+.price-box table{width:100%;border-collapse:collapse;}
+.price-box th{background:#1b5e20;color:#fff;padding:14px;font-size:15px;}
+.price-box td{padding:14px;text-align:center;font-size:14px;border-bottom:1px solid #e1efe7;}
 .price-box tr:last-child td{border-bottom:none;}
-
-.price-note{
-    font-size:12px;
-    color:#6b7f73;
-    text-align:center;
-    padding:10px;
-    background:#f1faf4;
-}
-
-/* ABOUT */
-.about{
-    background:#f3fbf6;
-    border-left:4px solid #2e7d32;
-    border-radius:12px;
-    padding:26px;
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
-}
-.about p{font-size:15px;line-height:1.7;color:#34463c;}
-
-/* TERMS */
-.terms{
-    background:#f9fffb;
-    border-radius:12px;
-    padding:24px;
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
-}
-.terms ul{
-    padding-left:18px;
-    font-size:14px;
-    line-height:1.8;
-    color:#4f5f55;
-}
-.terms li{margin-bottom:6px;}
-
-/* CONTACT */
-.contact{
-    background:linear-gradient(135deg,#2e7d32,#1b5e20);
-    color:#fff;
-    text-align:center;
-    padding:36px 20px;
-}
-.contact h2{font-size:22px;}
-.contact p{font-size:14px;margin:8px 0 14px;}
-.contact a{
-    background:#ffffff;
-    color:#1b5e20;
-    padding:12px 28px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:600;
-}
-
-/* FOOTER */
-footer{
-    background:#143d22;
-    color:#cfe6d6;
-    text-align:center;
-    padding:12px;
-    font-size:13px;
-}
+.price-note{font-size:12px;color:#6b7f73;text-align:center;padding:12px;background:#f1faf4;}
+.about{background:#ffffff;border-left:6px solid #1b5e20;border-radius:16px;padding:30px;box-shadow:0 8px 18px rgba(0,0,0,.06);}
+.about p{font-size:15px;line-height:1.8;color:#34463c;}
+.terms{background:#ffffff;border-radius:16px;padding:28px;box-shadow:0 8px 18px rgba(0,0,0,.06);}
+.terms ul{padding-left:18px;font-size:14px;line-height:1.9;color:#4f5f55;}
+.terms li{margin-bottom:8px;}
+.contact{background:linear-gradient(135deg,#1b5e20,#0f3d23);color:#fff;text-align:center;padding:44px 20px;}
+.contact h2{font-size:24px;}
+.contact p{font-size:15px;margin:10px 0 18px;}
+.contact a{background:#ffffff;color:#1b5e20;padding:14px 32px;border-radius:40px;text-decoration:none;font-weight:600;display:inline-block;margin:8px;}
+footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:14px;font-size:13px;}
 </style>
 </head>
-
 <body>
-
 <header>
-    <img src="vallalar-deepam.png" class="logo" alt="Vallalar Deepam">
+    <img src="vallar-jothi-logo.png" class="logo" alt="Vallar Jothi Logo">
     <h1>JOTHIZ</h1>
     <p>தூய்மை • தரம் • நம்பிக்கை</p>
 </header>
-
-<div class="marquee">
-<span>
-• உயிர்கள் அனைத்தும் ஒன்றே • கருணையே உயர்ந்த தர்மம் • வாழும் வரை ஆரோக்கியமாக வாழ முயற்சி செய் • அருட்பெருஞ்சோதி தனிப்பெருங்கருணை
-</span>
-</div>
-
+<div class="marquee"><span>• உயிர்கள் அனைத்தும் ஒன்றே • கருணையே உயர்ந்த தர்மம் • வாழும் வரை ஆரோக்கியமாக வாழ முயற்சி செய் • அருட்பெருஞ்சோதி தனிப்பெருங்கருணை</span></div>
 <section class="container">
-<div class="section-title">
-<p>நம்பிக்கையுடன் தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள்</p>
-</div>
-
+<div class="section-title"><p>நம்பிக்கையுடன் தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள்</p></div>
 <div class="services">
-<div class="card">
-<h3>கவுந்தப்பாடி நாட்டு சர்க்கரை (GI)</h3>
-<p>புவிசார் குறியீடு பெற்ற இயற்கை சர்க்கரை</p>
-</div>
-<div class="card">
-<h3>தூய்மையான குடிநீர்</h3>
-<p>சுத்திகரிக்கப்பட்ட பாதுகாப்பான குடிநீர்</p>
-</div>
-<div class="card">
-<h3>உயர்தர அரிசி</h3>
-<p>சுவை மற்றும் தரம் உறுதி</p>
-</div>
+<div class="card"><h3>கவுந்தப்பாடி நாட்டு சர்க்கரை (GI)</h3><p>₹50 – ₹60 / கிலோ</p></div>
+<div class="card"><h3>தூய்மையான குடிநீர்</h3><p>300 ml • 500 ml • 1 லிட்டர் • 2 லிட்டர் • 20 லிட்டர்</p></div>
+<div class="card"><h3>உயர்தர அரிசி</h3><p>₹1300 – ₹1600 (25kg)</p></div>
 </div>
 </section>
-
 <section class="container">
-<div class="section-title">
-<h2>விலைப்பட்டியல்</h2>
-<p>நியாயமான விலையில் தரமான பொருட்கள்</p>
-</div>
-
+<div class="section-title"><h2>விலைப்பட்டியல்</h2><p>நியாயமான விலையில் தரமான பொருட்கள்</p></div>
 <div class="price-box">
 <table>
 <tr><th>பொருள்</th><th>அளவு</th><th>விலை</th></tr>
+<tr><td>தூய்மையான குடிநீர்</td><td>300 ml</td><td>₹10</td></tr>
+<tr><td>தூய்மையான குடிநீர்</td><td>500 ml</td><td>₹15</td></tr>
+<tr><td>தூய்மையான குடிநீர்</td><td>1 லிட்டர்</td><td>₹20</td></tr>
+<tr><td>தூய்மையான குடிநீர்</td><td>2 லிட்டர்</td><td>₹25</td></tr>
 <tr><td>தூய்மையான குடிநீர் கேன்</td><td>20 லிட்டர்</td><td>₹30</td></tr>
-<tr><td>கவுந்தப்பாடி சர்க்கரை</td><td>1 கிலோ</td><td>₹60</td></tr>
-<tr><td>டீலக்ஸ் பொன்னி அரிசி</td><td>25 கிலோ</td><td>₹1500</td></tr>
+<tr><td>கவுந்தப்பாடி சர்க்கரை</td><td>1 கிலோ</td><td>₹50 – ₹60</td></tr>
+<tr><td>டீலக்ஸ் பொன்னி அரிசி</td><td>25 கிலோ</td><td>₹1300 – ₹1600</td></tr>
 </table>
-<div class="price-note">
-* விலைகள் சந்தை நிலவரம் மற்றும் விநியோக பகுதிகளைப் பொறுத்து மாற்றம் அடையலாம்.
-</div>
+<div class="price-note">* விலைகள் சந்தை நிலவரம் மற்றும் விநியோக பகுதிகளைப் பொறுத்து மாற்றம் அடையலாம்.</div>
 </div>
 </section>
-
-<section class="container">
-<div class="section-title"><h2>Terms & Conditions</h2></div>
-<div class="terms">
-<ul>
-<li>விலைப்பட்டியல் தகவல்கள் பொதுத் தகவலுக்காக மட்டும்.</li>
-<li>விநியோக பகுதிகளுக்கு ஏற்ப விலை மாற்றம் இருக்கலாம்.</li>
-<li>குறைந்தபட்ச ஆர்டர் அளவு விதிமுறைகள் பொருந்தும்.</li>
-<li>விநியோக நேரம் கிடைப்பை பொருத்து மாறுபடும்.</li>
-<li>Terms & Conditions Apply.</li>
-</ul>
-</div>
-</section>
-
-<section class="container">
-<div class="section-title"><h2>JOTHIZ பற்றி</h2></div>
-<div class="about">
-<p>
-JOTHIZ நிறுவனம் <strong>தூய்மை, இயற்கை மற்றும் தரமான அத்தியாவசிய பொருட்களை</strong>
-நம்பகமான விநியோக முகவர் அடிப்படையில்
-<strong>நேரடியாக உங்கள் வீட்டிற்கு</strong> வழங்குகிறது.
-</p>
-</div>
-</section>
-
 <section class="contact">
 <h2>தொடர்புக்கு</h2>
-<p>டீலர்ஷிப் அடிப்படையிலான வீட்டு விநியோகத்திற்கு அழைக்கவும்</p>
+<p>வீட்டு விநியோகத்திற்கு அழைக்கவும் / WhatsApp செய்யவும்</p>
 <a href="tel:8903326883">📞 89033 26883</a>
+<a href="https://wa.me/918838662641" target="_blank">💬 WhatsApp: 88386 62641</a>
 </section>
-
-<footer>
-© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.
-</footer>
-
+<footer>© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</footer>
 </body>
 </html>
