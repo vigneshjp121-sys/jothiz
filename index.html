@@ -9,82 +9,66 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#f4faf6;color:#2f3e34;}
 
-/* HEADER */
-header{
-    background:linear-gradient(135deg,#0f3d23,#2e7d32);
-    color:#fff;
-    padding:36px 20px 42px;
-    text-align:center;
-}
-.logo{
-  width:70px;          /* VERY SMALL, CLEAN LOGO */
-  height:70px;
-  object-fit:contain;
-  margin-bottom:10px;
-  filter:
-    drop-shadow(0 4px 8px rgba(0,0,0,0.25));
-}
+header{background:linear-gradient(135deg,#0f3d23,#2e7d32);color:#fff;padding:60px 20px;text-align:center;}
+header h1{font-size:46px;font-weight:700;letter-spacing:2px;margin-bottom:8px;}
+header p{font-size:16px;opacity:.95;}
 
-/* Mobile logo size */
-@media (max-width: 600px){
-  .logo{
-    width:55px;
-    height:55px;
-  }
-}
-header h1{
-    font-size:42px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:6px;
-}
-header p{
-    font-size:15px;
-    opacity:.95;
-}
-
-/* COMMON */
-.container{max-width:1100px;margin:auto;padding:40px 20px;}
-.section-title{text-align:center;margin-bottom:26px;}
-.section-title h2{font-size:28px;color:#1b5e20;margin-bottom:6px;}
-.section-title p{font-size:14px;color:#5a6f62}
-
-/* MARQUEE */
 .marquee{background:#e1f2e8;padding:12px 0;overflow:hidden;white-space:nowrap;border-bottom:1px solid #cfe6d6;}
 .marquee span{display:inline-block;padding-left:100%;animation:marquee 22s linear infinite;font-size:14px;color:#1b5e20;font-weight:500;}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
 
-/* SERVICES */
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
-.card{background:#ffffff;padding:26px;border-radius:16px;box-shadow:0 10px 22px rgba(0,0,0,.08);text-align:center;}
-.card h3{color:#1b5e20;font-size:17px;margin-bottom:8px;}
-.card p{font-size:14px;color:#4f5f55;}
+.container{max-width:1100px;margin:auto;padding:60px 20px;}
+.section-title{text-align:center;margin-bottom:36px;}
+.section-title h2{font-size:32px;color:#1b5e20;margin-bottom:6px;}
+.section-title p{font-size:14px;color:#5a6f62}
 
-/* PRICE LIST */
-.price-box{background:#ffffff;border-radius:16px;box-shadow:0 10px 22px rgba(0,0,0,.08);overflow:hidden;}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;}
+.card{background:#ffffff;padding:30px;border-radius:20px;box-shadow:0 12px 26px rgba(0,0,0,.08);text-align:center;transition:.3s ease;}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.14);} 
+.card h3{color:#1b5e20;font-size:19px;margin-bottom:10px;}
+.card p{font-size:14px;color:#4f5f55;}
+.points{list-style:none;padding:0;margin:14px 0 16px;text-align:left;}
+.points li{font-size:13px;color:#4f5f55;margin:7px 0;position:relative;padding-left:18px;}
+.points li::before{content:'✔';color:#2e7d32;position:absolute;left:0;top:0;}
+.badge{display:inline-block;background:#e8f5e9;color:#1b5e20;font-size:12px;padding:5px 14px;border-radius:20px;margin-bottom:12px;font-weight:600;}
+
+/* Featured Pooja Combo */
+.featured{grid-column:1/-1;position:relative;border:2px solid #f1d27a;background:linear-gradient(180deg,#fffdf5,#ffffff);} 
+.featured::before{content:"Best Seller";position:absolute;top:-12px;right:18px;background:#d4af37;color:#fff;font-size:12px;font-weight:600;padding:4px 10px;border-radius:14px;} 
+.pooja-title{font-size:22px;color:#8d6e00;margin-bottom:6px;}
+.pooja-sub{font-size:14px;color:#7a7a7a;margin-bottom:10px;}
+.pooja-note{font-size:14px;color:#6b5e00;margin:10px 0 14px;font-weight:500;} 
+.pooja-price{font-size:22px;font-weight:700;color:#1b5e20;} 
+.pooja-price span{font-size:13px;font-weight:500;color:#6b7f73;}
+
+.price-box{background:#ffffff;border-radius:20px;box-shadow:0 12px 26px rgba(0,0,0,.08);overflow:hidden;}
 .price-box table{width:100%;border-collapse:collapse;}
-.price-box th{background:#1b5e20;color:#fff;padding:14px;font-size:15px;}
+.price-box th{background:#1b5e20;color:#fff;padding:16px;font-size:15px;}
 .price-box td{padding:14px;text-align:center;font-size:14px;border-bottom:1px solid #e1efe7;}
 .price-box tr:last-child td{border-bottom:none;}
 .price-note{font-size:12px;color:#6b7f73;text-align:center;padding:12px;background:#f1faf4;}
 
-/* CONTACT */
-.contact{background:linear-gradient(135deg,#1b5e20,#0f3d23);color:#fff;text-align:center;padding:44px 20px;}
-.contact h2{font-size:24px;}
-.contact p{font-size:15px;margin:10px 0 18px;}
-.contact a{background:#ffffff;color:#1b5e20;padding:14px 32px;border-radius:40px;text-decoration:none;font-weight:600;display:inline-block;margin:8px;}
+.contact{background:linear-gradient(135deg,#1b5e20,#0f3d23);color:#fff;text-align:center;padding:70px 20px;} 
+.contact h2{font-size:28px;} 
+.contact p{font-size:15px;margin:10px 0 22px;} 
+.contact a{background:#ffffff;color:#1b5e20;padding:14px 34px;border-radius:40px;text-decoration:none;font-weight:600;display:inline-block;margin:8px;transition:.25s ease;} 
+.contact a:hover{background:#e8f5e9;transform:scale(1.05);} 
 
-/* FOOTER */
-footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:14px;font-size:13px;}
+.contact-form{background:#ffffff;border-radius:20px;box-shadow:0 12px 26px rgba(0,0,0,.1);padding:30px;max-width:520px;margin:28px auto 0;color:#2f3e34;} 
+.contact-form h3{text-align:center;color:#1b5e20;margin-bottom:18px;} 
+.contact-form input,.contact-form textarea{width:100%;padding:13px 15px;margin:10px 0;border:1px solid #cfe6d6;border-radius:12px;font-size:14px;outline:none;} 
+.contact-form input:focus,.contact-form textarea:focus{border-color:#1b5e20;} 
+.contact-form button{width:100%;background:#1b5e20;color:#fff;border:none;padding:13px;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;margin-top:12px;transition:.25s ease;} 
+.contact-form button:hover{background:#144a19;transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.18);} 
+
+footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:16px;font-size:13px;} 
 </style>
 </head>
 <body>
 
 <header>
-    <!-- ICON ONLY LOGO (TRANSPARENT PNG RECOMMENDED) -->
-
-    <h1>JOTHIZ</h1>
-    <p>தூய்மை • தரம் • நம்பிக்கை</p>
+  <h1>JOTHIZ</h1>
+  <p>தூய்மை • தரம் • நம்பிக்கை</p>
 </header>
 
 <div class="marquee">
@@ -95,19 +79,91 @@ footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:14px;font-size
 <div class="section-title">
 <p>நம்பிக்கையுடன் தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள்</p>
 </div>
+
 <div class="services">
+
 <div class="card">
-<h3>கவுந்தப்பாடி நாட்டு சர்க்கரை (GI)</h3>
-<p>₹50 – ₹60 / கிலோ</p>
+<span class="badge">GI Certified</span>
+<h3>கவுந்தப்பாடி நாட்டு சர்க்கரை</h3>
+<ul class="points">
+<li>100% இயற்கை முறையில் தயாரிப்பு</li>
+<li>ரசாயனம் கலக்காத தூய்மை</li>
+<li>உடலுக்கு பாதுகாப்பான இனிப்பு</li>
+</ul>
+<p><strong>₹50 – ₹60 / கிலோ</strong></p>
 </div>
+
 <div class="card">
+<span class="badge">Pure Drinking Water</span>
 <h3>தூய்மையான குடிநீர்</h3>
-<p>300 ml • 500 ml • 1 லிட்டர் • 2 லிட்டர் • 20 லிட்டர்</p>
+<ul class="points">
+<li>RO + UV சுத்திகரிப்பு</li>
+<li>வீட்டு & அலுவலக பயன்பாடு</li>
+</ul>
+<p><strong>300 ml • 500 ml • 1 லிட்டர் • 2 லிட்டர் • 20 லிட்டர்</strong></p>
 </div>
+
 <div class="card">
+<span class="badge">Premium Quality</span>
 <h3>உயர்தர அரிசி</h3>
-<p>₹1300 – ₹1600 (25kg)</p>
+<ul class="points">
+<li>நறுமணம் & மென்மை</li>
+<li>சமைக்கும் போது விரியும்</li>
+</ul>
+<p><strong>₹1300 – ₹1600 (25kg)</strong></p>
 </div>
+
+<div class="card">
+<span class="badge">Eco Friendly • Food Safe</span>
+<h3>கைத்தறி பாய் (Handloom Mat)</h3>
+<ul class="points">
+<li>100% தூய காடன் (Cotton)</li>
+<li>மென்மையான உணர்வு & காற்றோட்டம்</li>
+<li>இலகுவானது, நீடித்தது</li>
+<li>Food Mat • வரவேற்பு பாய்</li>
+<li>வீடு, பூஜை, யோகா & பயணம்</li>
+</ul>
+<p><strong>₹15 – ₹65</strong></p>
+</div>
+
+<div class="card featured">
+<h3 class="pooja-title">🪔 பூஜை பயன்பாட்டு பொருட்கள்</h3>
+<p class="pooja-sub">ஒரே தொகுப்பு • All-in-One Pooja Combo Pack</p>
+<ul class="points">
+<li>கற்பூரம் (Camphor)</li>
+<li>அகர்பத்தி / இன்சென்ஸ் ஸ்டிக்</li>
+<li>சாம்பிராணி (Sambrani)</li>
+<li>நெய் (Ghee)</li>
+<li>விளக்கு எண்ணெய்</li>
+<li>பஞ்சு திரி (Cotton Wicks)</li>
+<li>குங்குமம் & மஞ்சள்</li>
+<li>தேங்காய் & வெற்றிலை</li>
+<li>பூஜை மலர்கள்</li>
+<li>தீப்பெட்டி</li>
+</ul>
+<p class="pooja-note">✨ அனைத்து தேவையான பூஜை பொருட்களும் ஒரே தொகுப்பில்</p>
+<p class="pooja-price">₹199 – ₹299 <span>(Combo Pack)</span></p>
+
+
+<div class="card featured">
+<h3 class="pooja-title">🛕 அபிஷேகப் பயன்பாட்டு பொருட்கள்</h3>
+<p class="pooja-sub">ஒரே தொகுப்பு • Abhisheka Combo Pack</p>
+<ul class="points">
+<li>பால் (Milk)</li>
+<li>தயிர் (Curd)</li>
+<li>நெய் (Ghee)</li>
+<li>தேன் (Honey)</li>
+<li>இளநீர் (Tender Coconut Water)</li>
+<li>பன்னீர் / சந்தனம் (Sandal Paste)</li>
+<li>மஞ்சள் & குங்குமம்</li>
+<li>ரோஜா நீர் (Rose Water)</li>
+<li>விபூதி</li>
+<li>பூமாலை / பூக்கள்</li>
+</ul>
+<p class="pooja-note">✨ அபிஷேகத்திற்கு தேவையான அனைத்துப் பொருட்களும் ஒரே தொகுப்பில்</p>
+<p class="pooja-price">₹299 – ₹499 <span>(Abhisheka Combo Pack)</span></p>
+</div>
+
 </div>
 </section>
 
@@ -116,6 +172,7 @@ footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:14px;font-size
 <h2>விலைப்பட்டியல்</h2>
 <p>நியாயமான விலையில் தரமான பொருட்கள்</p>
 </div>
+
 <div class="price-box">
 <table>
 <tr><th>பொருள்</th><th>அளவு</th><th>விலை</th></tr>
@@ -126,6 +183,8 @@ footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:14px;font-size
 <tr><td>தூய்மையான குடிநீர் கேன்</td><td>20 லிட்டர்</td><td>₹30</td></tr>
 <tr><td>கவுந்தப்பாடி சர்க்கரை</td><td>1 கிலோ</td><td>₹50 – ₹60</td></tr>
 <tr><td>டீலக்ஸ் பொன்னி அரிசி</td><td>25 கிலோ</td><td>₹1300 – ₹1600</td></tr>
+<tr><td>கைத்தறி பாய் / Food Mat</td><td>சிறியது – பெரியது</td><td>₹15 – ₹65</td></tr>
+<tr><td>பூஜை பொருட்கள் Combo Pack</td><td>ஒரே தொகுப்பு</td><td>₹199 – ₹299</td></tr>
 </table>
 <div class="price-note">* விலைகள் சந்தை நிலவரம் மற்றும் விநியோக பகுதிகளைப் பொறுத்து மாற்றம் அடையலாம்.</div>
 </div>
@@ -133,14 +192,60 @@ footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:14px;font-size
 
 <section class="contact">
 <h2>தொடர்புக்கு</h2>
-<p>வீட்டு விநியோகத்திற்கு அழைக்கவும் / WhatsApp செய்யவும்</p>
+<p>வீட்டு விநியோகத்திற்கு அழைக்கவும் / WhatsApp செய்யவும் அல்லது கீழே உள்ள படிவத்தை பூர்த்தி செய்யவும்</p>
+
 <a href="tel:8903326883">📞 89033 26883</a>
 <a href="https://wa.me/918838662641" target="_blank">💬 WhatsApp: 88386 62641</a>
+
+<form class="contact-form" id="enquiryForm" action="https://formspree.io/f/mykwjrjq" method="POST">
+<h3>ஆர்டர் / விசாரணை படிவம்</h3>
+
+<input type="text" name="name" placeholder="உங்கள் பெயர்" required>
+<input type="tel" name="phone" placeholder="மொபைல் எண்" required>
+<input type="email" name="email" placeholder="மின்னஞ்சல் (Optional)">
+<textarea name="message" rows="4" placeholder="தேவையான பொருட்கள் / செய்தி" required></textarea>
+
+<input type="hidden" name="_subject" value="New Enquiry from JOTHIZ Website">
+
+<button type="submit">அனுப்பு</button>
+
+<div id="successMsg" style="display:none;margin-top:14px;padding:12px;background:#e8f5e9;color:#1b5e20;border-radius:12px;font-size:14px;text-align:center;font-weight:500;">
+✅ உங்கள் விசாரணை வெற்றிகரமாக அனுப்பப்பட்டது!<br>3 விநாடிகளில் மீண்டும் முகப்புப் பக்கத்திற்கு செல்லப்படும்…
+</div>
+</form>
 </section>
 
 <footer>
 © 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.
 </footer>
+
+<script>
+const form = document.getElementById("enquiryForm");
+const successMsg = document.getElementById("successMsg");
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      form.reset();
+      successMsg.style.display = "block";
+      setTimeout(() => { window.location.href = "index.html"; }, 3000);
+    } else {
+      alert("❌ அனுப்ப முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.");
+    }
+  } catch (error) {
+    alert("❌ Network error. Please try again later.");
+  }
+});
+</script>
 
 </body>
 </html>
