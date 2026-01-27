@@ -1,6 +1,10 @@
 (() => {
   "use strict";
 
+  /* ============================
+     FORM SECURITY + VALIDATION
+  ============================ */
+
   const form = document.getElementById("enquiryForm");
   if (!form) return;
 
@@ -111,6 +115,45 @@
         }
       });
     });
+  });
+
+  /* ============================
+     🔒 ANTI-COPY PROTECTION
+  ============================ */
+
+  // Disable right-click
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+
+  // Disable selection
+  document.addEventListener("selectstart", function (e) {
+    if (
+      e.target.tagName !== "INPUT" &&
+      e.target.tagName !== "TEXTAREA"
+    ) {
+      e.preventDefault();
+    }
+  });
+
+  // Disable copy event
+  document.addEventListener("copy", function (e) {
+    e.preventDefault();
+    alert("❌ Copying content is disabled on this website.");
+  });
+
+  // Disable common shortcuts
+  document.addEventListener("keydown", function (e) {
+    const key = e.key.toLowerCase();
+
+    if (
+      (e.ctrlKey && ["c", "u", "s", "p", "a", "x", "v"].includes(key)) ||
+      (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(key)) ||
+      key === "f12"
+    ) {
+      e.preventDefault();
+      return false;
+    }
   });
 
 })();
