@@ -4,7 +4,28 @@
 <meta charset="UTF-8">
 <title>JOTHIZ | தூய்மை • தரம் • நம்பிக்கை</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 🔐 Security Headers -->
+<meta http-equiv="Content-Security-Policy"
+content="
+default-src * data: blob: 'unsafe-inline' 'unsafe-eval';
+style-src * 'unsafe-inline';
+script-src * 'unsafe-inline' 'unsafe-eval';
+connect-src *;
+img-src * data:;
+font-src *;
+frame-src *;
+">
+
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<meta name="referrer" content="no-referrer">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#f4faf6;color:#2f3e34;}
@@ -50,30 +71,37 @@ header p{font-size:16px;opacity:.95;}
 .contact{background:linear-gradient(135deg,#1b5e20,#0f3d23);color:#fff;text-align:center;padding:70px 20px;} 
 .contact h2{font-size:28px;} 
 .contact p{font-size:15px;margin:10px 0 22px;} 
-.contact a{background:#ffffff;color:#1b5e20;padding:14px 34px;border-radius:40px;text-decoration:none;font-weight:600;display:inline-block;margin:8px;transition:.25s ease;} 
-.contact a:hover{background:#e8f5e9;transform:scale(1.05);} 
+.contact a{background:#ffffff;color:#1b5e20;padding:14px 34px;border-radius:40px;text-decoration:none;font-weight:600;display:inline-block;margin:8px;} 
 
-.contact-form{background:#ffffff;border-radius:20px;box-shadow:0 12px 26px rgba(0,0,0,.1);padding:30px;max-width:520px;margin:28px auto 0;color:#2f3e34;} 
+.contact-form{background:#ffffff;border-radius:20px;box-shadow:0 12px 26px rgba(0,0,0,.1);
+padding:30px;max-width:520px;margin:28px auto 0;color:#2f3e34;} 
 .contact-form h3{text-align:center;color:#1b5e20;margin-bottom:18px;} 
-.contact-form input,.contact-form textarea{width:100%;padding:13px 15px;margin:10px 0;border:1px solid #cfe6d6;border-radius:12px;font-size:14px;outline:none;} 
+.contact-form input,.contact-form textarea{width:100%;padding:13px 15px;margin:10px 0;
+border:1px solid #cfe6d6;border-radius:12px;font-size:14px;outline:none;} 
 .contact-form input:focus,.contact-form textarea:focus{border-color:#1b5e20;} 
-.contact-form button{width:100%;background:#1b5e20;color:#fff;border:none;padding:13px;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;margin-top:12px;transition:.25s ease;} 
-.contact-form button:hover{background:#144a19;transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.18);} 
+.contact-form button{width:100%;background:#1b5e20;color:#fff;border:none;
+padding:13px;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;margin-top:12px;} 
+.contact-form button:disabled{opacity:.6;cursor:not-allowed;} 
+.error{color:#c62828;font-size:13px;text-align:left;margin-top:-6px;margin-bottom:6px;display:none;} 
 
 footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:16px;font-size:13px;} 
 </style>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6Ld5L1gsAAAAANznU_17Wn9cbvPO3OSeWy-Z1RZn" defer></script>
+<script src="secure-form.js" defer></script>
 </head>
 <body>
 
 <header>
-  <h1>JOTHIZ</h1>
-  <p>தூய்மை • தரம் • நம்பிக்கை</p>
+<h1>JOTHIZ</h1>
+<p>தூய்மை • தரம் • நம்பிக்கை</p>
 </header>
 
 <div class="marquee">
 <span>• உயிர்கள் அனைத்தும் ஒன்றே • கருணையே உயர்ந்த தர்மம் • வாழும் வரை ஆரோக்கியமாக வாழ முயற்சி செய் • அருட் பெரும் ஜோதி தனிப்பெருங்கருணை</span>
 </div>
 
+<!-- SERVICES -->
 <section class="container">
 <div class="section-title">
 <p>நம்பிக்கையுடன் தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள்</p>
@@ -81,114 +109,118 @@ footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:16px;font-size
 
 <div class="services">
 
-<div class="card">
-<span class="badge">GI Certified</span>
-<h3>கவுந்தப்பாடி நாட்டு சர்க்கரை</h3>
-<ul class="points">
-<li>100% இயற்கை முறையில் தயாரிப்பு</li>
-<li>ரசாயனம் கலக்காத தூய்மை</li>
-<li>உடலுக்கு பாதுகாப்பான இனிப்பு</li>
-</ul>
-<p><strong>₹50 – ₹60 / கிலோ</strong></p>
+  <div class="card">
+    <span class="badge">GI Certified</span>
+    <h3>கவுந்தப்பாடி நாட்டு சர்க்கரை</h3>
+    <ul class="points">
+      <li>100% இயற்கை முறையில் தயாரிப்பு</li>
+      <li>ரசாயனம் கலக்காத தூய்மை</li>
+      <li>உடலுக்கு பாதுகாப்பான இனிப்பு</li>
+    </ul>
+    <p><strong>₹50 – ₹60 / கிலோ</strong></p>
+  </div>
+
+  <div class="card">
+    <span class="badge">Premium Quality</span>
+    <h3>உயர்தர அரிசி</h3>
+    <ul class="points">
+      <li>நறுமணம் & மென்மை</li>
+      <li>சமைக்கும் போது விரியும்</li>
+    </ul>
+    <p><strong>₹1300 – ₹1600 (25kg)</strong></p>
+  </div>
+
+  <div class="card">
+    <span class="badge">Eco Friendly • Food Safe</span>
+    <h3>கைத்தறி பாய் (Handloom Mat)</h3>
+    <ul class="points">
+      <li>100% தூய காடன் (Cotton)</li>
+      <li>மென்மையான உணர்வு & காற்றோட்டம்</li>
+      <li>இலகுவானது, நீடித்தது</li>
+      <li>Food Mat • வரவேற்பு பாய்</li>
+      <li>வீடு, பூஜை, யோகா & பயணம்</li>
+    </ul>
+    <p><strong>₹15 – ₹65</strong></p>
+  </div>
+
+  <div class="card">
+    <span class="badge">Soft • Absorbent</span>
+    <h3>பாத்திங் டவல் (Bathing Towel)</h3>
+    <ul class="points">
+      <li>மென்மையான காடன் துணி</li>
+      <li>நீரை நன்றாக உறிஞ்சும் தன்மை</li>
+      <li>தினசரி குளியல் பயன்பாட்டிற்கு ஏற்றது</li>
+    </ul>
+    <p><strong>₹40</strong></p>
+  </div>
+
+  <div class="card">
+    <span class="badge">Traditional • Handwoven</span>
+    <h3>பவானி ஜமுக்காளம் (Bhavani Jamukalam)</h3>
+    <ul class="points">
+      <li>பாரம்பரிய கைத்தறி தயாரிப்பு</li>
+      <li>நீடித்த & உறுதியான தரம்</li>
+      <li>வீடு, பூஜை & அலங்கார பயன்பாடு</li>
+    </ul>
+    <p><strong>₹450 – ₹850</strong></p>
+  </div>
+
+  <div class="card">
+    <span class="badge">New Arrival • Trendy</span>
+    <h3>பேன்சி சாரீஸ் (Fancy Sarees)</h3>
+    <ul class="points">
+      <li>நவீன வடிவமைப்பு</li>
+      <li>மென்மையான துணி & அழகான நிறங்கள்</li>
+      <li>திருமணம், விழா & தினசரி பயன்பாடு</li>
+    </ul>
+    <p><strong>₹340 – ₹900</strong></p>
+  </div>
+
+  <!-- 🌟 Featured: Pooja Combo Pack -->
+  <div class="card featured">
+    <h3 class="pooja-title">🪔 பூஜை பயன்பாட்டு பொருட்கள்</h3>
+    <p class="pooja-sub">ஒரே தொகுப்பு • All-in-One Pooja Combo Pack</p>
+    <ul class="points">
+      <li>கற்பூரம்</li>
+      <li>அகர்பத்தி</li>
+      <li>சாம்பிராணி</li>
+      <li>நெய்</li>
+      <li>விளக்கு எண்ணெய்</li>
+      <li>பஞ்சு திரி</li>
+      <li>குங்குமம் & மஞ்சள்</li>
+      <li>தேங்காய் & வெற்றிலை</li>
+      <li>பூஜை மலர்கள்</li>
+      <li>தீப்பெட்டி</li>
+    </ul>
+    <p class="pooja-note">✨ அனைத்து தேவையான பூஜை பொருட்களும் ஒரே தொகுப்பில்</p>
+    <p class="pooja-price">₹199 – ₹299 <span>(Combo Pack)</span></p>
+  </div>
+
+  <!-- 🌟 Featured: Abhisheka Combo Pack -->
+  <div class="card featured">
+    <h3 class="pooja-title">🛕 அபிஷேகப் பயன்பாட்டு பொருட்கள்</h3>
+    <p class="pooja-sub">ஒரே தொகுப்பு • Abhisheka Combo Pack</p>
+    <ul class="points">
+      <li>பால்</li>
+      <li>தயிர்</li>
+      <li>நெய்</li>
+      <li>தேன்</li>
+      <li>இளநீர்</li>
+      <li>சந்தனம்</li>
+      <li>மஞ்சள் & குங்குமம்</li>
+      <li>ரோஜா நீர்</li>
+      <li>விபூதி</li>
+      <li>பூமாலை</li>
+    </ul>
+    <p class="pooja-note">✨ அபிஷேகத்திற்கு தேவையான அனைத்துப் பொருட்களும் ஒரே தொகுப்பில்</p>
+    <p class="pooja-price">₹299 – ₹499 <span>(Abhisheka Combo Pack)</span></p>
+  </div>
+
 </div>
 
-<div class="card">
-<span class="badge">Premium Quality</span>
-<h3>உயர்தர அரிசி</h3>
-<ul class="points">
-<li>நறுமணம் & மென்மை</li>
-<li>சமைக்கும் போது விரியும்</li>
-</ul>
-<p><strong>₹1300 – ₹1600 (25kg)</strong></p>
-</div>
-
-<div class="card">
-<span class="badge">Eco Friendly • Food Safe</span>
-<h3>கைத்தறி பாய் (Handloom Mat)</h3>
-<ul class="points">
-<li>100% தூய காடன் (Cotton)</li>
-<li>மென்மையான உணர்வு & காற்றோட்டம்</li>
-<li>இலகுவானது, நீடித்தது</li>
-<li>Food Mat • வரவேற்பு பாய்</li>
-<li>வீடு, பூஜை, யோகா & பயணம்</li>
-</ul>
-<p><strong>₹15 – ₹65</strong></p>
-</div>
-
-<div class="card">
-<span class="badge">Soft • Absorbent</span>
-<h3>பாத்திங் டவல் (Bathing Towel)</h3>
-<ul class="points">
-<li>மென்மையான காடன் துணி</li>
-<li>நீரை நன்றாக உறிஞ்சும் தன்மை</li>
-<li>தினசரி குளியல் பயன்பாட்டிற்கு ஏற்றது</li>
-</ul>
-<p><strong>₹40</strong></p>
-</div>
-
-<div class="card">
-<span class="badge">Traditional • Handwoven</span>
-<h3>பவானி ஜமுக்காளம் (Bhavani Jamukalam)</h3>
-<ul class="points">
-<li>பாரம்பரிய கைத்தறி தயாரிப்பு</li>
-<li>நீடித்த & உறுதியான தரம்</li>
-<li>வீடு, பூஜை & அலங்கார பயன்பாடு</li>
-</ul>
-<p><strong>₹450 – ₹850</strong></p>
-</div>
-
-<div class="card">
-<span class="badge">New Arrival • Trendy</span>
-<h3>பேன்சி சாரீஸ் (Fancy Sarees)</h3>
-<ul class="points">
-<li>நவீன வடிவமைப்பு</li>
-<li>மென்மையான துணி & அழகான நிறங்கள்</li>
-<li>திருமணம், விழா & தினசரி பயன்பாடு</li>
-</ul>
-<p><strong>₹340 – ₹900</strong></p>
-</div>
-
-<div class="card featured">
-<h3 class="pooja-title">🪔 பூஜை பயன்பாட்டு பொருட்கள்</h3>
-<p class="pooja-sub">ஒரே தொகுப்பு • All-in-One Pooja Combo Pack</p>
-<ul class="points">
-<li>கற்பூரம்</li>
-<li>அகர்பத்தி</li>
-<li>சாம்பிராணி</li>
-<li>நெய்</li>
-<li>விளக்கு எண்ணெய்</li>
-<li>பஞ்சு திரி</li>
-<li>குங்குமம் & மஞ்சள்</li>
-<li>தேங்காய் & வெற்றிலை</li>
-<li>பூஜை மலர்கள்</li>
-<li>தீப்பெட்டி</li>
-</ul>
-<p class="pooja-note">✨ அனைத்து தேவையான பூஜை பொருட்களும் ஒரே தொகுப்பில்</p>
-<p class="pooja-price">₹199 – ₹299 <span>(Combo Pack)</span></p>
-</div>
-
-<div class="card featured">
-<h3 class="pooja-title">🛕 அபிஷேகப் பயன்பாட்டு பொருட்கள்</h3>
-<p class="pooja-sub">ஒரே தொகுப்பு • Abhisheka Combo Pack</p>
-<ul class="points">
-<li>பால்</li>
-<li>தயிர்</li>
-<li>நெய்</li>
-<li>தேன்</li>
-<li>இளநீர்</li>
-<li>சந்தனம்</li>
-<li>மஞ்சள் & குங்குமம்</li>
-<li>ரோஜா நீர்</li>
-<li>விபூதி</li>
-<li>பூமாலை</li>
-</ul>
-<p class="pooja-note">✨ அபிஷேகத்திற்கு தேவையான அனைத்துப் பொருட்களும் ஒரே தொகுப்பில்</p>
-<p class="pooja-price">₹299 – ₹499 <span>(Abhisheka Combo Pack)</span></p>
-</div>
-
-</div>
 </section>
 
+<!-- PRICE LIST -->
 <section class="container">
 <div class="section-title">
 <h2>விலைப்பட்டியல்</h2>
@@ -200,72 +232,55 @@ footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:16px;font-size
 <tr><th>பொருள்</th><th>அளவு</th><th>விலை</th></tr>
 <tr><td>கவுந்தப்பாடி சர்க்கரை</td><td>1 கிலோ</td><td>₹50 – ₹60</td></tr>
 <tr><td>டீலக்ஸ் பொன்னி அரிசி</td><td>25 கிலோ</td><td>₹1300 – ₹1600</td></tr>
-<tr><td>கைத்தறி பாய் / Food Mat</td><td>சிறியது – பெரியது</td><td>₹15 – ₹65</td></tr>
+<tr><td>கைத்தறி பாய்</td><td>சிறியது – பெரியது</td><td>₹15 – ₹65</td></tr>
 <tr><td>பாத்திங் டவல்</td><td>ஒரே அளவு</td><td>₹40</td></tr>
-<tr><td>பவாநி ஜமுக்காளம்</td><td>சிறியது – பெரியது</td><td>₹450 – ₹850</td></tr>
-<tr><td>பேன்சி சாரீஸ்</td><td>விதவிதமான வடிவங்கள்</td><td>₹340 – ₹900</td></tr>
-<tr><td>பூஜை பொருட்கள் Combo Pack</td><td>ஒரே தொகுப்பு</td><td>₹199 – ₹299</td></tr>
+<tr><td>பூஜை Combo Pack</td><td>ஒரே தொகுப்பு</td><td>₹199 – ₹299</td></tr>
 </table>
-<div class="price-note">* விலைகள் சந்தை நிலவரம் மற்றும் விநியோக பகுதிகளைப் பொறுத்து மாற்றம் அடையலாம்.</div>
+<div class="price-note">* விலைகள் சந்தை நிலவரத்தைப் பொறுத்து மாறலாம்.</div>
 </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact">
 <h2>தொடர்புக்கு</h2>
-<p>வீட்டு விநியோகத்திற்கு அழைக்கவும் / WhatsApp செய்யவும் அல்லது கீழே உள்ள படிவத்தை பூர்த்தி செய்யவும்</p>
 
 <a href="tel:8903326883">📞 89033 26883</a>
-<a href="https://wa.me/918838662641" target="_blank">💬 WhatsApp: 88386 62641</a>
+<a href="https://wa.me/918838662641" target="_blank" rel="noopener">💬 WhatsApp: 88386 62641</a>
 
-<form class="contact-form" id="enquiryForm" action="https://formspree.io/f/mykwjrjq" method="POST">
+<form class="contact-form" id="enquiryForm"
+action="https://formspree.io/f/mykwjrjq" method="POST" novalidate autocomplete="off">
+
 <h3>ஆர்டர் / விசாரணை படிவம்</h3>
 
-<input type="text" name="name" placeholder="உங்கள் பெயர்" required>
-<input type="tel" name="phone" placeholder="மொபைல் எண்" required>
-<input type="email" name="email" placeholder="மின்னஞ்சல் (Optional)">
-<textarea name="message" rows="4" placeholder="தேவையான பொருட்கள் / செய்தி" required></textarea>
+<!-- Honeypot -->
+<input type="text" name="company" tabindex="-1" autocomplete="off"
+style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
 
+<input type="text" id="name" name="name" placeholder="உங்கள் பெயர்">
+<div class="error" id="nameError">❌ சரியான பெயரை உள்ளிடவும்</div>
+
+<input type="tel" id="phone" name="phone" placeholder="மொபைல் எண்">
+<div class="error" id="phoneError">❌ சரியான மொபைல் எண்</div>
+
+<input type="email" id="email" name="email" placeholder="மின்னஞ்சல் (Optional)">
+<div class="error" id="emailError">❌ சரியான மின்னஞ்சல்</div>
+
+<textarea id="message" name="message" rows="4" placeholder="செய்தி"></textarea>
+<div class="error" id="messageError">❌ குறைந்தது 10 எழுத்துகள்</div>
+
+<input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
 <input type="hidden" name="_subject" value="New Enquiry from JOTHIZ Website">
 
-<button type="submit">அனுப்பு</button>
+<button type="submit" id="submitBtn">அனுப்பு</button>
 
-<div id="successMsg" style="display:none;margin-top:14px;padding:12px;background:#e8f5e9;color:#1b5e20;border-radius:12px;font-size:14px;text-align:center;font-weight:500;">
-✅ உங்கள் விசாரணை வெற்றிகரமாக அனுப்பப்பட்டது!<br>3 விநாடிகளில் மீண்டும் முகப்புப் பக்கத்திற்கு செல்லப்படும்…
+<div id="successMsg" style="display:none;margin-top:14px;padding:12px;background:#e8f5e9;color:#1b5e20;border-radius:12px;text-align:center;">
+✅ உங்கள் விசாரணை அனுப்பப்பட்டது!
 </div>
+
 </form>
 </section>
 
-<footer>
-© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.
-</footer>
-
-<script>
-const form = document.getElementById("enquiryForm");
-const successMsg = document.getElementById("successMsg");
-
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
-  const formData = new FormData(form);
-
-  try {
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-      form.reset();
-      successMsg.style.display = "block";
-      setTimeout(() => { window.location.href = "index.html"; }, 3000);
-    } else {
-      alert("❌ அனுப்ப முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.");
-    }
-  } catch (error) {
-    alert("❌ Network error. Please try again later.");
-  }
-});
-</script>
+<footer>© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</footer>
 
 </body>
 </html>
