@@ -8,14 +8,19 @@
 <!-- 🔐 Security Headers -->
 <meta http-equiv="Content-Security-Policy"
 content="
-default-src * data: blob: 'unsafe-inline' 'unsafe-eval';
-style-src * 'unsafe-inline';
-script-src * 'unsafe-inline' 'unsafe-eval';
-connect-src *;
-img-src * data:;
-font-src *;
-frame-src *;
+default-src 'self';
+style-src 'self' https://fonts.googleapis.com;
+font-src https://fonts.gstatic.com;
+script-src 'self' https://www.google.com https://www.gstatic.com;
+connect-src 'self' https://formspree.io https://www.google.com;
+img-src 'self' data:;
+frame-src https://www.google.com;
+base-uri 'self';
+form-action 'self' https://formspree.io;
+object-src 'none';
+upgrade-insecure-requests;
 ">
+
 
 
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -85,6 +90,23 @@ padding:13px;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;ma
 .error{color:#c62828;font-size:13px;text-align:left;margin-top:-6px;margin-bottom:6px;display:none;} 
 
 footer{background:#0f3d23;color:#cfe6d6;text-align:center;padding:16px;font-size:13px;} 
+/* 🔒 Disable text selection globally */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* ✅ Allow selection only in form fields */
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+  
 </style>
 
 <script src="https://www.google.com/recaptcha/api.js?render=6Ld5L1gsAAAAANznU_17Wn9cbvPO3OSeWy-Z1RZn" defer></script>
