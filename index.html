@@ -11,7 +11,7 @@ content="
 default-src 'self';
 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
 font-src 'self' https://fonts.gstatic.com;
-script-src 'self' https://www.google.com https://www.gstatic.com;
+script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com;
 connect-src 'self' https://formspree.io https://www.google.com;
 img-src 'self' data:;
 frame-src https://www.google.com;
@@ -20,6 +20,7 @@ form-action 'self' https://formspree.io;
 object-src 'none';
 upgrade-insecure-requests;
 ">
+
 
 
 
@@ -107,6 +108,228 @@ input, textarea {
   -ms-user-select: text;
   user-select: text;
 }
+/* ===== FLOATING WHATSAPP BUTTON ===== */
+
+.wa-float{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 22px rgba(0,0,0,.25);
+  z-index:9999;
+  transition:.25s;
+  text-decoration:none;
+}
+
+.wa-float:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.wa-float svg{
+  width:30px;
+  height:30px;
+  fill:#ffffff;
+}
+
+/* small pulse effect */
+@keyframes waPulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}
+  70%{box-shadow:0 0 0 14px rgba(37,211,102,0);}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+
+.wa-float{
+  animation:waPulse 2.8s infinite;
+}
+
+/* ===== FLOAT BUTTONS ===== */
+
+.float-call{
+  position:fixed;
+  bottom:90px;
+  right:22px;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:#0d6efd;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 22px rgba(0,0,0,.25);
+  z-index:9999;
+  text-decoration:none;
+}
+
+.float-call svg{width:26px;height:26px;fill:#fff;}
+
+
+
+/* ===== MOBILE STICKY BAR ===== */
+
+.sticky-order{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#1b5e20;
+  color:#fff;
+  display:none;
+  padding:12px;
+  text-align:center;
+  z-index:9998;
+}
+
+.sticky-order button{
+  background:#fff;
+  color:#1b5e20;
+  border:none;
+  padding:12px 22px;
+  border-radius:30px;
+  font-weight:700;
+  font-size:15px;
+}
+
+/* show only on mobile */
+@media(max-width:768px){
+  .sticky-order{display:block;}
+}
+
+/* ===== QUICK ORDER POPUP ===== */
+
+.qo-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+}
+
+.qo-box{
+  background:#fff;
+  width:92%;
+  max-width:420px;
+  border-radius:18px;
+  padding:26px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.qo-box h3{
+  color:#1b5e20;
+  margin-bottom:12px;
+}
+
+.qo-box input{
+  width:100%;
+  padding:12px;
+  border:1px solid #d7e6dc;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+.qo-actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+
+.qo-actions button{
+  flex:1;
+  border:none;
+  padding:12px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+.qo-wa{background:#25D366;color:#fff;}
+.qo-cancel{background:#eee;}
+
+.cert-link{
+  margin-top:14px;
+  width:100%;
+  border:none;
+  background:linear-gradient(135deg,#1b5e20,#2e7d32);
+  color:#fff;
+  padding:11px;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  letter-spacing:.3px;
+  transition:.2s;
+}
+
+.cert-link:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 14px rgba(0,0,0,.15);
+}
+
+
+
+
+.qo-box select{
+  width:100%;
+  padding:12px;
+  border:1px solid #d7e6dc;
+  border-radius:10px;
+  margin:10px 0;
+  font-size:14px;
+}
+.card{
+  background:#ffffff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+  text-align:left;
+  transition:.25s;
+  border:1px solid #edf3ee;
+}
+
+.card h3{
+  margin-bottom:6px;
+}
+
+.card strong{
+  font-size:16px;
+  color:#1b5e20;
+}
+
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.trust-box{
+  background:#ffffff;
+  padding:18px;
+  border-radius:14px;
+  text-align:center;
+  font-weight:600;
+  color:#1b5e20;
+  box-shadow:0 6px 16px rgba(0,0,0,.05);
+}
+
+.contact a{
+  transition:.25s;
+}
+
+.contact a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(0,0,0,.2);
+}
+
+
+
+
 
   
 </style>
@@ -135,13 +358,18 @@ input, textarea {
 
   <div class="card">
     <span class="badge">GI Certified</span>
-    <h3>கவுந்தப்பாடி நாட்டு சர்க்கரை</h3>
+    <h3>கவுந்தப்பாடி நாட்டுச் சர்க்கரை</h3>
     <ul class="points">
       <li>100% இயற்கை முறையில் தயாரிப்பு</li>
       <li>ரசாயனம் கலக்காத தூய்மை</li>
       <li>உடலுக்கு பாதுகாப்பான இனிப்பு</li>
     </ul>
     <p><strong>₹50 – ₹60 / கிலோ</strong></p>
+<button onclick="quickOrder('கவுந்தப்பாடி நாட்டுச் சர்க்கரை','₹50–₹60 / kg',['₹50','₹60'])" class="cert-link">
+Quick Order
+</button>
+
+
   </div>
 
   <div class="card">
@@ -152,6 +380,10 @@ input, textarea {
       <li>சமைக்கும் போது விரியும்</li>
     </ul>
     <p><strong>₹1300 – ₹1600 (25kg)</strong></p>
+   <button onclick="quickOrder('உயர்தர அரிசி','₹1300–₹1600',['₹1300','₹1400','₹1500','₹1600'])" class="cert-link">
+Quick Order
+</button>
+
   </div>
 
   <div class="card">
@@ -165,6 +397,11 @@ input, textarea {
       <li>வீடு, பூஜை, யோகா & பயணம்</li>
     </ul>
     <p><strong>₹15 – ₹65</strong></p>
+      <button onclick="quickOrder('கைத்தறி பாய்','₹15–₹65',['₹15','₹25','₹45','₹65'])" class="cert-link">
+Quick Order
+</button>
+
+
   </div>
 
   <div class="card">
@@ -176,10 +413,15 @@ input, textarea {
       <li>தினசரி குளியல் பயன்பாட்டிற்கு ஏற்றது</li>
     </ul>
     <p><strong>₹40</strong></p>
+   <button onclick="quickOrder('பாத்திங் டவல்','₹40',['₹40'])" class="cert-link">
+Quick Order
+</button>
+
+
   </div>
 
   <div class="card">
-    <span class="badge">Traditional • Handwoven</span>
+    <span class="badge">Traditional • Handwoven • GI Certified</span>
     <h3>பவானி ஜமுக்காளம் (Bhavani Jamukalam)</h3>
     <ul class="points">
       <li>பாரம்பரிய கைத்தறி தயாரிப்பு</li>
@@ -187,6 +429,10 @@ input, textarea {
       <li>வீடு, பூஜை & அலங்கார பயன்பாடு</li>
     </ul>
     <p><strong>₹450 – ₹850</strong></p>
+     <button onclick="quickOrder('பவானி ஜமுக்காளம்','₹450–₹850',['₹450','₹560','₹620','₹710','₹780','₹850'])" class="cert-link">
+Quick Order
+</button>
+
   </div>
 
   <div class="card">
@@ -198,46 +444,9 @@ input, textarea {
       <li>திருமணம், விழா & தினசரி பயன்பாடு</li>
     </ul>
     <p><strong>₹340 – ₹900</strong></p>
-  </div>
-
-  <!-- 🌟 Featured: Pooja Combo Pack -->
-  <div class="card featured">
-    <h3 class="pooja-title">🪔 பூஜை பயன்பாட்டு பொருட்கள்</h3>
-    <p class="pooja-sub">ஒரே தொகுப்பு • All-in-One Pooja Combo Pack</p>
-    <ul class="points">
-      <li>கற்பூரம்</li>
-      <li>அகர்பத்தி</li>
-      <li>சாம்பிராணி</li>
-      <li>நெய்</li>
-      <li>விளக்கு எண்ணெய்</li>
-      <li>பஞ்சு திரி</li>
-      <li>குங்குமம் & மஞ்சள்</li>
-      <li>தேங்காய் & வெற்றிலை</li>
-      <li>பூஜை மலர்கள்</li>
-      <li>தீப்பெட்டி</li>
-    </ul>
-    <p class="pooja-note">✨ அனைத்து தேவையான பூஜை பொருட்களும் ஒரே தொகுப்பில்</p>
-    <p class="pooja-price">₹199 – ₹299 <span>(Combo Pack)</span></p>
-  </div>
-
-  <!-- 🌟 Featured: Abhisheka Combo Pack -->
-  <div class="card featured">
-    <h3 class="pooja-title">🛕 அபிஷேகப் பயன்பாட்டு பொருட்கள்</h3>
-    <p class="pooja-sub">ஒரே தொகுப்பு • Abhisheka Combo Pack</p>
-    <ul class="points">
-      <li>பால்</li>
-      <li>தயிர்</li>
-      <li>நெய்</li>
-      <li>தேன்</li>
-      <li>இளநீர்</li>
-      <li>சந்தனம்</li>
-      <li>மஞ்சள் & குங்குமம்</li>
-      <li>ரோஜா நீர்</li>
-      <li>விபூதி</li>
-      <li>பூமாலை</li>
-    </ul>
-    <p class="pooja-note">✨ அபிஷேகத்திற்கு தேவையான அனைத்துப் பொருட்களும் ஒரே தொகுப்பில்</p>
-    <p class="pooja-price">₹299 – ₹499 <span>(Abhisheka Combo Pack)</span></p>
+      <button onclick="quickOrder('பேன்சி சாரீஸ்','₹340–₹900',['₹340','₹410','₹440','₹470','₹520','₹550','610','₹650','₹680','₹700','₹720','₹780','₹900'])" class="cert-link">
+Quick Order
+</button>
   </div>
 
 </div>
@@ -254,15 +463,29 @@ input, textarea {
 <div class="price-box">
 <table>
 <tr><th>பொருள்</th><th>அளவு</th><th>விலை</th></tr>
-<tr><td>கவுந்தப்பாடி சர்க்கரை</td><td>1 கிலோ</td><td>₹50 – ₹60</td></tr>
+<tr><td>கவுந்தப்பாடி நாட்டுச் சர்க்கரை</td><td>1 கிலோ</td><td>₹50 – ₹60</td></tr>
 <tr><td>டீலக்ஸ் பொன்னி அரிசி</td><td>25 கிலோ</td><td>₹1300 – ₹1600</td></tr>
 <tr><td>கைத்தறி பாய்</td><td>சிறியது – பெரியது</td><td>₹15 – ₹65</td></tr>
 <tr><td>பாத்திங் டவல்</td><td>ஒரே அளவு</td><td>₹40</td></tr>
-<tr><td>பூஜை Combo Pack</td><td>ஒரே தொகுப்பு</td><td>₹199 – ₹299</td></tr>
+<tr><td>பவானி ஜமுக்காளம் (Bhavani Jamukalam)</td><td>சிறியது – பெரியது</td><td>₹450–₹850</td></tr>
+<tr><td>பேன்சி சாரீஸ்</td><td>ஒரே அளவு</td><td>₹340–₹900</td></tr>
+
 </table>
 <div class="price-note">* விலைகள் சந்தை நிலவரத்தைப் பொறுத்து மாறலாம்.</div>
 </div>
 </section>
+
+<section class="container">
+<div class="trust-grid">
+
+<div class="trust-box">✔ GI Certified Products</div>
+<div class="trust-box">✔ Natural & Chemical Free</div>
+<div class="trust-box">✔ Direct WhatsApp Ordering</div>
+<div class="trust-box">✔ Doorstep Delivery Support or Courier</div>
+
+</div>
+</section>
+
 
 <!-- CONTACT -->
 <section class="contact">
@@ -305,6 +528,135 @@ style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
 </section>
 
 <footer>© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</footer>
+<!-- WhatsApp Floating Order Button -->
+<a class="wa-float"
+   href="https://wa.me/918838662641?text=Hello%20I%20want%20to%20order%20from%20JOTHIZ"
+   target="_blank"
+   aria-label="WhatsApp Order">
+
+  <!-- WhatsApp SVG icon -->
+  <svg viewBox="0 0 32 32">
+    <path d="M16 .6C7.5.6.6 7.5.6 16c0 2.8.7 5.5 2.1 7.9L.6 31.4l7.7-2c2.3 1.3 4.9 2 7.6 2 8.5 0 15.4-6.9 15.4-15.4S24.5.6 16 .6zm0 28c-2.4 0-4.8-.7-6.8-2l-.5-.3-4.6 1.2 1.2-4.5-.3-.5C3.7 20.7 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.6-13 12.6zm7.2-9.5c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.2-.5.3-.9.1-.4-.2-1.8-.7-3.4-2.1-1.3-1.1-2.1-2.4-2.4-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.5-.7.2-.3.1-.6 0-.8-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.7 4.4 1.9 4.7c.2.3 3.4 5.2 8.3 7.3 1.2.5 2.1.8 2.8 1 .9.3 1.8.2 2.4.1.7-.1 2.3-.9 2.6-1.7.3-.8.3-1.6.2-1.7-.1-.1-.3-.2-.7-.4z"/>
+  </svg>
+
+</a>
+<!-- FLOAT CALL -->
+<a href="tel:8903326883" class="float-call" aria-label="Call">
+<svg viewBox="0 0 24 24">
+<path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-2.2 2.2z"/>
+</svg>
+</a>
+
+<!-- FLOAT WHATSAPP -->
+<a class="wa-float"
+href="https://wa.me/918838662641"
+target="_blank">
+<svg viewBox="0 0 32 32"><path d="M16 .6C7.5.6.6 7.5.6 16c0 2.8.7 5.5 2.1 7.9L.6 31.4l7.7-2c2.3 1.3 4.9 2 7.6 2 8.5 0 15.4-6.9 15.4-15.4S24.5.6 16 .6z"/></svg>
+</a>
+
+<!-- MOBILE STICKY ORDER -->
+<div class="sticky-order">
+<button onclick="openQuickOrder()">Order Now on WhatsApp</button>
+</div>
+
+<!-- QUICK ORDER POPUP -->
+<div class="qo-overlay" id="qo">
+  <div class="qo-box">
+    <h3>Quick Order</h3>
+
+    <input id="qoProduct" readonly>
+    <input id="qoPrice" placeholder="Price Range" readonly>
+
+    <!-- ✅ NEW requested price selector -->
+    <select id="qoReqPrice">
+      <option value="">Select Requested Price</option>
+    </select>
+
+    <input id="qoName" placeholder="Your Name">
+    <input id="qoQty" placeholder="Quantity">
+    <input id="qoAddress" placeholder="Delivery Address">
+
+    <div class="qo-actions">
+      <button class="qo-wa" onclick="sendWA()">WhatsApp</button>
+      <button class="qo-cancel" onclick="closeQuickOrder()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+function quickOrder(product, priceRange, priceOptions){
+  document.getElementById('qoProduct').value = product;
+  document.getElementById('qoPrice').value = priceRange || '';
+
+  const sel = document.getElementById('qoReqPrice');
+  sel.innerHTML = '<option value="">Select Requested Price</option>';
+
+  if(priceOptions && priceOptions.length){
+    priceOptions.forEach(p=>{
+      const opt = document.createElement('option');
+      opt.value = p;
+      opt.textContent = p;
+      sel.appendChild(opt);
+    });
+  }
+
+  document.getElementById('qo').style.display='flex';
+}
+
+function openQuickOrder(){
+  quickOrder('General Order','',[]);
+}
+
+function closeQuickOrder(){
+  document.getElementById('qo').style.display='none';
+  clearQuickOrder();
+}
+
+function clearQuickOrder(){
+  document.getElementById('qoName').value = '';
+  document.getElementById('qoQty').value = '';
+  document.getElementById('qoAddress').value = '';
+  document.getElementById('qoPrice').value = '';
+  document.getElementById('qoReqPrice').innerHTML =
+    '<option value="">Select Requested Price</option>';
+}
+
+function sendWA(){
+  const p  = document.getElementById('qoProduct').value;
+  const pr = document.getElementById('qoPrice').value;
+  const rpr= document.getElementById('qoReqPrice').value;
+  const n  = document.getElementById('qoName').value;
+  const q  = document.getElementById('qoQty').value;
+  const a  = document.getElementById('qoAddress').value;
+
+  const msg =
+`Hello I want to order from JOTHIZ
+
+Order Request:
+Product: ${p}
+Price Range: ${pr}
+Requested Price: ${rpr}
+Name: ${n}
+Qty: ${q}
+Address: ${a}`;
+
+  window.open(
+    "https://wa.me/918838662641?text=" + encodeURIComponent(msg),
+    '_blank'
+  );
+
+  clearQuickOrder();
+  closeQuickOrder();
+}
+</script>
+
+
+
+
+
+
 
 </body>
 </html>
