@@ -67,10 +67,7 @@
     /* Prevent image dragging */
     img {
       -webkit-user-drag: none;
-      -khtml-user-drag: none;
-      -moz-user-drag: none;
-      -o-user-drag: none;
-      user-drag: none;
+      user-select: none;
       pointer-events: none;
     }
 
@@ -320,7 +317,20 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .img-disclaimer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      font-size: 9px;
+      padding: 4px;
+      text-align: center;
+      backdrop-filter: blur(2px);
     }
 
     .product-card:hover .product-image img {
@@ -1086,9 +1096,9 @@
     .badge-item {
       padding: 30px;
       background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 25px;
       transition: var(--transition);
-      border: 1px solid var(--border);
     }
 
     .badge-item:hover {
@@ -1282,8 +1292,8 @@
 
   <header>
     <div class="header-content">
-      <h1>JOTHIZ</h1>
-      <p>தூய்மை • தரம் • நம்பிக்கை</p>
+      <h1 id="heroTitle">JOTHIZ</h1>
+      <p id="heroSubtitle">தூய்மை • தரம் • நம்பிக்கை</p>
     </div>
   </header>
 
@@ -1308,16 +1318,16 @@
   </nav>
 
   <div class="marquee">
-    <span>• உயிர்கள் அனைத்தும் ஒன்றே • கருணையே உயர்ந்த தர்மம் • வாழும் வரை ஆரோக்கியமாக வாழ முயற்சி செய் • அருட் பெரும்
-      ஜோதி தனிப்பெருங்கருணை</span>
+    <span id="marqueeText">• உயிர்கள் அனைத்தும் ஒன்றே • கருணையே உயர்ந்த தர்மம் • வாழும் வரை ஆரோக்கியமாக வாழ முயற்சி செய்
+      • அருட் பெரும் ஜோதி தனிப்பெருங்கருணை</span>
   </div>
 
   <section class="philosophy-section reveal">
     <div class="philosophy-content">
-      <h2>ஆன்ம ஒளியின் சங்கமம்</h2>
-      <p>"அருட்பெருஞ்ஜோதி தனிப்பெருங்கருணை என்ற உண்மையை உலகிற்கு உணர்த்திய வள்ளலாரின் கொள்கையே எமது அடித்தளம். சுத்தமான,
-        கலப்படமற்ற பொருட்கள் உங்கள் இல்லம் சேர்வதே எமது இலட்சியம்."</p>
-      <span class="highlight-text">தூய்மை • உயிர்நேயம் • நம்பிக்கை</span>
+      <h2 id="phiTitle">ஆன்ம ஒளியின் சங்கமம்</h2>
+      <p id="phiDesc">"அருட்பெருஞ்ஜோதி தனிப்பெருங்கருணை என்ற உண்மையை உலகிற்கு உணர்த்திய வள்ளலாரின் கொள்கையே எமது
+        அடித்தளம். சுத்தமான, கலப்படமற்ற பொருட்கள் உங்கள் இல்லம் சேர்வதே எமது இலட்சியம்."</p>
+      <span class="highlight-text" id="phiHigh">தூய்மை • உயிர்நேயம் • நம்பிக்கை</span>
     </div>
   </section>
 
@@ -1329,8 +1339,8 @@
             d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
         </svg>
       </div>
-      <h3>இயற்கை</h3>
-      <p>100% Pure & Organic Nature</p>
+      <h3 id="badge1Title">இயற்கை</h3>
+      <p id="badge1Desc">100% Pure & Organic Nature</p>
     </div>
     <div class="badge-item">
       <div class="badge-icon">
@@ -1339,8 +1349,8 @@
             d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.41,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.59,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
         </svg>
       </div>
-      <h3>அஹிம்சை</h3>
-      <p>Ethical & Compassionate Sourcing</p>
+      <h3 id="badge2Title">அஹிம்சை</h3>
+      <p id="badge2Desc">Ethical & Compassionate Sourcing</p>
     </div>
     <div class="badge-item">
       <div class="badge-icon">
@@ -1349,15 +1359,15 @@
             d="M12,3L2,12H5V20H19V12H22L12,3M12,7.7C14.1,7.7 15.8,9.4 15.8,11.5C15.8,14.5 12,18 12,18C12,18 8.2,14.5 8.2,11.5C8.2,9.4 9.9,7.7 12,7.7Z" />
         </svg>
       </div>
-      <h3>நேரடி தயாரிப்பு</h3>
-      <p>Direct from Village Artisans</p>
+      <h3 id="badge3Title">நேரடி தயாரிப்பு</h3>
+      <p id="badge3Desc">Direct from Village Artisans</p>
     </div>
   </section>
 
   <section class="container reveal">
     <div class="section-title reveal">
-      <h2>எங்கள் பொருட்கள்</h2>
-      <p>தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள் - நேரடி மற்றும் கூடை ஆர்டர்கள்</p>
+      <h2 id="productsTitle">எங்கள் பொருட்கள்</h2>
+      <p id="productsDesc">தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள் - நேரடி மற்றும் கூடை ஆர்டர்கள்</p>
     </div>
 
     <div class="products-grid" id="productsGrid">
@@ -1368,7 +1378,7 @@
   <!-- Cart Sidebar -->
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
-      <h2>உங்கள் கூடை (Cart)</h2>
+      <h2 id="cartTitle">உங்கள் கூடை (Cart)</h2>
       <button class="close-cart" onclick="toggleCart()">&times;</button>
     </div>
     <div class="cart-items" id="cartItems">
@@ -1376,10 +1386,10 @@
     </div>
     <div class="cart-footer">
       <div class="cart-total-row">
-        <span>மொத்தம்:</span>
+        <span id="cartTotalLabel">மொத்தம்:</span>
         <span id="cartTotal">₹0</span>
       </div>
-      <button class="checkout-btn" onclick="openCheckoutModal()">
+      <button class="checkout-btn" id="checkoutBtn" onclick="openCheckoutModal()">
         பெரிய ஆர்டர் செய்க (Checkout)
       </button>
     </div>
@@ -1395,29 +1405,40 @@
         <input type="hidden" id="flowType"> <!-- 'cart' or 'quick' -->
         <input type="hidden" id="quickProductId">
 
+        <!-- Dynamic Variety Image Preview -->
+        <div id="quickVarietyPreview"
+          style="text-align:center; margin-bottom: 20px; padding: 10px; background: #fff; border-radius: 15px; border: 1px solid var(--border);">
+          <img id="quickVarietyImg" src=""
+            style="max-width: 150px; height: 150px; object-fit: cover; border-radius: 10px;">
+          <div id="quickImgDisclaimer" style="font-size: 9px; color: var(--text-light); opacity: 0.7; margin-top: 4px;">
+          </div>
+          <div id="quickLiveImgNote" style="font-size: 11px; color: var(--primary); margin-top: 8px; font-weight: 500;">
+          </div>
+        </div>
+
         <!-- Variety Selector (Only for Quick Order) -->
         <div class="form-group" id="varietyGroup" style="display:none;">
-          <label class="form-label">வகை (Selection)</label>
-          <select id="quickPriceSelector" onchange="updateModalTotal()"></select>
+          <label class="form-label" id="labelVariety">வகை (Selection)</label>
+          <select id="quickPriceSelector" onchange="updateQuickOrderVariety()"></select>
         </div>
 
         <div class="form-group">
-          <label class="form-label">பெயர் (Customer Name)</label>
+          <label class="form-label" id="labelName">பெயர் (Customer Name)</label>
           <input type="text" id="custName" placeholder="உங்கள் பெயர்" required>
         </div>
 
         <div class="form-group">
-          <label class="form-label">தொடர்பு எண் (Contact Number)</label>
+          <label class="form-label" id="labelPhone">தொடர்பு எண் (Contact Number)</label>
           <input type="tel" id="custPhone" placeholder="மொபைல் எண்" required>
         </div>
 
         <div class="form-group">
-          <label class="form-label">முகவரி (Delivery Address)</label>
+          <label class="form-label" id="labelAddress">முகவரி (Delivery Address)</label>
           <textarea id="custAddress" rows="2" placeholder="முகவரி" required></textarea>
         </div>
 
         <div class="form-group">
-          <label class="form-label">பணம் (Payment Mode)</label>
+          <label class="form-label" id="labelPayment">பணம் (Payment Mode)</label>
           <div class="payment-options">
             <div class="payment-opt selected" onclick="selectPayment(this, 'GPay / PhonePe')">GPay / PhonePe</div>
             <div class="payment-opt" onclick="selectPayment(this, 'Cash on Delivery')">Cash on Delivery</div>
@@ -1430,7 +1451,7 @@
           <div id="modalTotalDisplay" style="font-size: 24px; font-weight: 700; color: var(--primary);">₹0</div>
         </div>
 
-        <button type="button" class="confirm-btn" onclick="processFinalOrder()">
+        <button type="button" class="confirm-btn" id="confirmBtn" onclick="processFinalOrder()">
           WhatsApp ஆர்டர் செய்க
         </button>
       </form>
@@ -1441,15 +1462,27 @@
   <div class="modal" id="varietyModal">
     <div class="modal-content">
       <button class="close-modal" onclick="closeVarietyModal()">&times;</button>
-      <h2>வகை தேர்வு செய்யவும்</h2>
+      <h2 id="varietyTitle">வகை தேர்வு செய்யவும்</h2>
       <p id="varietyProductName"
         style="text-align:center; color: var(--text-light); margin-bottom: 15px; font-weight: 500;"></p>
 
-      <div class="form-group">
-        <select id="varietySelectCart" style="font-size: 16px; padding: 15px;"></select>
+      <!-- Dynamic Variety Image Preview -->
+      <div id="cartVarietyPreview"
+        style="text-align:center; margin-bottom: 20px; padding: 10px; background: #f9f9f9; border-radius: 15px; border: 1px dashed var(--border);">
+        <img id="cartVarietyImg" src=""
+          style="max-width: 150px; height: 150px; object-fit: cover; border-radius: 10px;">
+        <div id="cartImgDisclaimer" style="font-size: 9px; color: var(--text-light); opacity: 0.7; margin-top: 4px;">
+        </div>
+        <div id="cartLiveImgNote" style="font-size: 11px; color: var(--primary); margin-top: 8px; font-weight: 500;">
+        </div>
       </div>
 
-      <button class="btn btn-order" style="width:100%; padding: 16px;" onclick="confirmAddToCart()">
+      <div class="form-group">
+        <select id="varietySelectCart" style="font-size: 16px; padding: 15px;"
+          onchange="updateCartVarietyImage()"></select>
+      </div>
+
+      <button class="btn btn-order" id="addToCartBtn" style="width:100%; padding: 16px;" onclick="confirmAddToCart()">
         கூடையில் சேர்க்க (Add to Cart)
       </button>
     </div>
@@ -1472,8 +1505,8 @@
   <section class="enquiry-section">
     <div class="enquiry-container">
       <form class="enquiry-form" id="enquiryForm" action="https://formspree.io/f/mykwjrjq" method="POST" novalidate>
-        <h2>விசாரணை படிவம் (Enquiry Form)</h2>
-        <p style="text-align: center; color: var(--text-light); margin-bottom: 30px; font-size: 14px;">
+        <h2 id="enquiryTitle">விசாரணை படிவம் (Enquiry Form)</h2>
+        <p id="enquiryDesc" style="text-align: center; color: var(--text-light); margin-bottom: 30px; font-size: 14px;">
           எங்கள் மேலதிக விவரங்களுக்கு அல்லது மொத்த ஆர்டர்களுக்கு கீழே உள்ள படிவத்தை பூர்த்தி செய்யவும்.
         </p>
 
@@ -1512,10 +1545,11 @@
   </section>
 
   <footer>
-    <div>© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</div>
+    <div id="footerCopy">© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</div>
     <div class="footer-links">
       <a href="https://wa.me/918838662641" class="footer-link" target="_blank">💬 WhatsApp</a>
       <a href="javascript:void(0)" class="footer-link" onclick="sendEmailOrder()">📧 Email Order</a>
+
       <a href="tel:8903326883" class="footer-link">📞 Call Support</a>
     </div>
     <div class="spirit-quote" id="spiritQuote"></div>
@@ -1537,82 +1571,94 @@
       {
         id: 1,
         name: "கவுந்தப்பாடி நாட்டுச் சர்க்கரை (GI Tagged)",
+        en_name: "Kavundapadi Country Sugar (GI Tagged)",
         category: "Authentic Origin",
         image: "country_sugar_1769858896315.png",
         badge: "GI Certified",
         points: ["கவுந்தப்பாடி புவிசார் குறியீடு பெற்றது", "100% இயற்கை முறையில் தயாரிப்பு", "ரசாயனம் கலக்காத தூய்மை"],
+        en_points: ["Kavundapadi GI Certified Origin", "100% Naturally Produced", "Zero Chemical Purity"],
         priceOptions: [
-          { label: "1 கிலோ (Standard)", price: 55 },
-          { label: "5 கிலோ (Bundle)", price: 260 },
-          { label: "10 கிலோ (Family Pack)", price: 510 }
+          { label: "1 கிலோ (Standard)", en_label: "1 kg (Standard)", price: 55, vImage: "country_sugar_1769858896315.png" },
+          { label: "5 கிலோ (Bundle)", en_label: "5 kg (Bundle)", price: 260, vImage: "country_sugar_1769858896315.png" },
+          { label: "10 கிலோ (Family Pack)", en_label: "10 kg (Family Pack)", price: 510, vImage: "country_sugar_1769858896315.png" }
         ],
         displayPrice: "₹50 – ₹60 / kg"
       },
       {
         id: 2,
         name: "உயர்தர அரிசி (Premium Rice)",
+        en_name: "Premium Rice",
         category: "Premium Quality",
         image: "premium_rice_1769858915796.png",
         badge: "Bestseller",
         points: ["நறுமணம் & மென்மை", "சமைக்கும் போது விரியும்", "கிளீன் & ஹைஜினிக்"],
+        en_points: ["Aromatic & Soft Texture", "Expands while cooking", "Clean & Hygienic"],
         priceOptions: [
-          { label: "25 கிலோ (Ponni Deluxe)", price: 1350 },
-          { label: "25 கிலோ (RNR Steamed)", price: 1450 },
-          { label: "25 கிலோ (Sona Masoori)", price: 1600 }
+          { label: "25 கிலோ (Ponni Deluxe)", en_label: "25 kg (Ponni Deluxe)", price: 1350, vImage: "premium_rice_1769858915796.png" },
+          { label: "25 கிலோ (RNR Steamed)", en_label: "25 kg (RNR Steamed)", price: 1450, vImage: "premium_rice_1769858915796.png" },
+          { label: "25 கிலோ (Sona Masoori)", en_label: "25 kg (Sona Masoori)", price: 1600, vImage: "premium_rice_1769858915796.png" }
         ],
         displayPrice: "₹1300 – ₹1600 (25kg)"
       },
       {
         id: 3,
         name: "கைத்தறி பாய் (Handloom Mat)",
+        en_name: "Handloom Mat",
         category: "Eco Friendly",
         image: "handloom_mat_1769858936531.png",
         badge: "Handmade",
         points: ["100% தூய காடன்", "மென்மையான உணர்வு & காற்றோட்டம்", "பூஜை & யோகா பயன்பாடு"],
+        en_points: ["100% Pure Cotton", "Soft feel & Ventilation", "Prayer & Yoga use"],
         priceOptions: [
-          { label: "Small (Yoga Size)", price: 25 },
-          { label: "Medium (4x6 ft)", price: 45 },
-          { label: "Large (Single Bed)", price: 65 }
+          { label: "Small (Yoga Size)", en_label: "Small (Yoga Size)", price: 25, vImage: "handloom_mat_1769858936531.png" },
+          { label: "Medium (4x6 ft)", en_label: "Medium (4x6 ft)", price: 45, vImage: "handloom_mat_1769858936531.png" },
+          { label: "Large (Single Bed)", en_label: "Large (Single Bed)", price: 65, vImage: "handloom_mat_1769858936531.png" }
         ],
         displayPrice: "₹15 – ₹65"
       },
       {
         id: 4,
         name: "பாத்திங் டவல் (Bathing Towel)",
+        en_name: "Bathing Towel",
         category: "Soft & Absorbent",
         image: "bathing_towel_1769858957232.png",
         badge: "Normal",
         points: ["மென்மையான காடன் துணி", "நீரை நன்றாக உறிஞ்சும்", "தினசரி பயன்பாட்டிற்கு ஏற்றது"],
+        en_points: ["Soft Cotton Fabric", "High water absorption", "Ideal for daily use"],
         priceOptions: [
-          { label: "Standard Size", price: 40 }
+          { label: "Standard Size", en_label: "Standard Size", price: 40, vImage: "bathing_towel_1769858957232.png" }
         ],
         displayPrice: "₹40"
       },
       {
         id: 5,
         name: "பவானி ஜமுக்காளம் (GI Tagged)",
+        en_name: "Bhavani Jamukalam (GI Tagged)",
         category: "Traditional Craft",
         image: "bhavani_jamukalam_1769858979784.png",
         badge: "GI Certified",
         points: ["பவானி புவிசார் குறியீடு பெற்றது", "பாரம்பரிய கைத்தறி தயாரிப்பு", "நீடித்த & உறுதியான தரம்"],
+        en_points: ["Bhavani GI Certified Origin", "Traditional Handloom Craft", "Durable & Sturdy Quality"],
         priceOptions: [
-          { label: "3x6 ft (Prayer)", price: 450 },
-          { label: "4x7 ft (Single Bed)", price: 650 },
-          { label: "6x9 ft (Living Room)", price: 850 }
+          { label: "3x6 ft (Blue Design)", en_label: "3x6 ft (Blue Design)", price: 450, vImage: "bhavani_jamukalam_1769858979784.png" },
+          { label: "4x7 ft (Red Ethnic)", en_label: "4x7 ft (Red Ethnic)", price: 650, vImage: "bhavani_jamukalam_1769858979784.png" },
+          { label: "6x9 ft (Grand Temple)", en_label: "6x9 ft (Grand Temple)", price: 850, vImage: "bhavani_jamukalam_1769858979784.png" }
         ],
         displayPrice: "₹450 – ₹850"
       },
       {
         id: 6,
         name: "பேன்சி சாரீஸ் (Fancy Sarees)",
+        en_name: "Fancy Sarees",
         category: "New Arrival",
         image: "fancy_saree_1769859002432.png",
         badge: "Trendy",
         points: ["நவீன வடிவமைப்பு", "திருமணம் & விழா பயன்பாடு", "அழகான நிறங்கள்"],
+        en_points: ["Modern Design", "Wedding & Feast use", "Beautiful Colors"],
         priceOptions: [
-          { label: "Simple Fancy", price: 340 },
-          { label: "Designer Print", price: 620 },
-          { label: "Party Wear", price: 900 }
+          { label: "Simple Fancy (Yellow)", en_label: "Simple Fancy (Yellow)", price: 340, vImage: "fancy_saree_1769859002432.png" },
+          { label: "Designer Print (Pink)", en_label: "Designer Print (Pink)", price: 620, vImage: "fancy_saree_1769859002432.png" },
+          { label: "Party Wear (Silk Blend)", en_label: "Party Wear (Silk Blend)", price: 900, vImage: "fancy_saree_1769859002432.png" }
         ],
         displayPrice: "₹340 – ₹900"
       }
@@ -1626,15 +1672,16 @@
     const faqs = [
       { q_ta: "உங்கள் பொருட்கள் இயற்கையானதா?", q_en: "Are your products natural?", a_ta: "நிச்சயமாக! கலப்படம் இல்லாது, இயற்கையான முறையில் தயாரிக்கப்பட்ட உயர்தரப் பொருட்களை மட்டுமே நாங்கள் வழங்குகிறோம்.", a_en: "Absolutely! We only provide high-quality products prepared in a natural way without any adulteration." },
       { q_ta: "டிரெலிவரி எவ்வளவு நாட்கள் ஆகும்?", q_en: "How many days for delivery?", a_ta: "ஆர்டர் செய்த 2 முதல் 4 வேலை நாட்களுக்குள் உங்கள் இல்லம் தேடி பொருட்கள் வரும்.", a_en: "Your products will reach your home within 2 to 4 working days after ordering." },
-      { q_ta: "பணம் செலுத்தும் முறை என்ன?", q_en: "What are the payment methods?", a_ta: "நாங்கள் GPay, PhonePe மற்றும் Cash on Delivery வசதிகளை வழங்குகிறோம்.", a_en: "We offer GPay, PhonePe, and Cash on Delivery options." }
+      { q_ta: "பணம் செலுத்தும் முறை என்ன?", q_en: "What are the payment methods?", a_ta: "நாங்கள் GPay, PhonePe மற்றும் Cash on Delivery வசதிகளை வழங்குகிறோம்.", a_en: "We offer GPay, PhonePe, and Cash on Delivery options." },
+      { q_ta: "நான் ஒரிஜினல் பேக்கிங் புகைப்படங்களைப் பார்க்க முடியுமா?", q_en: "Can I see the original live/packing images?", a_ta: "நிச்சயமாக! உங்கள் ஆர்டர் செய்யப்படும் பொருட்களின் ஒரிஜினல் புகைப்படங்களை நீங்கள் WhatsApp அல்லது மின்னஞ்சல் மூலம் பெற்றுக்கொள்ளலாம். உங்கள் திருப்தியே எமது நோக்கம்.", a_en: "Yes! You can request original live or packing images of your products via WhatsApp or Email. We are happy to show you the exact items being prepared for your order." }
     ];
 
     const quotes = [
-      "வாடும் பயிரைக் கண்டபோதெல்லாம் வாடினேன். - வள்ளலார்",
-      "பசியால் வருந்துவோருக்கு உணவிடுவது சிறந்த அறம்.",
-      "அருட்பெருஞ்ஜோதி தனிப்பெருங்கருணை.",
-      "உயிர்க்கொலை செய்யாதீர், அதுவே சிறந்த தர்மம்.",
-      "கலப்படமற்ற உணவே ஆரோக்கியத்தின் அடிப்படை."
+      { ta: "வாடும் பயிரைக் கண்டபோதெல்லாம் வாடினேன். - வள்ளலார்", en: "I withered whenever I saw a withering crop. - Vallalar" },
+      { ta: "பசியால் வருந்துவோருக்கு உணவிடுவது சிறந்த அறம்.", en: "Feeding those who suffer from hunger is the best virtue." },
+      { ta: "அருட்பெருஞ்ஜோதி தனிப்பெருங்கருணை.", en: "Arutperunjothi Thanipperungarunai (Divine Light & Mercy)." },
+      { ta: "உயிர்க்கொலை செய்யாதீர், அதுவே சிறந்த தர்மம்.", en: "Do not kill any living being; that is the greatest dharma." },
+      { ta: "கலப்படமற்ற உணவே ஆரோக்கியத்தின் அடிப்படை.", en: "Unadulterated food is the foundation of health." }
     ];
 
     function initFAQs() {
@@ -1654,7 +1701,7 @@
 
     function initQuote() {
       const q = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById('spiritQuote').innerText = q;
+      document.getElementById('spiritQuote').innerText = currentLang === 'ta' ? q.ta : q.en;
     }
 
     /* --- Language Logic --- */
@@ -1665,31 +1712,135 @@
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
       });
 
-      // Update persistent UI elements
       const t = {
         en: {
           title: "JOTHIZ | Purity • Quality • Trust",
           faq: "Frequently Asked Questions",
           hero_p: "Purity • Quality • Trust",
-          items_title: "Our Products",
-          items_p: "Selected Quality Items - Direct & Cart Orders"
+          products: "Our Products",
+          products_p: "Premium Quality Selections - Direct & Cart Orders",
+          phi_h2: "Meeting Ground of the Soul Light",
+          phi_p: '\"The philosophy of Vallalar, who revealed the truth of Arutperunjothi Thanipperungarunai to the world, is our foundation. Our goal is to bring clean, unadulterated products to your home.\"',
+          phi_high: "Purity • Compassion • Trust",
+          enq_h2: "Enquiry Form",
+          enq_p: "Fill the form below for more details or bulk orders.",
+          enq_name: "Your Name",
+          enq_phone: "Mobile Number",
+          enq_msg: "Your Message",
+          marquee: "• All beings are one • Compassion is the highest virtue • Strive to live healthily • Arutperunjothi Thanipperungarunai",
+          badge1_h: "Natural",
+          badge1_p: "100% Pure & Organic Nature",
+          badge2_h: "Non-Violence",
+          badge2_p: "Ethical & Compassionate Sourcing",
+          badge3_h: "Direct Craft",
+          badge3_p: "Direct from Village Artisans",
+          footer_copy: "© 2026 JOTHIZ. All Rights Reserved.",
+          cart_title: "Your Cart",
+          cart_total: "Total:",
+          checkout: "Checkout Bulk Order",
+          var_title: "Select Variety",
+          add_to_cart: "Add to Cart",
+          cust_name: "Customer Name",
+          cust_phone: "Contact Number",
+          cust_addr: "Delivery Address",
+          pay_mode: "Payment Mode",
+          btn_wa: "Order via WhatsApp",
+          btn_email: "Send Inquiry via Email",
+          live_img_msg: "📸 Message us for original live/packing images!",
+          img_disclaimer: "Images for reference only - T&C apply"
         },
         ta: {
           title: "JOTHIZ | தூய்மை • தரம் • நம்பிக்கை",
           faq: "அடிக்கடி கேட்கப்படும் கேள்விகள்",
           hero_p: "தூய்மை • தரம் • நம்பிக்கை",
-          items_title: "எங்கள் பொருட்கள்",
-          items_p: "தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள் - நேரடி மற்றும் கூடை ஆர்டர்கள்"
+          products: "எங்கள் பொருட்கள்",
+          products_p: "தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள் - நேரடி மற்றும் கூடை ஆர்டர்கள்",
+          phi_h2: "ஆன்ம ஒளியின் சங்கமம்",
+          phi_p: '\"அருட்பெருஞ்ஜோதி தனிப்பெருங்கருணை என்ற உண்மையை உலகிற்கு உணர்த்திய வள்ளலாரின் கொள்கையே எமது அடித்தளம். சுத்தமான, கலப்படமற்ற பொருட்கள் உங்கள் இல்லம் சேர்வதே எமது இலட்சியம்.\"',
+          phi_high: "தூய்மை • உயிர்நேயம் • நம்பிக்கை",
+          enq_h2: "விசாரணை படிவம் (Enquiry Form)",
+          enq_p: "எங்கள் மேலதிக விவரங்களுக்கு அல்லது மொத்த ஆர்டர்களுக்கு கீழே உள்ள படிவத்தை பூர்த்தி செய்யவும்.",
+          enq_name: "உங்கள் பெயர் (Name)",
+          enq_phone: "மொபைல் எண் (Phone)",
+          enq_msg: "உங்கள் செய்தி (Message)",
+          marquee: "• உயிர்கள் அனைத்தும் ஒன்றே • கருணையே உயர்ந்த தர்மம் • வாழும் வரை ஆரோக்கியமாக வாழ முயற்சி செய் • அருட் பெரும் ஜோதி தனிப்பெருங்கருணை",
+          badge1_h: "இயற்கை",
+          badge1_p: "100% Pure & Organic Nature",
+          badge2_h: "அஹிம்சை",
+          badge2_p: "Ethical & Compassionate Sourcing",
+          badge3_h: "நேரடி தயாரிப்பு",
+          badge3_p: "Direct from Village Artisans",
+          footer_copy: "© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+          cart_title: "உங்கள் கூடை (Cart)",
+          cart_total: "மொத்தம்:",
+          checkout: "பெரிய ஆர்டர் செய்க (Checkout)",
+          var_title: "வகை தேர்வு செய்யவும்",
+          add_to_cart: "கூடையில் சேர்க்க (Add to Cart)",
+          cust_name: "பெயர் (Customer Name)",
+          cust_phone: "தொடர்பு எண் (Contact Number)",
+          cust_addr: "முகவரி (Delivery Address)",
+          pay_mode: "பணம் (Payment Mode)",
+          btn_wa: "WhatsApp ஆர்டர் செய்க",
+          btn_email: "அனுப்பு (Send Inquiry via Email)",
+          live_img_msg: "📸 ஒரிஜினல் பேக்கிங் புகைப்படங்களுக்கு எங்களை தொடர்பு கொள்ளவும்!",
+          img_disclaimer: "படங்கள் குறிப்புக்காக மட்டுமே - நிபந்தனைகள் பொருந்தும்"
         }
       };
 
-      document.getElementById('faqTitle').innerText = t[l].faq;
-      document.querySelector('header p').innerText = t[l].hero_p;
-      document.querySelector('.section-title h2').innerText = t[l].items_title;
-      document.querySelector('.section-title p').innerText = t[l].items_p;
+      const lang = t[l];
+      document.title = lang.title;
+
+      const updateText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = text || "";
+      };
+
+      updateText('faqTitle', lang.faq);
+      updateText('heroSubtitle', lang.hero_p);
+      updateText('productsTitle', lang.products);
+      updateText('productsDesc', lang.products_p);
+      updateText('enquiryTitle', lang.enq_h2);
+      updateText('enquiryDesc', lang.enq_p);
+      updateText('phiTitle', lang.phi_h2);
+      updateText('phiDesc', lang.phi_p);
+      updateText('phiHigh', lang.phi_high);
+      updateText('marqueeText', lang.marquee);
+      updateText('badge1Title', lang.badge1_h);
+      updateText('badge1Desc', lang.badge1_p);
+      updateText('badge2Title', lang.badge2_h);
+      updateText('badge2Desc', lang.badge2_p);
+      updateText('badge3Title', lang.badge3_h);
+      updateText('badge3Desc', lang.badge3_p);
+      updateText('labelVariety', lang.var_title);
+      updateText('labelName', lang.cust_name);
+      updateText('labelPhone', lang.cust_phone);
+      updateText('labelAddress', lang.cust_addr);
+      updateText('labelPayment', lang.pay_mode);
+      updateText('submitBtn', lang.btn_email);
+
+      // Footer & Modal
+      updateText('footerCopy', lang.footer_copy);
+      updateText('cartTitle', lang.cart_title);
+      updateText('cartTotalLabel', lang.cart_total);
+      updateText('checkoutBtn', lang.checkout);
+      updateText('confirmBtn', lang.btn_wa);
+      updateText('varietyTitle', lang.var_title);
+      updateText('addToCartBtn', lang.add_to_cart);
+      updateText('quickLiveImgNote', lang.live_img_msg);
+      updateText('cartLiveImgNote', lang.live_img_msg);
+      updateText('quickImgDisclaimer', lang.img_disclaimer);
+      updateText('cartImgDisclaimer', lang.img_disclaimer);
+
+      // Placeholders
+      const iName = document.getElementById('name'); if (iName) iName.placeholder = lang.enq_name;
+      const iPhone = document.getElementById('phone'); if (iPhone) iPhone.placeholder = lang.enq_phone;
+      const iMsg = document.getElementById('message'); if (iMsg) iMsg.placeholder = lang.enq_msg;
 
       initFAQs();
       renderProducts();
+      updateCartUI();
+      initQuote();
+      initReveal(); // Re-bind observer to new elements
     }
 
     function init() {
@@ -1703,37 +1854,66 @@
 
     function renderProducts() {
       const grid = document.getElementById('productsGrid');
-      grid.innerHTML = products.map(p => `
+      grid.innerHTML = products.map(p => {
+        const title = currentLang === 'ta' ? p.name : p.en_name;
+        const pts = currentLang === 'ta' ? p.points : p.en_points;
+
+        return `
                 <div class="product-card reveal">
                     ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
                     <div class="product-image">
-                        <img src="${p.image}" alt="${p.name}">
+                        <img src="${p.image}" alt="${title}">
+                        <div class="img-disclaimer">
+                          ${currentLang === 'ta' ? 'படங்கள் குறிப்புக்காக மட்டுமே - நிபந்தனைகள் பொருந்தும்' : 'Images for reference only - T&C apply'}
+                        </div>
                     </div>
                     <div class="product-info">
                         <div class="product-category">${p.category}</div>
-                        <h3 class="product-name">${p.name}</h3>
-                        <ul class="product-desc">${p.points.map(pt => `<li>${pt}</li>`).join('')}</ul>
+                        <h3 class="product-name">${title}</h3>
+                        <ul class="product-desc">${pts.map(pt => `<li>${pt}</li>`).join('')}</ul>
                         <div class="product-actions">
                             <div class="price-display">${p.displayPrice}</div>
                             <div class="action-buttons">
-                                <button class="btn btn-cart" onclick="startAddToCart(${p.id})">Add Card</button>
-                                <button class="btn btn-order" onclick="openQuickOrder(${p.id})">Order Now</button>
+                                <button class="btn btn-cart" onclick="startAddToCart(${p.id})">${currentLang === 'ta' ? 'கூடையில் சேர்க்க' : 'Add to Cart'}</button>
+                                <button class="btn btn-order" onclick="openQuickOrder(${p.id})">${currentLang === 'ta' ? 'ஆர்டர் செய்க' : 'Order Now'}</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `;
+      }).join('');
     }
 
     /* --- ADD TO CART FLOW --- */
     function startAddToCart(id) {
       activeVarietyId = id;
       const p = products.find(prod => prod.id === id);
-      document.getElementById('varietyProductName').innerText = p.name;
+      const title = currentLang === 'ta' ? p.name : p.en_name;
+      document.getElementById('varietyProductName').innerText = title;
+
       const sel = document.getElementById('varietySelectCart');
-      sel.innerHTML = p.priceOptions.map((o, i) => `<option value="${i}">${o.label} - ₹${o.price}</option>`).join('');
+      sel.innerHTML = p.priceOptions.map((o, i) => {
+        const label = currentLang === 'ta' ? o.label : o.en_label;
+        return `<option value="${i}">${label} - ₹${o.price}</option>`;
+      }).join('');
+
+      // Set initial variety image logic
+      updateCartVarietyImage();
+
       document.getElementById('varietyModal').classList.add('active');
       document.getElementById('overlay').classList.add('active');
+    }
+
+    function updateCartVarietyImage() {
+      const p = products.find(prod => prod.id === activeVarietyId);
+      const idx = document.getElementById('varietySelectCart').value;
+      const imgEl = document.getElementById('cartVarietyImg');
+      if (p && p.priceOptions[idx]) {
+        imgEl.src = p.priceOptions[idx].vImage || p.image;
+        // Animation trigger
+        imgEl.style.transform = 'scale(0.9)';
+        setTimeout(() => imgEl.style.transform = 'scale(1)', 100);
+      }
     }
 
     function confirmAddToCart() {
@@ -1750,16 +1930,15 @@
         cart.push({
           cartKey: cartKey,
           id: p.id,
-          name: p.name,
           image: p.image,
-          vLabel: variant.label,
-          price: variant.price,
+          vIdx: idx,
           qty: 1
         });
       }
 
       closeVarietyModal();
-      showToast(`${p.name} Added!`);
+      const title = currentLang === 'ta' ? p.name : p.en_name;
+      showToast(`${title} ${currentLang === 'ta' ? 'சேர்க்கப்பட்டது!' : 'Added!'}`);
       saveCart();
       updateCartUI();
     }
@@ -1774,32 +1953,54 @@
       const items = document.getElementById('cartItems');
       const total = document.getElementById('cartTotal');
 
-      const count = cart.reduce((s, i) => s + i.qty, 0);
-      const price = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+      // Calculate totals
+      let count = 0;
+      let totalPrice = 0;
+      cart.forEach(item => {
+        const p = products.find(prod => prod.id === item.id);
+        if (!p) return;
+        const vIdx = item.vIdx !== undefined ? item.vIdx : 0;
+        const variant = p.priceOptions[vIdx];
+        if (!variant) return;
+        count += item.qty;
+        totalPrice += (variant.price * item.qty);
+      });
 
       badge.innerText = count;
       badge.style.display = count > 0 ? 'flex' : 'none';
-      total.innerText = `₹${price}`;
+      total.innerText = `₹${totalPrice}`;
 
       if (cart.length === 0) {
-        items.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-light); opacity:0.5;">உம்பது கூடை காலியாக உள்ளது.</div>`;
+        const msg = currentLang === 'ta' ? "உங்கள் கூடை காலியாக உள்ளது." : "Your cart is empty.";
+        items.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-light); opacity:0.5;">${msg}</div>`;
       } else {
-        items.innerHTML = cart.map((i, idx) => `
+        items.innerHTML = cart.map((item, idx) => {
+          const p = products.find(prod => prod.id === item.id);
+          if (!p) return '';
+          const vIdx = item.vIdx !== undefined ? item.vIdx : 0;
+          const variant = p.priceOptions[vIdx];
+          if (!variant) return '';
+
+          const name = currentLang === 'ta' ? p.name : p.en_name;
+          const vLabel = currentLang === 'ta' ? variant.label : (variant.en_label || variant.label);
+
+          return `
                     <div class="cart-item">
-                        <img src="${i.image}" class="cart-item-img">
+                        <img src="${item.image}" class="cart-item-img">
                         <div class="cart-item-info">
-                            <div class="cart-item-name">${i.name}</div>
-                            <div class="cart-item-variant">${i.vLabel}</div>
-                            <div class="cart-item-price">₹${i.price}</div>
+                            <div class="cart-item-name">${name}</div>
+                            <div class="cart-item-variant">${vLabel}</div>
+                            <div class="cart-item-price">₹${variant.price}</div>
                             <div class="cart-item-controls">
-                                <div class="qty-btn" onclick="updateQty('${i.cartKey}', -1)">-</div>
-                                <span>${i.qty}</span>
-                                <div class="qty-btn" onclick="updateQty('${i.cartKey}', 1)">+</div>
-                                <button class="remove-btn" onclick="removeItem('${i.cartKey}')">🗑️</button>
+                                <button class="qty-btn" onclick="updateQty('${item.cartKey}', -1)">-</button>
+                                <span>${item.qty}</span>
+                                <button class="qty-btn" onclick="updateQty('${item.cartKey}', 1)">+</button>
+                                <button class="remove-btn" onclick="removeItem('${item.cartKey}')">&times;</button>
                             </div>
                         </div>
                     </div>
-                `).join('');
+                `;
+        }).join('');
       }
     }
 
@@ -1824,24 +2025,48 @@
       const p = products.find(prod => prod.id === id);
       document.getElementById('flowType').value = 'quick';
       document.getElementById('quickProductId').value = p.id;
-      document.getElementById('modalTitle').innerText = p.name;
+      const title = currentLang === 'ta' ? p.name : p.en_name;
+      document.getElementById('modalTitle').innerText = title;
       document.getElementById('varietyGroup').style.display = 'block';
+      document.getElementById('quickVarietyPreview').style.display = 'block';
 
       const sel = document.getElementById('quickPriceSelector');
-      sel.innerHTML = p.priceOptions.map((o, i) => `<option value="${o.price}" data-label="${o.label}">${o.label} - ₹${o.price}</option>`).join('');
+      sel.innerHTML = p.priceOptions.map((o, i) => {
+        const label = currentLang === 'ta' ? o.label : o.en_label;
+        return `<option value="${i}">${label} - ₹${o.price}</option>`;
+      }).join('');
+
+      updateQuickOrderVariety();
 
       document.getElementById('orderModal').classList.add('active');
       document.getElementById('overlay').classList.add('active');
-      updateModalTotal();
+    }
+
+    function updateQuickOrderVariety() {
+      const pId = document.getElementById('quickProductId').value;
+      const p = products.find(prod => prod.id == pId);
+      const idx = document.getElementById('quickPriceSelector').value;
+      const imgEl = document.getElementById('quickVarietyImg');
+
+      if (p && p.priceOptions[idx]) {
+        imgEl.src = p.priceOptions[idx].vImage || p.image;
+        updateModalTotal();
+        // Animation
+        imgEl.style.transform = 'scale(0.9)';
+        setTimeout(() => imgEl.style.transform = 'scale(1)', 100);
+      }
     }
 
     /* --- MODAL CHANNELS --- */
     function openCheckoutModal() {
-      if (cart.length === 0) return alert("கூடை காலியாக உள்ளது!");
+      const msg = currentLang === 'ta' ? "கூடை காலியாக உள்ளது!" : "Your cart is empty!";
+      if (cart.length === 0) return alert(msg);
       toggleCart(); // Close sidebar
       document.getElementById('flowType').value = 'cart';
-      document.getElementById('modalTitle').innerText = "மொத்த ஆர்டர் (Cart Items)";
+      const title = currentLang === 'ta' ? "மொத்த ஆர்டர் (Cart Items)" : "Complete Bulk Order";
+      document.getElementById('modalTitle').innerText = title;
       document.getElementById('varietyGroup').style.display = 'none';
+      document.getElementById('quickVarietyPreview').style.display = 'none'; // Hide preview for bulk
       document.getElementById('orderModal').classList.add('active');
       document.getElementById('overlay').classList.add('active');
       updateModalTotal();
@@ -1851,7 +2076,12 @@
       const flow = document.getElementById('flowType').value;
       let total = 0;
       if (flow === 'quick') {
-        total = document.getElementById('quickPriceSelector').value;
+        const pId = document.getElementById('quickProductId').value;
+        const p = products.find(prod => prod.id == pId);
+        const idx = document.getElementById('quickPriceSelector').value;
+        if (p && p.priceOptions[idx]) {
+          total = p.priceOptions[idx].price;
+        }
       } else {
         total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
       }
@@ -1877,9 +2107,10 @@
       if (flow === 'quick') {
         const pId = document.getElementById('quickProductId').value;
         const p = products.find(prod => prod.id == pId);
-        const sel = document.getElementById('quickPriceSelector');
-        const vLabel = sel.options[sel.selectedIndex].getAttribute('data-label');
-        total = sel.value;
+        const idx = document.getElementById('quickPriceSelector').value;
+        const variant = p.priceOptions[idx];
+        const vLabel = currentLang === 'ta' ? variant.label : variant.en_label;
+        total = variant.price;
         msg += `*Order Mode:* Quick Order\n*Item:* ${p.name}\n*Variety:* ${vLabel}\n*Price:* ₹${total}\n`;
       } else {
         msg += `*Order Mode:* Cart Checkout\n*Items:*\n`;
@@ -1991,7 +2222,7 @@
           alert('Error: ' + error.message);
         } finally {
           submitBtn.disabled = false;
-          submitBtn.innerText = 'அனுப்பு (Send Inquiry via Email)';
+          submitBtn.innerText = currentLang === 'ta' ? 'அனுப்பு (Send Inquiry via Email)' : 'Send Inquiry via Email';
         }
       });
     }
