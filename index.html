@@ -1244,6 +1244,20 @@
       .philosophy-content h2 {
         font-size: 2rem;
       }
+
+      .modal {
+        padding: 10px;
+      }
+
+      .modal-content {
+        padding: 25px 20px;
+        margin: 10px;
+        border-radius: 20px;
+      }
+
+      .payment-options {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 
@@ -2082,10 +2096,18 @@
         if (p && p.priceOptions[idx]) {
           total = p.priceOptions[idx].price;
         }
-      } else {
-        total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+      } else if (flow === 'cart' || flow === '') {
+        total = cart.reduce((s, item) => {
+          const p = products.find(prod => prod.id === item.id);
+          if (!p) return s;
+          const variant = p.priceOptions[item.vIdx];
+          if (!variant) return s;
+          return s + (variant.price * item.qty);
+        }, 0);
       }
-      document.getElementById('modalTotalDisplay').innerText = `₹${total}`;
+
+      const displayTotal = document.getElementById('modalTotalDisplay');
+      if (displayTotal) displayTotal.innerText = `₹${total}`;
     }
 
     function selectPayment(el, val) {
@@ -2114,9 +2136,18 @@
         msg += `*Order Mode:* Quick Order\n*Item:* ${p.name}\n*Variety:* ${vLabel}\n*Price:* ₹${total}\n`;
       } else {
         msg += `*Order Mode:* Cart Checkout\n*Items:*\n`;
-        cart.forEach(i => {
-          msg += `• ${i.name} (${i.vLabel}) x ${i.qty} = ₹${i.price * i.qty}\n`;
-          total += (i.price * i.qty);
+        cart.forEach(item => {
+          const p = products.find(prod => prod.id === item.id);
+          if (!p) return;
+          const variant = p.priceOptions[item.vIdx];
+          if (!variant) return;
+
+          const name = currentLang === 'ta' ? p.name : p.en_name;
+          const vLabel = currentLang === 'ta' ? variant.label : variant.en_label;
+          const lineTotal = variant.price * item.qty;
+
+          msg += `• ${name} (${vLabel}) x ${item.qty} = ₹${lineTotal}\n`;
+          total += lineTotal;
         });
       }
 
