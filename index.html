@@ -284,8 +284,8 @@
     /* --- Product Grid --- */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
     .product-card {
@@ -1257,6 +1257,48 @@
 
       .payment-options {
         grid-template-columns: 1fr;
+      }
+
+      /* Responsive Product Cards */
+      .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 15px;
+        padding: 0 5px;
+      }
+
+      .product-info {
+        padding: 15px;
+      }
+
+      .product-name {
+        font-size: 1.1rem;
+      }
+
+      .product-desc {
+        font-size: 0.85rem;
+      }
+
+      .product-image {
+        height: 220px;
+      }
+
+      header h1 {
+        font-size: 2.8rem;
+        letter-spacing: 4px;
+      }
+
+      header p {
+        font-size: 1rem;
+        letter-spacing: 2px;
+      }
+
+      .logo-text {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+      }
+
+      .logo-img {
+        height: 35px;
       }
     }
   </style>
