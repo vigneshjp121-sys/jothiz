@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>JOTHIZ | தூய்மை • தரம் • நம்பிக்கை</title>
+  <title>JOTHIZ | Kavundapadi Sugar, Bhavani Jamukalam & Organic Products</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- 🔐 Security Headers -->
@@ -26,24 +26,50 @@
   <meta http-equiv="X-XSS-Protection" content="1; mode=block">
   <meta name="referrer" content="no-referrer">
 
+  <!-- 📱 Social Sharing Tags (Open Graph) -->
+  <meta property="og:title" content="JOTHIZ | Kavundapadi Sugar, Bhavani Jamukalam & Organic Products">
+  <meta property="og:description"
+    content="Authentic Kavundapadi Country Sugar (GI), Bhavani Jamukalam & Traditional Handloom Products. 100% Pure & Organic.">
+  <meta property="og:image" content="jothiz_banner.png">
+  <meta property="og:url" content="https://jothiz.in">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JOTHIZ | Authentic Traditional Products">
+  <meta name="twitter:description"
+    content="Pure Kavundapadi Sugar & Handloom Bhavani Jamukalam. 100% Organic & Chemical Free.">
+  <meta name="twitter:image" content="jothiz_banner.png">
+
+  <!-- 🖼️ Favicon -->
+  <link rel="icon" type="image/png" href="jothiz_logo.png">
+
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet">
 
   <style>
     :root {
-      --primary: #1b5e20;
-      --primary-light: #2e7d32;
-      --primary-dark: #0f3d23;
+      --primary: #1b4332;
+      /* Deep Forest Green */
+      --primary-light: #2d6a4f;
+      --primary-dark: #081c15;
       --accent: #d4af37;
-      --bg: #f4faf6;
+      /* Champagne Gold */
+      --accent-light: #f1d37e;
+      --bg: #fdfdfb;
       --card-bg: #ffffff;
-      --text: #2f3e34;
-      --text-light: #5a6f62;
-      --border: #e1efe7;
+      --text: #1a1a1a;
+      --text-light: #555c58;
+      --border: #eaefeb;
       --white: #ffffff;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-sm: 0 4px 12px rgba(8, 28, 21, 0.05);
+      --shadow-md: 0 12px 24px rgba(8, 28, 21, 0.08);
+      --shadow-lg: 0 20px 40px rgba(8, 28, 21, 0.12);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
     }
 
     * {
@@ -57,18 +83,13 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
+      line-height: 1.6;
     }
 
-    /* Prevent image dragging */
+    /* Standard Image Styles */
     img {
-      -webkit-user-drag: none;
-      user-select: none;
-      pointer-events: none;
+      max-width: 100%;
+      height: auto;
     }
 
     /* Exceptions for inputs */
@@ -81,11 +102,12 @@
 
     /* --- Header & Navigation --- */
     header {
-      background: linear-gradient(rgba(15, 61, 35, 0.7), rgba(15, 61, 35, 0.7)), url('jothiz_banner.png');
+      background: linear-gradient(rgba(8, 28, 21, 0.6), rgba(8, 28, 21, 0.8)), url('jothiz_banner.png');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       color: var(--white);
-      padding: 100px 20px;
+      padding: 120px 20px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -93,7 +115,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 400px;
+      min-height: 500px;
     }
 
     header::before {
@@ -103,74 +125,69 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.4) 100%);
+      background: linear-gradient(0deg, var(--primary-dark) 0%, transparent 50%);
+      opacity: 0.6;
       pointer-events: none;
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
     }
 
     header .header-content {
       position: relative;
       z-index: 2;
+      max-width: 800px;
     }
 
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 4.5rem;
+      font-size: 5rem;
       font-weight: 700;
-      letter-spacing: 8px;
-      margin-bottom: 15px;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.3);
-      animation: fadeInDown 0.8s ease, glow 3s ease-in-out infinite alternate;
+      letter-spacing: 12px;
+      margin-bottom: 20px;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: fadeInDown 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
       color: var(--white);
     }
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.2);
-      }
-
-      to {
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 50px rgba(212, 175, 55, 0.6);
-      }
-    }
-
     header p {
-      font-size: 1.4rem;
-      opacity: 0.95;
-      letter-spacing: 4px;
+      font-size: 1.6rem;
+      opacity: 0.9;
+      letter-spacing: 6px;
       text-transform: uppercase;
       color: var(--accent);
       font-weight: 500;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      margin-top: 10px;
+      animation: fadeInUp 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    /* --- Improved Sectioning --- */
+    section:nth-of-type(even) {
+      background: var(--white);
+    }
+
+    section:nth-of-type(odd) {
+      background: #f8f9f8;
+      /* Very subtle green tint to match brand */
     }
 
     nav {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.85);
+      /* Glass effect */
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       z-index: 1000;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(27, 67, 50, 0.05);
       padding: 15px 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
+      padding: 0 30px;
     }
 
     .logo-container {
@@ -194,15 +211,54 @@
       letter-spacing: 2px;
     }
 
-    .cart-icon-wrapper {
-      position: relative;
-      cursor: pointer;
-      padding: 8px;
-      transition: var(--transition);
+    @keyframes cartPulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.3);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
-    .cart-icon-wrapper:hover {
-      transform: scale(1.1);
+    .cart-pulse {
+      animation: cartPulse 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .cart-svg {
@@ -284,15 +340,15 @@
     /* --- Product Grid --- */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
     }
 
     .product-card {
       background: var(--card-bg);
-      border-radius: 20px;
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-md);
       transition: var(--transition);
       border: 1px solid var(--border);
       display: flex;
@@ -301,15 +357,16 @@
     }
 
     .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-light);
     }
 
     .product-image {
       width: 100%;
-      height: 280px;
+      height: 300px;
       overflow: hidden;
-      background: #f0f0f0;
+      background: #f8f8f8;
       position: relative;
     }
 
@@ -317,7 +374,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     .img-disclaimer {
@@ -325,35 +382,36 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(8, 28, 21, 0.7);
       color: #fff;
-      font-size: 9px;
-      padding: 4px;
+      font-size: 10px;
+      padding: 6px;
       text-align: center;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(4px);
     }
 
     .product-card:hover .product-image img {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
 
     .product-badge {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 20px;
+      right: 20px;
       background: var(--accent);
-      color: white;
-      padding: 5px 12px;
+      color: var(--primary-dark);
+      padding: 6px 16px;
       border-radius: 50px;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       z-index: 10;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .product-info {
-      padding: 25px;
+      padding: 30px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -363,67 +421,68 @@
       font-size: 12px;
       color: var(--accent);
       text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
     }
 
     .product-name {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 700;
       color: var(--primary);
-      margin-bottom: 10px;
-      line-height: 1.4;
+      margin-bottom: 15px;
+      line-height: 1.3;
+      font-family: 'Playfair Display', serif;
     }
 
     .product-desc {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-light);
-      margin-bottom: 15px;
-      line-height: 1.6;
+      margin-bottom: 20px;
+      line-height: 1.7;
       list-style: none;
     }
 
     .product-desc li {
       position: relative;
-      padding-left: 18px;
-      margin-bottom: 4px;
+      padding-left: 22px;
+      margin-bottom: 8px;
     }
 
     .product-desc li::before {
-      content: '✔';
+      content: '✦';
       position: absolute;
       left: 0;
-      color: var(--primary);
-      font-size: 12px;
+      color: var(--accent);
+      font-size: 14px;
     }
 
     .product-actions {
       margin-top: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      padding-top: 20px;
+      gap: 15px;
+      padding-top: 25px;
       border-top: 1px solid var(--border);
     }
 
     .price-display {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--primary-dark);
       margin-bottom: 5px;
     }
 
     .action-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 15px;
     }
 
     .btn {
       border: none;
-      padding: 12px;
-      border-radius: 12px;
+      padding: 14px;
+      border-radius: var(--radius-md);
       font-weight: 700;
       font-size: 14px;
       cursor: pointer;
@@ -431,19 +490,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
+      letter-spacing: 0.5px;
     }
 
     .btn-cart {
-      background: #e8f5e9;
+      background: var(--bg);
       color: var(--primary);
-      border: 1px solid var(--border);
+      border: 1px solid var(--primary);
     }
 
     .btn-cart:hover {
       background: var(--primary);
       color: white;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
     .btn-order {
@@ -452,9 +513,9 @@
     }
 
     .btn-order:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(27, 94, 32, 0.2);
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(8, 28, 21, 0.2);
     }
 
     /* --- Cart Sidebar --- */
@@ -1082,53 +1143,22 @@
       transform: translateY(0);
     }
 
-    /* --- Trust Badges --- */
-    .trust-badges {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      max-width: 1200px;
-      margin: 80px auto;
-      padding: 0 20px;
-      text-align: center;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .badge-item {
-      padding: 30px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 25px;
-      transition: var(--transition);
+    /* --- Hover Animations --- */
+    .product-image img {
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
-    .badge-item:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent);
-      box-shadow: var(--shadow);
+    .product-card:hover .product-image img {
+      transform: scale(1.08);
     }
 
-    .badge-icon {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 20px;
-      fill: var(--primary);
-      background: rgba(27, 94, 32, 0.05);
-      padding: 15px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .badge-item h3 {
-      font-size: 1.2rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .badge-item p {
-      font-size: 0.9rem;
-      color: var(--text-light);
+    .footer-contact a:hover {
+      text-decoration: underline;
+      color: var(--accent) !important;
     }
 
     /* --- Interactive Aura --- */
@@ -1144,6 +1174,109 @@
       transform: translate(-50%, -50%);
       transition: 0.1s ease-out;
       opacity: 0;
+    }
+
+    /* --- Story Section --- */
+    .story-section {
+      padding: 100px 20px;
+      background: var(--white);
+    }
+
+    .story-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .story-image {
+      flex: 1;
+      position: relative;
+      height: 400px;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .story-text {
+      flex: 1.5;
+    }
+
+    .story-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+    }
+
+    .story-text p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    /* --- Testimonials --- */
+    .testimonials-section {
+      padding: 100px 20px;
+      background: var(--bg);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '“';
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.1;
+      font-family: serif;
+    }
+
+    .testimonial-content {
+      position: relative;
+      z-index: 1;
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-info h4 {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .author-info span {
+      font-size: 12px;
+      color: var(--accent);
     }
 
     /* --- FAQ Section --- */
@@ -1194,6 +1327,36 @@
 
     .faq-item.active .faq-question svg {
       transform: rotate(180deg);
+    }
+
+    /* --- Promo Bar --- */
+    .promo-bar {
+      background: var(--primary-dark);
+      color: var(--accent);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      position: relative;
+      z-index: 2001;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .close-promo {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .close-promo:hover {
+      opacity: 1;
     }
 
     /* --- Language Toggle --- */
@@ -1364,48 +1527,17 @@
     }
   </style>
 
-  <script>
-    // 🔐 Enhanced Front-end Security Layer
-    (function () {
-      // Security Warning for console
-      console.log("%cSTOP!", "color: red; font-family: sans-serif; font-size: 4.5em; font-weight: bold; text-shadow: 1px 1px black;");
-      console.log("%cThis is a protected area. Unauthorized attempts to access developer tools or copy content are restricted.", "font-size: 1.5em;");
-
-      // Block common DevTools shortcuts
-      document.addEventListener('keydown', function (e) {
-        if (
-          e.keyCode === 123 || // F12
-          (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || // Ctrl+Shift+I/J/C
-          (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (View Source)
-          (e.ctrlKey && e.keyCode === 83) || // Ctrl+S (Save)
-          (e.metaKey && e.altKey && e.keyCode === 73) // Cmd+Opt+I (Mac)
-        ) {
-          e.preventDefault();
-          return false;
-        }
-      });
-
-      // Block right-click context menu
-      document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-      });
-
-      // Block copy, cut, and paste
-      document.addEventListener('copy', function (e) { e.preventDefault(); });
-      document.addEventListener('cut', function (e) { e.preventDefault(); });
-
-      // Secondary protection: Debugger loop
-      setTimeout(function () {
-        setInterval(function () {
-          (function () { return false; }['constructor']('debugger')['call']());
-        }, 50);
-      }, 100);
-    })();
-  </script>
 </head>
 
-<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<body>
   <div class="cursor-aura" id="cursorAura"></div>
+
+  <!-- --- New: Promo Top Bar --- -->
+  <div class="promo-bar" id="promoBar">
+    <span id="promoText">🎉 சிறப்பு சலுகை! ₹1000-க்கு மேல் இலவச டெலிவரி! (கவுந்தப்பாடி சுற்றி 10கிமீ - டோர் டெலிவரி |
+      மற்ற இடங்களுக்கு கொரியர்)</span>
+    <button class="close-promo" onclick="document.getElementById('promoBar').style.display='none'">&times;</button>
+  </div>
 
   <header>
     <div class="header-content">
@@ -1439,6 +1571,87 @@
       • அருட் பெரும் ஜோதி தனிப்பெருங்கருணை</span>
   </div>
 
+  <section class="container reveal">
+    <div class="section-title reveal">
+      <h2 id="productsTitle">எங்கள் பொருட்கள்</h2>
+      <p id="productsDesc">தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள் - நேரடி மற்றும் கூடை ஆர்டர்கள்</p>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Products injected by JS -->
+    </div>
+  </section>
+
+  <!-- --- New: Our Story / Brand Journey --- -->
+  <section class="story-section reveal">
+    <div class="story-container">
+      <div class="story-image">
+        <img src="jothiz_logo.png" alt="Jothiz Brand Story"
+          style="filter: grayscale(1) opacity(0.2); transform: scale(1.5);">
+      </div>
+      <div class="story-text">
+        <h2 id="storyTitle">எமது பயணம் (Our Story)</h2>
+        <p id="storyDesc1">ஜோதிஸ் ஒரு வியாபாரம் மட்டுமல்ல, அது ஒரு நம்பிக்கை. கலப்படமற்ற இயற்கை தயாரிப்புகள் ஒவ்வொரு
+          வீட்டையும் சென்றடைய வேண்டும் என்ற நோக்கத்தில் தொடங்கப்பட்டது.</p>
+        <p id="storyDesc2">பாரம்பரிய தயாரிப்பு முறைகளையும், நவீன தரத்தையும் இணைத்து, மக்களின் ஆரோக்கியத்தை காப்பதே எமது
+          தலையாய கடமை.</p>
+        <div class="founder-signature" style="margin-top: 30px; text-align: left;">
+          <p style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--primary); margin-bottom: 0;">
+            Jaganathan S</p>
+          <p style="font-size: 13px; color: var(--accent); letter-spacing: 2px;">FOUNDER, JOTHIZ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- New: Why Choose JOTHIZ (Brand Pillars) --- -->
+  <section class="pillars-section reveal"
+    style="padding: 60px 20px; background: #fdfdfb; border-bottom: 1px solid var(--border);">
+    <div
+      style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
+      <div class="pillar-item">
+        <div style="font-size: 30px; margin-bottom: 10px;">🛡️</div>
+        <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 16px;" id="pil1Title">உத்தரவாதமான தூய்மை</h4>
+        <p style="font-size: 13px; color: var(--text-light);" id="pil1Desc">100% கலப்படமற்ற இயற்கை தயாரிப்புகள்</p>
+      </div>
+      <div class="pillar-item">
+        <div style="font-size: 30px; margin-bottom: 10px;">🧵</div>
+        <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 16px;" id="pil5Title">கைத்தறி நெசவாளர்</h4>
+        <p style="font-size: 13px; color: var(--text-light);" id="pil5Desc">பாரம்பரிய நெசவாளர்களின் கைவண்ணம்</p>
+      </div>
+      <div class="pillar-item">
+        <div style="font-size: 30px; margin-bottom: 10px;">🚜</div>
+        <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 16px;" id="pil2Title">விவசாயிகள் ஆதரவு</h4>
+        <p style="font-size: 13px; color: var(--text-light);" id="pil2Desc">கிராமிய கலைஞர்களின் நேரடி வாழ்வாதாரம்</p>
+      </div>
+      <div class="pillar-item">
+        <div style="font-size: 30px; margin-bottom: 10px;">📦</div>
+        <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 16px;" id="pil3Title">புதிய பேக்கிங்</h4>
+        <p style="font-size: 13px; color: var(--text-light);" id="pil3Desc">ஆர்டர் செய்த பின் புதியதாக பேக்கிங்</p>
+      </div>
+      <div class="pillar-item">
+        <div style="font-size: 30px; margin-bottom: 10px;">🚚</div>
+        <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 16px;" id="pil4Title">வேகமான டெலிவரி</h4>
+        <p style="font-size: 13px; color: var(--text-light);" id="pil4Desc">பாதுகாப்பான முறையில் டோர் டெலிவரி</p>
+      </div>
+      <div class="pillar-item">
+        <div style="font-size: 30px; margin-bottom: 10px;">🪵</div>
+        <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 16px;" id="pil6Title">பாரம்பரிய தயாரிப்பு</h4>
+        <p style="font-size: 13px; color: var(--text-light);" id="pil6Desc">பாரம்பரிய முறைகள்</p>
+      </div>
+      <div class="pillar-item">
+        <div style="font-size: 30px; margin-bottom: 10px;">🚫</div>
+        <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 16px;" id="pil7Title">இரசாயனம் அற்றது</h4>
+        <p style="font-size: 13px; color: var(--text-light);" id="pil7Desc">நிறமூட்டிகள் மற்றும் கெமிக்கல் இல்லை</p>
+      </div>
+      <div class="pillar-item">
+        <div style="font-size: 30px; margin-bottom: 10px;">💰</div>
+        <h4 style="color: var(--primary); margin-bottom: 5px; font-size: 16px;" id="pil8Title">நியாயமான விலை</h4>
+        <p style="font-size: 13px; color: var(--text-light);" id="pil8Desc">நேரடி தயாரிப்பு - குறைந்த விலை</p>
+      </div>
+    </div>
+  </section>
+
   <section class="philosophy-section reveal">
     <div class="philosophy-content">
       <h2 id="phiTitle">ஆன்ம ஒளியின் சங்கமம்</h2>
@@ -1448,47 +1661,43 @@
     </div>
   </section>
 
-  <section class="trust-badges reveal">
-    <div class="badge-item">
-      <div class="badge-icon">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
-        </svg>
+  <!-- --- New: Customer Testimonials --- -->
+  <section class="testimonials-section reveal">
+    <div class="section-title">
+      <h2 id="testTitle">வாடிக்கையாளர் கருத்துக்கள்</h2>
+      <p id="testDesc">எங்கள் ஜோதிஸ் குடும்ப உறுப்பினர்களின் அனுபவங்கள்</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-content">"நாட்டுச் சர்க்கரை மிகவும் தரம் வாய்ந்ததாக உள்ளது. காபியின் சுவையை இது இன்னும்
+          கூட்டுகிறது. சுத்தமான தயாரிப்பு!"</p>
+        <div class="testimonial-author">
+          <div class="author-info">
+            <h4>ராகவேந்தன்</h4>
+            <span>சோலார்</span>
+          </div>
+        </div>
       </div>
-      <h3 id="badge1Title">இயற்கை</h3>
-      <p id="badge1Desc">100% Pure & Organic Nature</p>
-    </div>
-    <div class="badge-item">
-      <div class="badge-icon">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.41,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.59,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-        </svg>
+      <div class="testimonial-card reveal" style="transition-delay: 0.1s;">
+        <p class="testimonial-content">"ஜமுக்காளம் மற்றும் பாய் வாங்கினேன். கைத்தறி தயாரிப்பு மிகவும் மென்மையாகவும்
+          உறுதியாகவும் இருக்கிறது."</p>
+        <div class="testimonial-author">
+          <div class="author-info">
+            <h4>முத்துக்குமார்</h4>
+            <span>ஈரோடு</span>
+          </div>
+        </div>
       </div>
-      <h3 id="badge2Title">அஹிம்சை</h3>
-      <p id="badge2Desc">Ethical & Compassionate Sourcing</p>
-    </div>
-    <div class="badge-item">
-      <div class="badge-icon">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M12,3L2,12H5V20H19V12H22L12,3M12,7.7C14.1,7.7 15.8,9.4 15.8,11.5C15.8,14.5 12,18 12,18C12,18 8.2,14.5 8.2,11.5C8.2,9.4 9.9,7.7 12,7.7Z" />
-        </svg>
+      <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
+        <p class="testimonial-content">"வேகமான டெலிவரி மற்றும் தரமான பேக்கிங். புகைப்படங்களை வாட்ஸ்அப்பில் காட்டிய
+          பின்னரே அனுப்பினார்கள். பாராட்டுக்கள்!"</p>
+        <div class="testimonial-author">
+          <div class="author-info">
+            <h4>ஹரி</h4>
+            <span>கோவை</span>
+          </div>
+        </div>
       </div>
-      <h3 id="badge3Title">நேரடி தயாரிப்பு</h3>
-      <p id="badge3Desc">Direct from Village Artisans</p>
-    </div>
-  </section>
-
-  <section class="container reveal">
-    <div class="section-title reveal">
-      <h2 id="productsTitle">எங்கள் பொருட்கள்</h2>
-      <p id="productsDesc">தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள் - நேரடி மற்றும் கூடை ஆர்டர்கள்</p>
-    </div>
-
-    <div class="products-grid" id="productsGrid">
-      <!-- Products injected by JS -->
     </div>
   </section>
 
@@ -1515,7 +1724,7 @@
   <!-- Modal for Order Details (Both Cart & Quick Order) -->
   <div class="modal" id="orderModal">
     <div class="modal-content">
-      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <button class="close-modal" onclick="closeOrderModal()">&times;</button>
       <h2 id="modalTitle">ஆர்டர் விவரங்கள்</h2>
 
       <form id="orderForm">
@@ -1605,6 +1814,62 @@
     </div>
   </div>
 
+  <!-- --- New: Policy Modals --- -->
+  <div class="modal" id="privacyModal">
+    <div class="modal-content" style="max-width: 600px; text-align: left;">
+      <button class="close-modal" onclick="closeModal('privacyModal')">&times;</button>
+      <h2 style="color: var(--primary); margin-bottom: 20px;">Privacy Policy</h2>
+      <div style="font-size: 14px; line-height: 1.6; color: var(--text-light); max-height: 400px; overflow-y: auto;">
+        <p>At JOTHIZ, we respect your privacy. We only collect essential information like your name, phone number, and
+          address to process your orders.</p>
+        <p>Your data is never sold to third parties. We use WhatsApp for direct communication to ensure your privacy is
+          maintained throughout the ordering process.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="termsModal">
+    <div class="modal-content" style="max-width: 600px; text-align: left;">
+      <button class="close-modal" onclick="closeModal('termsModal')">&times;</button>
+      <h2 style="color: var(--primary); margin-bottom: 20px;">Terms & Conditions</h2>
+      <div style="font-size: 14px; line-height: 1.6; color: var(--text-light); max-height: 400px; overflow-y: auto;">
+        <p>1. Orders are subject to availability of authentic stock.</p>
+        <p>2. Shipping times may vary based on your location and the specific artisan product origin.</p>
+        <p>3. Cancellations are only accepted before the product has been dispatched.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="shippingModal">
+    <div class="modal-content" style="max-width: 600px; text-align: left;">
+      <button class="close-modal" onclick="closeModal('shippingModal')">&times;</button>
+      <h2 style="color: var(--primary); margin-bottom: 20px;">Shipping Policy</h2>
+      <div style="font-size: 14px; line-height: 1.6; color: var(--text-light); max-height: 400px; overflow-y: auto;">
+        <p>• Local Door Delivery: Within 10km of Kavundapadi for orders over ₹1000.</p>
+        <p>• Courier Delivery: For orders outside the 10km radius, products will be sent via reputed courier services.
+        </p>
+        <p>• Tracking: We provide WhatsApp updates for all dispatched orders.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="promoModal">
+    <div class="modal-content" style="max-width: 450px; text-align: center; border: 2px solid var(--accent);">
+      <button class="close-modal" onclick="closePromoModal()">&times;</button>
+      <div style="font-size: 50px; margin-bottom: 20px;">🎁</div>
+      <h2 id="promoModalTitle" style="color: var(--primary-dark); font-family: 'Playfair Display', serif;">
+        காத்திருங்கள்! (Special Offer)</h2>
+      <p id="promoModalDesc" style="color: var(--text-light); margin-bottom: 25px;">இன்றே உங்கள் முதல் WhatsApp ஆர்டரைச்
+        செய்து 10% தள்ளுபடி பெறுங்கள்!</p>
+      <button class="confirm-btn" style="background: var(--primary-dark); color: var(--accent);"
+        onclick="closePromoModal(); openQuickOrder(1);">
+        சலுகையைப் பயன்படுத்து (Claim Offer)
+      </button>
+      <p style="font-size: 11px; margin-top: 15px; color: var(--text-light); opacity: 0.6;">*நிபந்தனைகள் பொருந்தும் |
+        மொத்த ஆர்டர்களுக்கு மட்டும்</p>
+    </div>
+  </div>
+
   <div class="overlay" id="overlay" onclick="closeAll()"></div>
   <div class="toast" id="toast">Item Added to Cart!</div>
 
@@ -1621,10 +1886,15 @@
   <!-- Enquiry Section -->
   <section class="enquiry-section">
     <div class="enquiry-container">
+
       <form class="enquiry-form" id="enquiryForm" action="https://formspree.io/f/mykwjrjq" method="POST" novalidate>
         <h2 id="enquiryTitle">விசாரணை படிவம் (Enquiry Form)</h2>
         <p id="enquiryDesc" style="text-align: center; color: var(--text-light); margin-bottom: 30px; font-size: 14px;">
-          எங்கள் மேலதிக விவரங்களுக்கு அல்லது மொத்த ஆர்டர்களுக்கு கீழே உள்ள படிவத்தை பூர்த்தி செய்யவும்.
+          எங்கள் மேலதிக விவரங்களுக்கு அல்லது மொத்த ஆர்டர்களுக்கு கீழே உள்ள படிவத்தை பூர்த்தி செய்யவும்.<br>
+          <a href="https://www.google.com/maps/search/?api=1&query=23/1,+Bommanpatti+Road,+Kavundapadi,+Erode"
+            target="_blank"
+            style="color: var(--primary); font-weight: 600; margin-top: 10px; display: block; text-decoration: none;">📍
+            23/1, Bommanpatti Road, Kavundapadi, Erode.</a>
         </p>
 
         <!-- Honeypot -->
@@ -1662,17 +1932,65 @@
   </section>
 
   <footer>
-    <div id="footerCopy">© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</div>
-    <div class="footer-links">
-      <a href="https://wa.me/918838662641" class="footer-link" target="_blank">💬 WhatsApp</a>
-      <a href="javascript:void(0)" class="footer-link" onclick="sendEmailOrder()">📧 Email Order</a>
+    <div class="footer-container"
+      style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; text-align: left; padding-bottom: 40px; padding-left: 20px; padding-right: 20px;">
 
-      <a href="tel:8903326883" class="footer-link">📞 Call Support</a>
+      <!-- Brand Info -->
+      <div class="footer-brand">
+        <h3
+          style="font-family: 'Playfair Display', serif; color: var(--accent); font-size: 1.8rem; margin-bottom: 15px;">
+          JOTHIZ</h3>
+        <p style="opacity: 0.8; font-size: 14px; line-height: 1.6;">தூய்மை • தரம் • நம்பிக்கை<br>Purity • Quality •
+          Trust</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-contact">
+        <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1.1rem;">Contact Us</h4>
+        <div style="font-size: 14px; line-height: 2; opacity: 0.9;">
+          <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px;">
+            <span style="color: var(--accent);">📍</span>
+            <span>23/1, Bommanpatti Road, Kavundapadi,<br>Erode District, Tamil Nadu.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="color: var(--accent);">📞</span>
+            <a href="tel:8903326883" style="color: inherit; text-decoration: none;">+91 89033 26883</a>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: var(--accent);">💬</span>
+            <a href="https://wa.me/918838662641" style="color: inherit; text-decoration: none;">+91 88386 62641
+              (WhatsApp)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal Info -->
+      <div class="footer-links-col">
+        <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1.1rem;">Policies</h4>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+          <a href="javascript:void(0)" onclick="openModal('privacyModal')"
+            style="color: var(--accent-light); text-decoration: none;">Privacy Policy</a>
+          <a href="javascript:void(0)" onclick="openModal('termsModal')"
+            style="color: var(--accent-light); text-decoration: none;">Terms & Conditions</a>
+          <a href="javascript:void(0)" onclick="openModal('shippingModal')"
+            style="color: var(--accent-light); text-decoration: none;">Shipping Policy</a>
+        </div>
+      </div>
     </div>
-    <div class="spirit-quote" id="spiritQuote"></div>
+
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center;">
+      <div id="footerCopy">© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</div>
+      <div class="spirit-quote" id="spiritQuote" style="margin-top: 20px; font-size: 13px; opacity: 0.7;"></div>
+    </div>
   </footer>
 
   <div class="floats">
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      style="margin-bottom: 10px;">
+      <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: white;">
+        <path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+      </svg>
+    </div>
     <a href="tel:8903326883" class="float-btn float-call"><svg viewBox="0 0 24 24">
         <path
           d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-2.2 2.2z" />
@@ -1831,7 +2149,7 @@
 
       const t = {
         en: {
-          title: "JOTHIZ | Purity • Quality • Trust",
+          title: "JOTHIZ | Kavundapadi Country Sugar, Bhavani Jamukalam & Organic Products",
           faq: "Frequently Asked Questions",
           hero_p: "Purity • Quality • Trust",
           products: "Our Products",
@@ -1845,12 +2163,6 @@
           enq_phone: "Mobile Number",
           enq_msg: "Your Message",
           marquee: "• All beings are one • Compassion is the highest virtue • Strive to live healthily • Arutperunjothi Thanipperungarunai",
-          badge1_h: "Natural",
-          badge1_p: "100% Pure & Organic Nature",
-          badge2_h: "Non-Violence",
-          badge2_p: "Ethical & Compassionate Sourcing",
-          badge3_h: "Direct Craft",
-          badge3_p: "Direct from Village Artisans",
           footer_copy: "© 2026 JOTHIZ. All Rights Reserved.",
           cart_title: "Your Cart",
           cart_total: "Total:",
@@ -1864,10 +2176,34 @@
           btn_wa: "Order via WhatsApp",
           btn_email: "Send Inquiry via Email",
           live_img_msg: "📸 Message us for original live/packing images!",
-          img_disclaimer: "Images for reference only - T&C apply"
+          img_disclaimer: "Images for reference only - T&C apply",
+          story_h2: "Our Journey",
+          story_p1: "Jothiz is not just a business; it is a trust. It was started with the aim of delivering unadulterated natural products to every home.",
+          story_p2: "It is our primary duty to protect the health of the people by combining traditional production methods with modern quality standards.",
+          test_h2: "Customer Stories",
+          test_p: "Experiences of our Jothiz family members",
+          promo_bar: "🎉 Free Shipping over ₹1000! (Door delivery within 10km of Kavundapadi | Courier for others)",
+          promo_m_h: "Wait! (Special Offer)",
+          promo_m_p: "Place your first WhatsApp order today and get 10% OFF!",
+          pil1_t: "Guaranteed Purity",
+          pil1_d: "100% Unadulterated Natural Products",
+          pil2_t: "Farmer Support",
+          pil2_d: "Direct Livelihood for Village Artisans",
+          pil3_t: "Freshly Packed",
+          pil3_d: "Packed fresh after you place order",
+          pil4_t: "Fast Delivery",
+          pil4_d: "Safe Doorstep Delivery across India",
+          pil5_t: "Handloom Weavers",
+          pil5_d: "Supporting Traditional Handloom Artistry",
+          pil6_t: "Traditional Process",
+          pil6_d: "Wood Pressed & Stone Ground Methods",
+          pil7_t: "Chemical Free",
+          pil7_d: "No Preservatives or Artificial Colors",
+          pil8_t: "Fair Price",
+          pil8_d: "Direct Production - Genuine Pricing"
         },
         ta: {
-          title: "JOTHIZ | தூய்மை • தரம் • நம்பிக்கை",
+          title: "JOTHIZ | கவுந்தப்பாடி நாட்டுச்சர்க்கரை, பவானி ஜமுக்காளம் & இயற்கை தயாரிப்புகள்",
           faq: "அடிக்கடி கேட்கப்படும் கேள்விகள்",
           hero_p: "தூய்மை • தரம் • நம்பிக்கை",
           products: "எங்கள் பொருட்கள்",
@@ -1881,12 +2217,6 @@
           enq_phone: "மொபைல் எண் (Phone)",
           enq_msg: "உங்கள் செய்தி (Message)",
           marquee: "• உயிர்கள் அனைத்தும் ஒன்றே • கருணையே உயர்ந்த தர்மம் • வாழும் வரை ஆரோக்கியமாக வாழ முயற்சி செய் • அருட் பெரும் ஜோதி தனிப்பெருங்கருணை",
-          badge1_h: "இயற்கை",
-          badge1_p: "100% Pure & Organic Nature",
-          badge2_h: "அஹிம்சை",
-          badge2_p: "Ethical & Compassionate Sourcing",
-          badge3_h: "நேரடி தயாரிப்பு",
-          badge3_p: "Direct from Village Artisans",
           footer_copy: "© 2026 JOTHIZ. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
           cart_title: "உங்கள் கூடை (Cart)",
           cart_total: "மொத்தம்:",
@@ -1900,7 +2230,31 @@
           btn_wa: "WhatsApp ஆர்டர் செய்க",
           btn_email: "அனுப்பு (Send Inquiry via Email)",
           live_img_msg: "📸 ஒரிஜினல் பேக்கிங் புகைப்படங்களுக்கு எங்களை தொடர்பு கொள்ளவும்!",
-          img_disclaimer: "படங்கள் குறிப்புக்காக மட்டுமே - நிபந்தனைகள் பொருந்தும்"
+          img_disclaimer: "படங்கள் குறிப்புக்காக மட்டுமே - நிபந்தனைகள் பொருந்தும்",
+          story_h2: "எமது பயணம் (Our Story)",
+          story_p1: "ஜோதிஸ் ஒரு வியாபாரம் மட்டுமல்ல, அது ஒரு நம்பிக்கை. கலப்படமற்ற இயற்கை தயாரிப்புகள் ஒவ்வொரு வீட்டையும் சென்றடைய வேண்டும் என்ற நோக்கத்தில் தொடங்கப்பட்டது.",
+          story_p2: "பாரம்பரிய தயாரிப்பு முறைகளையும், நவீன தரத்தையும் இணைத்து, மக்களின் ஆரோக்கியத்தை காப்பதே எமது தலையாய கடமை.",
+          test_h2: "வாடிக்கையாளர் கருத்துக்கள்",
+          test_p: "எங்கள் ஜோதிஸ் குடும்ப உறுப்பினர்களின் அனுபவங்கள்",
+          promo_bar: "🎉 சிறப்பு சலுகை! ₹1000-க்கு மேல் இலவச டெலிவரி! (கவுந்தப்பாடி சுற்றி 10கிமீ - டோர் டெலிவரி | மற்ற இடங்களுக்கு கொரியர்)",
+          promo_m_h: "காத்திருங்கள்! (Special Offer)",
+          promo_m_p: "இன்றே உங்கள் முதல் WhatsApp ஆர்டரைச் செய்து 10% தள்ளுபடி பெறுங்கள்!",
+          pil1_t: "உத்தரவாதமான தூய்மை",
+          pil1_d: "100% கலப்படமற்ற இயற்கை தயாரிப்புகள்",
+          pil2_t: "விவசாயிகள் ஆதரவு",
+          pil2_d: "கிராமிய கலைஞர்களின் நேரடி வாழ்வாதாரம்",
+          pil3_t: "புதிய பேக்கிங்",
+          pil3_d: "ஆர்டர் செய்த பின் புதியதாக பேக்கிங்",
+          pil4_t: "வேகமான டெலிவரி",
+          pil4_d: "பாதுகாப்பான முறையில் டோர் டெலிவரி",
+          pil5_t: "கைத்தறி நெசவாளர்",
+          pil5_d: "பாரம்பரிய நெசவாளர்களின் கைவண்ணம்",
+          pil6_t: "பாரம்பரிய தயாரிப்பு",
+          pil6_d: "மரச்செக்கு மற்றும் பாரம்பரிய முறைகள்",
+          pil7_t: "இரசாயனம் அற்றது",
+          pil7_d: "நிறமூட்டிகள் மற்றும் கெமிக்கல் இல்லை",
+          pil8_t: "நியாயமான விலை",
+          pil8_d: "நேரடி தயாரிப்பு - குறைந்த விலை"
         }
       };
 
@@ -1922,18 +2276,41 @@
       updateText('phiDesc', lang.phi_p);
       updateText('phiHigh', lang.phi_high);
       updateText('marqueeText', lang.marquee);
-      updateText('badge1Title', lang.badge1_h);
-      updateText('badge1Desc', lang.badge1_p);
-      updateText('badge2Title', lang.badge2_h);
-      updateText('badge2Desc', lang.badge2_p);
-      updateText('badge3Title', lang.badge3_h);
-      updateText('badge3Desc', lang.badge3_p);
       updateText('labelVariety', lang.var_title);
       updateText('labelName', lang.cust_name);
       updateText('labelPhone', lang.cust_phone);
       updateText('labelAddress', lang.cust_addr);
       updateText('labelPayment', lang.pay_mode);
       updateText('submitBtn', lang.btn_email);
+
+      // New Sections
+      updateText('storyTitle', lang.story_h2);
+      updateText('storyDesc1', lang.story_p1);
+      updateText('storyDesc2', lang.story_p2);
+      updateText('testTitle', lang.test_h2);
+      updateText('testDesc', lang.test_p);
+
+      // Promo Box
+      updateText('promoText', lang.promo_bar);
+      updateText('promoModalTitle', lang.promo_m_h);
+      updateText('promoModalDesc', lang.promo_m_p);
+
+      updateText('pil1Title', lang.pil1_t);
+      updateText('pil1Desc', lang.pil1_d);
+      updateText('pil2Title', lang.pil2_t);
+      updateText('pil2Desc', lang.pil2_d);
+      updateText('pil3Title', lang.pil3_t);
+      updateText('pil3Desc', lang.pil3_d);
+      updateText('pil4Title', lang.pil4_t);
+      updateText('pil4Desc', lang.pil4_d);
+      updateText('pil5Title', lang.pil5_t);
+      updateText('pil5Desc', lang.pil5_d);
+      updateText('pil6Title', lang.pil6_t);
+      updateText('pil6Desc', lang.pil6_d);
+      updateText('pil7Title', lang.pil7_t);
+      updateText('pil7Desc', lang.pil7_d);
+      updateText('pil8Title', lang.pil8_t);
+      updateText('pil8Desc', lang.pil8_d);
 
       // Footer & Modal
       updateText('footerCopy', lang.footer_copy);
@@ -1967,6 +2344,46 @@
       initReveal();
       loadCart();
       updateCartUI();
+      initMarketing();
+    }
+
+    /* --- Marketing Logic --- */
+    let promoShown = false;
+    function initMarketing() {
+      // Exit intent
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY < 0 && !promoShown) {
+          showPromoModal();
+        }
+      });
+
+      // Time-based fallback (30 seconds)
+      setTimeout(() => {
+        if (!promoShown) showPromoModal();
+      }, 30000);
+    }
+
+    function showPromoModal() {
+      if (promoShown) return;
+      document.getElementById('promoModal').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+      promoShown = true;
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+    }
+
+    function closeModal(id) {
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('active');
+      document.getElementById('overlay').classList.remove('active');
+    }
+
+    function closePromoModal() {
+      closeModal('promoModal');
     }
 
     function renderProducts() {
@@ -1992,13 +2409,24 @@
                             <div class="price-display">${p.displayPrice}</div>
                             <div class="action-buttons">
                                 <button class="btn btn-cart" onclick="startAddToCart(${p.id})">${currentLang === 'ta' ? 'கூடையில் சேர்க்க' : 'Add to Cart'}</button>
-                                <button class="btn btn-order" onclick="openQuickOrder(${p.id})">${currentLang === 'ta' ? 'ஆர்டர் செய்க' : 'Order Now'}</button>
+                                <button class="btn btn-order" onclick="openQuickOrder(${p.id})">${currentLang === 'ta' ? 'ஆர்டர் செய்க (Order)' : 'Order Now'}</button>
                             </div>
+                            <button class="btn btn-whatsapp-direct" style="width:100%; margin-top:10px; background:#25D366; color:white;" onclick="directWhatsApp(${p.id})">
+                                <svg style="width:18px; fill:white;" viewBox="0 0 24 24"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.9.53 3.66 1.45 5.17l-1.45 5.34 5.48-1.42c1.47.8 3.12 1.25 4.88 1.25 5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.66 14.22c-.24.67-1.19 1.24-1.63 1.33-.44.1-1 .18-1.62-.03-.62-.21-1.39-.48-2.32-.88-3.92-1.68-6.47-5.64-6.66-5.89-.2-.25-1.55-2.07-1.55-3.95 0-1.88.98-2.8 1.33-3.2.35-.4.77-.5 1.02-.5h.74c.24 0 .48.06.68.53.2.47.69 1.68.75 1.8.06.12.1.26.02.42-.08.16-.12.26-.24.41-.12.15-.26.34-.37.45-.12.13-.25.28-.1.54.15.26.66 1.09 1.42 1.77.97.87 1.78 1.14 2.05 1.27.27.13.43.11.59-.08.16-.19.69-.8 1.15-1.42.34-.47.53-.4.82-.29.3.11 1.88.89 2.2 1.05.32.16.54.24.61.37.07.13.07.75-.17 1.42z"/></svg>
+                                ${currentLang === 'ta' ? 'விலை விவரம் கேட்க (Chat)' : 'Ask Price / Chat'}
+                            </button>
                         </div>
                     </div>
                 </div>
             `;
       }).join('');
+    }
+
+    function directWhatsApp(id) {
+      const p = products.find(prod => prod.id === id);
+      const title = currentLang === 'ta' ? p.name : p.en_name;
+      const msg = encodeURIComponent(`வணக்கம் JOTHIZ, நான் *${title}* பற்றி மேலும் விவரம் அறிய விரும்புகிறேன். இதன் விலை மற்றும் டெலிவரி விவரங்கள் சொல்ல முடியுமா?`);
+      window.open(`https://wa.me/918838662641?text=${msg}`, '_blank');
     }
 
     /* --- ADD TO CART FLOW --- */
@@ -2213,6 +2641,12 @@
       if (displayTotal) displayTotal.innerText = `₹${total}`;
     }
 
+    function sendEmailOrder() {
+      const subject = encodeURIComponent("Bulk Order Inquiry - JOTHIZ");
+      const body = encodeURIComponent("Hello JOTHIZ Team,\n\nI am interested in placing an order for your products. Please provide more details on bulk pricing and delivery.\n\nThank you.");
+      window.location.href = `mailto:jothizproducts@gmail.com?subject=${subject}&body=${body}`;
+    }
+
     function selectPayment(el, val) {
       document.querySelectorAll('.payment-opt').forEach(opt => opt.classList.remove('selected'));
       el.classList.add('selected');
@@ -2281,12 +2715,11 @@
     function saveCart() { localStorage.setItem('j_cart_v3', JSON.stringify(cart)); }
     function loadCart() { const s = localStorage.getItem('j_cart_v3'); if (s) cart = JSON.parse(s); }
 
-    function closeVarietyModal() { document.getElementById('varietyModal').classList.remove('active'); document.getElementById('overlay').classList.remove('active'); }
-    function closeModal() { document.getElementById('orderModal').classList.remove('active'); document.getElementById('overlay').classList.remove('active'); }
+    function closeVarietyModal() { closeModal('varietyModal'); }
+    function closeOrderModal() { closeModal('orderModal'); }
     function closeAll() {
       document.getElementById('cartSidebar').classList.remove('open');
-      document.getElementById('orderModal').classList.remove('active');
-      document.getElementById('varietyModal').classList.remove('active');
+      document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
       document.getElementById('overlay').classList.remove('active');
     }
 
@@ -2294,8 +2727,23 @@
       const t = document.getElementById('toast');
       t.innerText = m;
       t.classList.add('show');
+
+      const cartIcon = document.querySelector('.cart-icon-wrapper');
+      cartIcon.classList.remove('cart-pulse');
+      void cartIcon.offsetWidth; // Trigger reflow
+      cartIcon.classList.add('cart-pulse');
+
       setTimeout(() => t.classList.remove('show'), 3000);
     }
+
+    window.addEventListener('scroll', () => {
+      const topBtn = document.getElementById('backToTop');
+      if (window.scrollY > 500) {
+        topBtn.classList.add('show');
+      } else {
+        topBtn.classList.remove('show');
+      }
+    });
 
     /* --- Enquiry Form Handler --- */
     const enquiryForm = document.getElementById('enquiryForm');
