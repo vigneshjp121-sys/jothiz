@@ -21,6 +21,12 @@
     upgrade-insecure-requests;
     ">
 
+  <!-- 🛡️ reCAPTCHA Library -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Ld5L1gsAAAAANznU_17Wn9cbvPO3OSeWy-Z1RZn"></script>
+
+  <!-- 💳 Payment Gateway (Razorpay) -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -358,8 +364,8 @@
 
     .product-card:hover {
       transform: translateY(-12px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--accent-light);
+      box-shadow: 0 30px 60px rgba(8, 28, 21, 0.15);
+      border-color: var(--accent);
     }
 
     .product-image {
@@ -1026,6 +1032,35 @@
       fill: white;
     }
 
+    .online-indicator {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 12px;
+      height: 12px;
+      background: #44b700;
+      border-radius: 50%;
+      border: 2px solid white;
+      animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(68, 183, 0, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(68, 183, 0, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(68, 183, 0, 0);
+      }
+    }
+
     @keyframes fadeInDown {
       from {
         opacity: 0;
@@ -1543,6 +1578,14 @@
     <div class="header-content">
       <h1 id="heroTitle">JOTHIZ</h1>
       <p id="heroSubtitle">தூய்மை • தரம் • நம்பிக்கை</p>
+      <div style="margin-top: 35px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <a href="#productsGrid" class="btn btn-order"
+          style="padding: 15px 35px; border-radius: 50px; background: var(--accent); color: var(--primary-dark); text-decoration: none;">Shop
+          Now</a>
+        <a href="https://wa.me/918838662641?text=Hi Jothiz, I want to see your product catalog." class="btn btn-cart"
+          style="padding: 15px 35px; border-radius: 50px; background: rgba(255,255,255,0.1); color: white; border-color: white; text-decoration: none;">Chat
+          on WhatsApp</a>
+      </div>
     </div>
   </header>
 
@@ -1777,8 +1820,8 @@
           <div id="modalTotalDisplay" style="font-size: 24px; font-weight: 700; color: var(--primary);">₹0</div>
         </div>
 
-        <button type="button" class="confirm-btn" id="confirmBtn" onclick="processFinalOrder()">
-          WhatsApp ஆர்டர் செய்க
+        <button type="button" class="confirm-btn" id="confirmBtn" onclick="handlePaymentAndOrder()">
+          பணம் செலுத்தி ஆர்டர் செய்க
         </button>
       </form>
     </div>
@@ -1931,6 +1974,33 @@
     </div>
   </section>
 
+  <!-- --- New: Trust Bar / Payment Logos --- -->
+  <section style="background: white; padding: 40px 20px; border-top: 1px solid var(--border);">
+    <div
+      style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; opacity: 0.6; filter: grayscale(1);">
+      <div style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--primary);">
+        <svg style="width:24px;" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z" />
+        </svg>
+        GI TAGGED
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--primary);">
+        <svg style="width:24px;" viewBox="0 0 24 24">
+          <path fill="currentColor"
+            d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,3L19,6V11C19,15.28 16.3,19.28 12,20.4C7.7,19.28 5,15.28 5,11V6L12,3M12,7L9,10H11V15H13V10H15L12,7Z" />
+        </svg>
+        SECURE PAY
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--primary);">
+        <svg style="width:24px;" viewBox="0 0 24 24">
+          <path fill="currentColor"
+            d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M16.59,7.58L10,14.17L7.41,11.59L6,13L10,17L18,9L16.59,7.58Z" />
+        </svg>
+        100% ORGANIC
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-container"
       style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; text-align: left; padding-bottom: 40px; padding-left: 20px; padding-right: 20px;">
@@ -1995,10 +2065,13 @@
         <path
           d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-2.2 2.2z" />
       </svg></a>
-    <a href="https://wa.me/918838662641" class="float-btn float-whatsapp" target="_blank"><svg viewBox="0 0 32 32">
+    <a href="https://wa.me/918838662641" class="float-btn float-whatsapp" target="_blank" style="position: relative;">
+      <div class="online-indicator"></div>
+      <svg viewBox="0 0 32 32">
         <path
           d="M16 .6C7.5.6.6 7.5.6 16c0 2.8.7 5.5 2.1 7.9L.6 31.4l7.7-2c2.3 1.3 4.9 2 7.6 2 8.5 0 15.4-6.9 15.4-15.4S24.5.6 16 .6z" />
-      </svg></a>
+      </svg>
+    </a>
   </div>
 
   <script>
@@ -2017,7 +2090,8 @@
           { label: "5 கிலோ (Bundle)", en_label: "5 kg (Bundle)", price: 260, vImage: "country_sugar_1769858896315.png" },
           { label: "10 கிலோ (Family Pack)", en_label: "10 kg (Family Pack)", price: 510, vImage: "country_sugar_1769858896315.png" }
         ],
-        displayPrice: "₹50 – ₹60 / kg"
+        displayPrice: "₹50 – ₹60 / kg",
+        topSeller: true
       },
       {
         id: 2,
@@ -2102,6 +2176,7 @@
     let cart = [];
     let p_mode = "GPay / PhonePe";
     let activeVarietyId = null;
+    let businessUPI = "8838662641@apl"; // Updated UPI ID
 
     /* --- FAQ & Quotes Logic --- */
     const faqs = [
@@ -2335,6 +2410,7 @@
       updateCartUI();
       initQuote();
       initReveal(); // Re-bind observer to new elements
+      initStructuredData();
     }
 
     function init() {
@@ -2345,6 +2421,34 @@
       loadCart();
       updateCartUI();
       initMarketing();
+      initStructuredData();
+    }
+
+    function initStructuredData() {
+      const ldData = {
+        "@context": "https://schema.org/",
+        "@type": "ItemList",
+        "itemListElement": products.map((p, idx) => ({
+          "@type": "ListItem",
+          "position": idx + 1,
+          "item": {
+            "@type": "Product",
+            "name": p.en_name,
+            "description": p.en_points.join(", "),
+            "image": window.location.origin + "/" + p.image,
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "INR",
+              "lowPrice": p.priceOptions[0].price,
+              "offerCount": p.priceOptions.length
+            }
+          }
+        }))
+      };
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(ldData);
+      document.head.appendChild(script);
     }
 
     /* --- Marketing Logic --- */
@@ -2394,9 +2498,9 @@
 
         return `
                 <div class="product-card reveal">
-                    ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+                    ${p.topSeller ? `<div class="product-badge" style="background:#ff4757; color:white;">Top Rated</div>` : (p.badge ? `<div class="product-badge">${p.badge}</div>` : '')}
                     <div class="product-image">
-                        <img src="${p.image}" alt="${title}">
+                        <img src="${p.image}" alt="${title}" loading="lazy">
                         <div class="img-disclaimer">
                           ${currentLang === 'ta' ? 'படங்கள் குறிப்புக்காக மட்டுமே - நிபந்தனைகள் பொருந்தும்' : 'Images for reference only - T&C apply'}
                         </div>
@@ -2409,7 +2513,14 @@
                             <div class="price-display">${p.displayPrice}</div>
                             <div class="action-buttons">
                                 <button class="btn btn-cart" onclick="startAddToCart(${p.id})">${currentLang === 'ta' ? 'கூடையில் சேர்க்க' : 'Add to Cart'}</button>
-                                <button class="btn btn-order" onclick="openQuickOrder(${p.id})">${currentLang === 'ta' ? 'ஆர்டர் செய்க (Order)' : 'Order Now'}</button>
+                                <button class="btn btn-order" onclick="openWhatsAppCheckout(${p.id})">
+                                  <svg style="width:18px; fill:currentColor;" viewBox="0 0 24 24"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.9.53 3.66 1.45 5.17l-1.45 5.34 5.48-1.42c1.47.8 3.12 1.25 4.88 1.25 5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.66 14.22c-.24.67-1.19 1.24-1.63 1.33-.44.1-1 .18-1.62-.03-.62-.21-1.39-.48-2.32-.88-3.92-1.68-6.47-5.64-6.66-5.89-.2-.25-1.55-2.07-1.55-3.95 0-1.88.98-2.8 1.33-3.2.35-.4.77-.5 1.02-.5h.74c.24 0 .48.06.68.53.2.47.69 1.68.75 1.8.06.12.1.26.02.42-.08.16-.12.26-.24.41-.12.15-.26.34-.37.45-.12.13-.25.28-.1.54.15.26.66 1.09 1.42 1.77.97.87 1.78 1.14 2.05 1.27.27.13.43.11.59-.08.16-.19.69-.8 1.15-1.42.34-.47.53-.4.82-.29.3.11 1.88.89 2.2 1.05.32.16.54.24.61.37.07.13.07.75-.17 1.42z"/></svg>
+                                  ${currentLang === 'ta' ? 'WhatsApp ஆர்டர்' : 'WhatsApp Order'}
+                                </button>
+                            </div>
+                            <div style="margin-top: 15px; display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--primary-light); font-weight: 600;">
+                                <svg style="width:14px; fill:currentColor;" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z"/></svg>
+                                ${currentLang === 'ta' ? '100% அசல் தயாரிப்பு' : '100% Authentic Product'}
                             </div>
                             <button class="btn btn-whatsapp-direct" style="width:100%; margin-top:10px; background:#25D366; color:white;" onclick="directWhatsApp(${p.id})">
                                 <svg style="width:18px; fill:white;" viewBox="0 0 24 24"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.9.53 3.66 1.45 5.17l-1.45 5.34 5.48-1.42c1.47.8 3.12 1.25 4.88 1.25 5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.66 14.22c-.24.67-1.19 1.24-1.63 1.33-.44.1-1 .18-1.62-.03-.62-.21-1.39-.48-2.32-.88-3.92-1.68-6.47-5.64-6.66-5.89-.2-.25-1.55-2.07-1.55-3.95 0-1.88.98-2.8 1.33-3.2.35-.4.77-.5 1.02-.5h.74c.24 0 .48.06.68.53.2.47.69 1.68.75 1.8.06.12.1.26.02.42-.08.16-.12.26-.24.41-.12.15-.26.34-.37.45-.12.13-.25.28-.1.54.15.26.66 1.09 1.42 1.77.97.87 1.78 1.14 2.05 1.27.27.13.43.11.59-.08.16-.19.69-.8 1.15-1.42.34-.47.53-.4.82-.29.3.11 1.88.89 2.2 1.05.32.16.54.24.61.37.07.13.07.75-.17 1.42z"/></svg>
@@ -2426,7 +2537,14 @@
       const p = products.find(prod => prod.id === id);
       const title = currentLang === 'ta' ? p.name : p.en_name;
       const msg = encodeURIComponent(`வணக்கம் JOTHIZ, நான் *${title}* பற்றி மேலும் விவரம் அறிய விரும்புகிறேன். இதன் விலை மற்றும் டெலிவரி விவரங்கள் சொல்ல முடியுமா?`);
-      window.open(`https://wa.me/918838662641?text=${msg}`, '_blank');
+      window.location.href = `https://wa.me/918838662641?text=${msg}`;
+    }
+
+    function openWhatsAppCheckout(id) {
+      const p = products.find(prod => prod.id === id);
+      const title = currentLang === 'ta' ? p.name : p.en_name;
+      const msg = encodeURIComponent(`Hi JOTHIZ, I want to order *${title}*. Please share the available varieties and total price.`);
+      window.location.href = `https://wa.me/918838662641?text=${msg}`;
     }
 
     /* --- ADD TO CART FLOW --- */
@@ -2704,11 +2822,80 @@
       closeAll();
     }
 
-    /* --- NEW: Email Order Function for Footer --- */
+    async function handlePaymentAndOrder() {
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const addr = document.getElementById('custAddress').value.trim();
+      if (!name || !phone || !addr) return alert("தயவுசெய்து அனைத்து விவரங்களையும் பூர்த்தி செய்யவும்!");
+
+      if (p_mode === 'Cash on Delivery') {
+        processFinalOrder();
+        return;
+      }
+
+      // Online Payment Logic
+      const flow = document.getElementById('flowType').value;
+      let totalAmount = 0;
+      let orderDetails = "";
+
+      if (flow === 'quick') {
+        const pId = document.getElementById('quickProductId').value;
+        const p = products.find(prod => prod.id == pId);
+        const idx = document.getElementById('quickPriceSelector').value;
+        const variant = p.priceOptions[idx];
+        totalAmount = variant.price;
+        orderDetails = `${p.name} (${variant.label})`;
+      } else {
+        totalAmount = cart.reduce((s, item) => {
+          const p = products.find(prod => prod.id === item.id);
+          const variant = p.priceOptions[item.vIdx];
+          return s + (variant.price * item.qty);
+        }, 0);
+        orderDetails = `Cart Items (${cart.length} types)`;
+      }
+
+      // For Static Sites, we use the "Razorpay Standard Checkout" 
+      const options = {
+        "key": "rzp_test_YOUR_KEY_HERE", // User needs to replace this
+        "amount": totalAmount * 100,
+        "currency": "INR",
+        "name": "JOTHIZ",
+        "description": orderDetails,
+        "image": "jothiz_logo.png",
+        "handler": function (response) {
+          alert("Payment Successful! TXN ID: " + response.razorpay_payment_id);
+          processFinalOrder(response.razorpay_payment_id);
+        },
+        "prefill": {
+          "name": name,
+          "contact": phone
+        },
+        "theme": {
+          "color": "#1b4332"
+        }
+      };
+
+      // Check if UPI link is better (for mobile)
+      if (/Android|iPhone|iPad/i.test(navigator.userAgent) && p_mode === 'GPay / PhonePe') {
+        const upiUrl = `upi://pay?pa=${businessUPI}&pn=JOTHIZ&am=${totalAmount}&tn=Order_${Date.now()}&cu=INR`;
+        window.location.href = upiUrl;
+        // After redirect, we still need to process order, so we'll show a prompt
+        setTimeout(() => {
+          if (confirm("Have you completed the payment? Click OK to send your order via WhatsApp.")) {
+            processFinalOrder("UPI_PAID");
+          }
+        }, 3000);
+      } else {
+        const rzp1 = new Razorpay(options);
+        rzp1.open();
+      }
+    }
+
+    /* --- NEW: Email Order Function --- */
     function sendEmailOrder() {
       const subject = encodeURIComponent("New Product Inquiry - JOTHIZ");
       const body = encodeURIComponent("Hello JOTHIZ,\n\nI am interested in your products. Please contact me for details.\n\nMy Details:\nName: \nPhone: \nInterested Products: ");
-      window.location.href = `mailto:jothizclean@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:jothizproducts@gmail.com?subject=${subject}&body=${body}`;
     }
 
     /* --- HELPERS --- */
@@ -2745,69 +2932,7 @@
       }
     });
 
-    /* --- Enquiry Form Handler --- */
-    const enquiryForm = document.getElementById('enquiryForm');
-    if (enquiryForm) {
-      enquiryForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        let isValid = true;
-        const name = document.getElementById('name');
-        const phone = document.getElementById('phone');
-        const email = document.getElementById('email');
-        const message = document.getElementById('message');
-
-        // Reset errors
-        document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
-
-        if (name.value.trim().length < 2) {
-          document.getElementById('nameError').style.display = 'block';
-          isValid = false;
-        }
-        if (!/^\d{10}$/.test(phone.value.trim())) {
-          document.getElementById('phoneError').style.display = 'block';
-          isValid = false;
-        }
-        if (email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-          document.getElementById('emailError').style.display = 'block';
-          isValid = false;
-        }
-        if (message.value.trim().length < 10) {
-          document.getElementById('messageError').style.display = 'block';
-          isValid = false;
-        }
-
-        if (!isValid) return;
-
-        const submitBtn = document.getElementById('submitBtn');
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Sending...';
-
-        const formData = new FormData(this);
-        try {
-          const response = await fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            document.getElementById('successMsg').style.display = 'block';
-            this.reset();
-            setTimeout(() => {
-              document.getElementById('successMsg').style.display = 'none';
-            }, 5000);
-          } else {
-            alert('Something went wrong. Please try again or use WhatsApp.');
-          }
-        } catch (error) {
-          alert('Error: ' + error.message);
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.innerText = currentLang === 'ta' ? 'அனுப்பு (Send Inquiry via Email)' : 'Send Inquiry via Email';
-        }
-      });
-    }
+    /* Enquiry Form Handler moved to secure-form.js */
 
     /* --- Scroll Reveal Logic --- */
     function initReveal() {
@@ -2838,6 +2963,7 @@
 
     init();
   </script>
+  <script src="secure-form.js"></script>
 </body>
 
 </html>
