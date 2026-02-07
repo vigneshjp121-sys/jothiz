@@ -11,10 +11,10 @@
     default-src 'self';
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-    script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com;
-    connect-src 'self' https://formspree.io https://www.google.com;
-    img-src 'self' data:;
-    frame-src https://www.google.com;
+    script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://checkout.razorpay.com;
+    connect-src 'self' https://formspree.io https://www.google.com https://api.razorpay.com;
+    img-src 'self' data: https://www.gstatic.com https://www.google.com;
+    frame-src https://www.google.com https://api.razorpay.com;
     base-uri 'self';
     form-action 'self' https://formspree.io;
     object-src 'none';
@@ -177,14 +177,19 @@
     nav {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.85);
-      /* Glass effect */
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(27, 67, 50, 0.05);
-      padding: 15px 0;
-      transition: var(--transition);
+      border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+      padding: 12px 0;
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    nav.scrolled {
+      padding: 8px 0;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 30px rgba(8, 28, 21, 0.1);
     }
 
     .nav-container {
@@ -1560,6 +1565,216 @@
         font-size: 16px;
       }
     }
+
+    /* --- New: UX Enhancement Styles --- */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(27, 67, 50, 0.2);
+    }
+
+    .variety-options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .variety-option-card {
+      padding: 15px 20px;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .variety-option-card:hover {
+      border-color: var(--primary-light);
+      background: #f8fcf9;
+    }
+
+    .variety-option-card.selected {
+      border-color: var(--primary);
+      background: #f1faf4;
+    }
+
+    .option-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: transparent;
+      transition: var(--transition);
+    }
+
+    .variety-option-card.selected .option-check {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .payment-opt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 15px !important;
+      border: 2px solid var(--border);
+      background: white;
+      transition: var(--transition);
+    }
+
+    .payment-opt i {
+      font-size: 20px;
+    }
+
+    .payment-opt.selected {
+      border-color: var(--primary);
+      background: #f1faf4;
+      color: var(--primary);
+    }
+
+    .modal-summary-card {
+      background: #f8fcf9;
+      border: 1px dashed var(--primary-light);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .trust-badge-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      background: white;
+      border-top: 1px solid var(--border);
+    }
+
+    .trust-badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      max-width: 120px;
+    }
+
+    .trust-badge-icon {
+      width: 48px;
+      height: 48px;
+      background: #f1faf4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .trust-badge-text {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Trust Shield CSS */
+    .trust-shield-card {
+      background: #fff9ea;
+      border: 1px solid #ffeeba;
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .origin-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f1faf4;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      border: 1px solid rgba(27, 67, 50, 0.1);
+    }
+
+    .online-indicator {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 12px;
+      height: 12px;
+      background: #2ecc71;
+      border-radius: 50%;
+      border: 2px solid white;
+      z-index: 2;
+    }
+
+    .online-indicator::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #2ecc71;
+      border-radius: 50%;
+      animation: pulseIndicator 2s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes pulseIndicator {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
   </style>
 
 </head>
@@ -1569,7 +1784,7 @@
 
   <!-- --- New: Promo Top Bar --- -->
   <div class="promo-bar" id="promoBar">
-    <span id="promoText">🎉 சிறப்பு சலுகை! ₹1000-க்கு மேல் இலவச டெலிவரி! (கவுந்தப்பாடி சுற்றி 10கிமீ - டோர் டெலிவரி |
+    <span id="promoMarquee">🎉 சிறப்பு சலுகை! ₹1000-க்கு மேல் இலவச டெலிவரி! (கவுந்தப்பாடி சுற்றி 10கிமீ - டோர் டெலிவரி |
       மற்ற இடங்களுக்கு கொரியர்)</span>
     <button class="close-promo" onclick="document.getElementById('promoBar').style.display='none'">&times;</button>
   </div>
@@ -1586,6 +1801,8 @@
           style="padding: 15px 35px; border-radius: 50px; background: rgba(255,255,255,0.1); color: white; border-color: white; text-decoration: none;">Chat
           on WhatsApp</a>
       </div>
+      <p id="heroTrustLine"
+        style="margin-top: 20px; font-style: italic; font-size: 13px; opacity: 0.8; letter-spacing: 1px;"></p>
     </div>
   </header>
 
@@ -1618,6 +1835,15 @@
     <div class="section-title reveal">
       <h2 id="productsTitle">எங்கள் பொருட்கள்</h2>
       <p id="productsDesc">தேர்ந்தெடுக்கப்பட்ட தரமான பொருட்கள் - நேரடி மற்றும் கூடை ஆர்டர்கள்</p>
+      <p id="sectionTrustLine"
+        style="margin-top: 15px; color: var(--primary); font-weight: 500; font-style: italic; font-size: 14px;"></p>
+    </div>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter('all')" id="filterAll">அனைத்தும்</button>
+      <button class="filter-btn" data-filter="food" onclick="setFilter('food')" id="filterFood">உணவு பொருட்கள்</button>
+      <button class="filter-btn" data-filter="textile" onclick="setFilter('textile')" id="filterTextile">கைத்தறி &
+        துணிகள்</button>
     </div>
 
     <div class="products-grid" id="productsGrid">
@@ -1754,6 +1980,12 @@
       <!-- Items injected by JS -->
     </div>
     <div class="cart-footer">
+      <div class="shipping-progress-container">
+        <div class="progress-text" id="shippingProgressText">Add ₹1000 for FREE Shipping</div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="shippingProgressBar"></div>
+        </div>
+      </div>
       <div class="cart-total-row">
         <span id="cartTotalLabel">மொத்தம்:</span>
         <span id="cartTotal">₹0</span>
@@ -1809,20 +2041,40 @@
         <div class="form-group">
           <label class="form-label" id="labelPayment">பணம் (Payment Mode)</label>
           <div class="payment-options">
-            <div class="payment-opt selected" onclick="selectPayment(this, 'GPay / PhonePe')">GPay / PhonePe</div>
-            <div class="payment-opt" onclick="selectPayment(this, 'Cash on Delivery')">Cash on Delivery</div>
+            <div class="payment-opt selected" onclick="selectPayment(this, 'GPay / PhonePe')">
+              <span style="font-size: 24px;">📱</span>
+              <span>Online Payment</span>
+            </div>
+            <div class="payment-opt" onclick="selectPayment(this, 'Cash on Delivery')">
+              <span style="font-size: 24px;">💵</span>
+              <span>Cash on Delivery</span>
+            </div>
           </div>
         </div>
 
-        <div id="modalSummaryBox"
-          style="margin: 20px 0; padding:15px; background: #f1faf4; border-radius: 12px; text-align: center;">
-          <div style="font-size: 13px; color: var(--text-light);">செலுத்த வேண்டிய தொகை:</div>
-          <div id="modalTotalDisplay" style="font-size: 24px; font-weight: 700; color: var(--primary);">₹0</div>
+        <div id="modalSummaryBox" class="modal-summary-card">
+          <div style="font-size: 13px; color: var(--text-light); margin-bottom: 5px;">செலுத்த வேண்டிய தொகை (Total
+            Payable):</div>
+          <div id="modalTotalDisplay" style="font-size: 28px; font-weight: 700; color: var(--primary);">₹0</div>
+          <div style="font-size: 10px; color: var(--primary-light); margin-top: 5px;">✔️ 100% Secure Checkout</div>
         </div>
 
         <button type="button" class="confirm-btn" id="confirmBtn" onclick="handlePaymentAndOrder()">
           பணம் செலுத்தி ஆர்டர் செய்க
         </button>
+        <p id="modalTrustLine"
+          style="text-align: center; margin-top: 10px; font-size: 12px; color: var(--primary-light); font-style: italic;">
+        </p>
+
+        <!-- Trust Shield -->
+        <div class="trust-shield-card">
+          <div style="font-size: 24px;">🎖️</div>
+          <div>
+            <div style="font-size: 12px; font-weight: 700; color: #856404;">100% திருப்தி உத்தரவாதம் (Guarantee)</div>
+            <div style="font-size: 10px; color: #856404; opacity: 0.8;">Quality Check • Safe Packaging • Easy Support
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>
@@ -1846,10 +2098,10 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <select id="varietySelectCart" style="font-size: 16px; padding: 15px;"
-          onchange="updateCartVarietyImage()"></select>
+      <div class="variety-options-grid" id="varietyOptions">
+        <!-- Cards injected by JS -->
       </div>
+      <input type="hidden" id="selectedVarietyIndex" value="0">
 
       <button class="btn btn-order" id="addToCartBtn" style="width:100%; padding: 16px;" onclick="confirmAddToCart()">
         கூடையில் சேர்க்க (Add to Cart)
@@ -1974,30 +2226,23 @@
     </div>
   </section>
 
-  <!-- --- New: Trust Bar / Payment Logos --- -->
-  <section style="background: white; padding: 40px 20px; border-top: 1px solid var(--border);">
-    <div
-      style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; opacity: 0.6; filter: grayscale(1);">
-      <div style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--primary);">
-        <svg style="width:24px;" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z" />
-        </svg>
-        GI TAGGED
-      </div>
-      <div style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--primary);">
-        <svg style="width:24px;" viewBox="0 0 24 24">
-          <path fill="currentColor"
-            d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,3L19,6V11C19,15.28 16.3,19.28 12,20.4C7.7,19.28 5,15.28 5,11V6L12,3M12,7L9,10H11V15H13V10H15L12,7Z" />
-        </svg>
-        SECURE PAY
-      </div>
-      <div style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--primary);">
-        <svg style="width:24px;" viewBox="0 0 24 24">
-          <path fill="currentColor"
-            d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M16.59,7.58L10,14.17L7.41,11.59L6,13L10,17L18,9L16.59,7.58Z" />
-        </svg>
-        100% ORGANIC
-      </div>
+  <!-- Trust Bar -->
+  <section class="trust-badge-container">
+    <div class="trust-badge-item">
+      <div class="trust-badge-icon">🏷️</div>
+      <div class="trust-badge-text">GI TAGGED</div>
+    </div>
+    <div class="trust-badge-item">
+      <div class="trust-badge-icon">🛡️</div>
+      <div class="trust-badge-text">SECURE PAY</div>
+    </div>
+    <div class="trust-badge-item">
+      <div class="trust-badge-icon">🍃</div>
+      <div class="trust-badge-text">100% ORGANIC</div>
+    </div>
+    <div class="trust-badge-item">
+      <div class="trust-badge-icon">🚚</div>
+      <div class="trust-badge-text">FAST DELIVERY</div>
     </div>
   </section>
 
@@ -2018,10 +2263,12 @@
       <div class="footer-contact">
         <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1.1rem;">Contact Us</h4>
         <div style="font-size: 14px; line-height: 2; opacity: 0.9;">
-          <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px;">
+          <a href="https://www.google.com/maps/search/?api=1&query=23/1,+Bommanpatti+Road,+Kavundapadi,+Erode"
+            target="_blank"
+            style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px; text-decoration: none; color: inherit;">
             <span style="color: var(--accent);">📍</span>
-            <span>23/1, Bommanpatti Road, Kavundapadi,<br>Erode District, Tamil Nadu.</span>
-          </div>
+            <span>23/1, Bommanpatti Road, Kavundapadi,<br>Erode District, Tamil Nadu. (Click for Map)</span>
+          </a>
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
             <span style="color: var(--accent);">📞</span>
             <a href="tel:8903326883" style="color: inherit; text-decoration: none;">+91 89033 26883</a>
@@ -2091,7 +2338,9 @@
           { label: "10 கிலோ (Family Pack)", en_label: "10 kg (Family Pack)", price: 510, vImage: "country_sugar_1769858896315.png" }
         ],
         displayPrice: "₹50 – ₹60 / kg",
-        topSeller: true
+        topSeller: true,
+        type: "food",
+        origin: "Kavundapadi"
       },
       {
         id: 2,
@@ -2107,7 +2356,9 @@
           { label: "25 கிலோ (RNR Steamed)", en_label: "25 kg (RNR Steamed)", price: 1450, vImage: "premium_rice_1769858915796.png" },
           { label: "25 கிலோ (Sona Masoori)", en_label: "25 kg (Sona Masoori)", price: 1600, vImage: "premium_rice_1769858915796.png" }
         ],
-        displayPrice: "₹1300 – ₹1600 (25kg)"
+        displayPrice: "₹1300 – ₹1600 (25kg)",
+        type: "food",
+        origin: "Erode Districts"
       },
       {
         id: 3,
@@ -2123,7 +2374,9 @@
           { label: "Medium (4x6 ft)", en_label: "Medium (4x6 ft)", price: 45, vImage: "handloom_mat_1769858936531.png" },
           { label: "Large (Single Bed)", en_label: "Large (Single Bed)", price: 65, vImage: "handloom_mat_1769858936531.png" }
         ],
-        displayPrice: "₹15 – ₹65"
+        displayPrice: "₹15 – ₹65",
+        type: "textile",
+        origin: "Traditional Heritage"
       },
       {
         id: 4,
@@ -2137,7 +2390,9 @@
         priceOptions: [
           { label: "Standard Size", en_label: "Standard Size", price: 40, vImage: "bathing_towel_1769858957232.png" }
         ],
-        displayPrice: "₹40"
+        displayPrice: "₹40",
+        type: "textile",
+        origin: "Handloom Origin"
       },
       {
         id: 5,
@@ -2153,7 +2408,9 @@
           { label: "4x7 ft (Red Ethnic)", en_label: "4x7 ft (Red Ethnic)", price: 650, vImage: "bhavani_jamukalam_1769858979784.png" },
           { label: "6x9 ft (Grand Temple)", en_label: "6x9 ft (Grand Temple)", price: 850, vImage: "bhavani_jamukalam_1769858979784.png" }
         ],
-        displayPrice: "₹450 – ₹850"
+        displayPrice: "₹450 – ₹850",
+        type: "textile",
+        origin: "Bhavani GI"
       },
       {
         id: 6,
@@ -2169,9 +2426,29 @@
           { label: "Designer Print (Pink)", en_label: "Designer Print (Pink)", price: 620, vImage: "fancy_saree_1769859002432.png" },
           { label: "Party Wear (Silk Blend)", en_label: "Party Wear (Silk Blend)", price: 900, vImage: "fancy_saree_1769859002432.png" }
         ],
-        displayPrice: "₹340 – ₹900"
+        displayPrice: "₹340 – ₹900",
+        type: "textile",
+        origin: "Artisan Weaves"
       }
     ];
+
+    // Helper to get products by filter
+    function getFilteredProducts(filter) {
+      if (filter === 'all') return products;
+      if (filter === 'food') return products.filter(p => [1, 2].includes(p.id));
+      if (filter === 'textile') return products.filter(p => [3, 4, 5, 6].includes(p.id));
+      return products;
+    }
+
+    let currentFilter = 'all';
+    function setFilter(f) {
+      currentFilter = f;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-filter') === f);
+      });
+      renderProducts();
+      initReveal();
+    }
 
     let cart = [];
     let p_mode = "GPay / PhonePe";
@@ -2258,6 +2535,7 @@
           test_h2: "Customer Stories",
           test_p: "Experiences of our Jothiz family members",
           promo_bar: "🎉 Free Shipping over ₹1000! (Door delivery within 10km of Kavundapadi | Courier for others)",
+          trust_promise: "Just try us once - Our quality will keep you coming back!",
           promo_m_h: "Wait! (Special Offer)",
           promo_m_p: "Place your first WhatsApp order today and get 10% OFF!",
           pil1_t: "Guaranteed Purity",
@@ -2312,6 +2590,7 @@
           test_h2: "வாடிக்கையாளர் கருத்துக்கள்",
           test_p: "எங்கள் ஜோதிஸ் குடும்ப உறுப்பினர்களின் அனுபவங்கள்",
           promo_bar: "🎉 சிறப்பு சலுகை! ₹1000-க்கு மேல் இலவச டெலிவரி! (கவுந்தப்பாடி சுற்றி 10கிமீ - டோர் டெலிவரி | மற்ற இடங்களுக்கு கொரியர்)",
+          trust_promise: "ஒருமுறை எங்களை நம்பி முயற்சி செய்து பாருங்கள் - எங்கள் தரம் உங்களை மீண்டும் வரவழைக்கும்!",
           promo_m_h: "காத்திருங்கள்! (Special Offer)",
           promo_m_p: "இன்றே உங்கள் முதல் WhatsApp ஆர்டரைச் செய்து 10% தள்ளுபடி பெறுங்கள்!",
           pil1_t: "உத்தரவாதமான தூய்மை",
@@ -2366,7 +2645,7 @@
       updateText('testDesc', lang.test_p);
 
       // Promo Box
-      updateText('promoText', lang.promo_bar);
+      updateText('promoMarquee', lang.promo_bar);
       updateText('promoModalTitle', lang.promo_m_h);
       updateText('promoModalDesc', lang.promo_m_p);
 
@@ -2399,6 +2678,14 @@
       updateText('cartLiveImgNote', lang.live_img_msg);
       updateText('quickImgDisclaimer', lang.img_disclaimer);
       updateText('cartImgDisclaimer', lang.img_disclaimer);
+
+      updateText('filterAll', currentLang === 'ta' ? 'அனைத்தும்' : 'All');
+      updateText('filterFood', currentLang === 'ta' ? 'உணவு பொருட்கள்' : 'Food Products');
+      updateText('filterTextile', currentLang === 'ta' ? 'கைத்தறி & துணிகள்' : 'Handloom & Textiles');
+
+      updateText('heroTrustLine', lang.trust_promise);
+      updateText('sectionTrustLine', lang.trust_promise);
+      updateText('modalTrustLine', lang.trust_promise);
 
       // Placeholders
       const iName = document.getElementById('name'); if (iName) iName.placeholder = lang.enq_name;
@@ -2492,7 +2779,14 @@
 
     function renderProducts() {
       const grid = document.getElementById('productsGrid');
-      grid.innerHTML = products.map(p => {
+      const filtered = getFilteredProducts(currentFilter);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 50px; opacity: 0.5;">No products found in this category.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
         const title = currentLang === 'ta' ? p.name : p.en_name;
         const pts = currentLang === 'ta' ? p.points : p.en_points;
 
@@ -2506,9 +2800,11 @@
                         </div>
                     </div>
                     <div class="product-info">
+                        <div class="origin-chip">📍 ${p.origin}</div>
                         <div class="product-category">${p.category}</div>
                         <h3 class="product-name">${title}</h3>
                         <ul class="product-desc">${pts.map(pt => `<li>${pt}</li>`).join('')}</ul>
+                       
                         <div class="product-actions">
                             <div class="price-display">${p.displayPrice}</div>
                             <div class="action-buttons">
@@ -2554,11 +2850,20 @@
       const title = currentLang === 'ta' ? p.name : p.en_name;
       document.getElementById('varietyProductName').innerText = title;
 
-      const sel = document.getElementById('varietySelectCart');
-      sel.innerHTML = p.priceOptions.map((o, i) => {
+      const optionsContainer = document.getElementById('varietyOptions');
+      optionsContainer.innerHTML = p.priceOptions.map((o, i) => {
         const label = currentLang === 'ta' ? o.label : o.en_label;
-        return `<option value="${i}">${label} - ₹${o.price}</option>`;
+        return `
+          <div class="variety-option-card ${i === 0 ? 'selected' : ''}" onclick="selectVarietyCard(this, ${i})">
+            <div class="option-check">✓</div>
+            <div class="option-label">${label}</div>
+            <div class="option-price">₹${o.price}</div>
+          </div>
+        `;
       }).join('');
+
+      // Set hidden value for index
+      document.getElementById('selectedVarietyIndex').value = 0;
 
       // Set initial variety image logic
       updateCartVarietyImage();
@@ -2567,9 +2872,16 @@
       document.getElementById('overlay').classList.add('active');
     }
 
+    function selectVarietyCard(el, idx) {
+      document.querySelectorAll('.variety-option-card').forEach(card => card.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('selectedVarietyIndex').value = idx;
+      updateCartVarietyImage();
+    }
+
     function updateCartVarietyImage() {
       const p = products.find(prod => prod.id === activeVarietyId);
-      const idx = document.getElementById('varietySelectCart').value;
+      const idx = document.getElementById('selectedVarietyIndex').value;
       const imgEl = document.getElementById('cartVarietyImg');
       if (p && p.priceOptions[idx]) {
         imgEl.src = p.priceOptions[idx].vImage || p.image;
@@ -2581,7 +2893,7 @@
 
     function confirmAddToCart() {
       const p = products.find(prod => prod.id === activeVarietyId);
-      const idx = document.getElementById('varietySelectCart').value;
+      const idx = document.getElementById('selectedVarietyIndex').value;
       const variant = p.priceOptions[idx];
 
       const cartKey = `${p.id}-${idx}`;
@@ -2632,6 +2944,22 @@
       badge.innerText = count;
       badge.style.display = count > 0 ? 'flex' : 'none';
       total.innerText = `₹${totalPrice}`;
+
+      // Update Shipping Progress
+      const progressBar = document.getElementById('shippingProgressBar');
+      const progressText = document.getElementById('shippingProgressText');
+      const threshold = 1000;
+      const percent = Math.min((totalPrice / threshold) * 100, 100);
+      progressBar.style.width = percent + '%';
+
+      if (totalPrice >= threshold) {
+        progressText.innerText = currentLang === 'ta' ? "🎉 இலவச டெலிவரி கிடைத்துள்ளது!" : "🎉 You got FREE Shipping!";
+        progressText.style.color = "var(--primary)";
+      } else {
+        const remaining = threshold - totalPrice;
+        progressText.innerText = currentLang === 'ta' ? `இன்னும் ₹${remaining} சேர்த்தால் இலவச டெலிவரி!` : `Add ₹${remaining} more for FREE Shipping`;
+        progressText.style.color = "var(--text-light)";
+      }
 
       if (cart.length === 0) {
         const msg = currentLang === 'ta' ? "உங்கள் கூடை காலியாக உள்ளது." : "Your cart is empty.";
@@ -2759,11 +3087,7 @@
       if (displayTotal) displayTotal.innerText = `₹${total}`;
     }
 
-    function sendEmailOrder() {
-      const subject = encodeURIComponent("Bulk Order Inquiry - JOTHIZ");
-      const body = encodeURIComponent("Hello JOTHIZ Team,\n\nI am interested in placing an order for your products. Please provide more details on bulk pricing and delivery.\n\nThank you.");
-      window.location.href = `mailto:jothizproducts@gmail.com?subject=${subject}&body=${body}`;
-    }
+
 
     function selectPayment(el, val) {
       document.querySelectorAll('.payment-opt').forEach(opt => opt.classList.remove('selected'));
@@ -2809,9 +3133,8 @@
       msg += `--------------------------\n*Total Amount:* ₹${total}\n*Payment:* ${p_mode}\n*Address:* ${addr}\n--------------------------\nநன்றி! 🙏`;
 
       const encodedMsg = encodeURIComponent(msg);
-
-      // Open WhatsApp by default as it's the primary channel
-      window.open(`https://wa.me/918838662641?text=${encodedMsg}`, '_blank');
+      // Use window.location.href instead of window.open to avoid popup blockers
+      window.location.href = `https://wa.me/918838662641?text=${encodedMsg}`;
 
       // Clear popup values
       document.getElementById('custName').value = '';
@@ -2960,6 +3283,13 @@
         aura.style.opacity = '0';
       });
     }
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
 
     init();
   </script>
