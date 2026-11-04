@@ -80,79 +80,46 @@
     isSubmitting = true;
     submitBtn.disabled = true;
 
-    grecaptcha.ready(() => {
-      grecaptcha.execute(SITE_KEY, { action: "submit" }).then(async (token) => {
-        recaptchaToken.value = token;
+    async function doSubmit(token) {
+      if (token && recaptchaToken) recaptchaToken.value = token;
 
-        const formData = new FormData(form);
-        formData.set("name", sanitize(nameInput.value));
-        formData.set("phone", sanitize(phoneInput.value));
-        formData.set("email", sanitize(emailInput.value));
-        formData.set("message", sanitize(messageInput.value));
+      const formData = new FormData(form);
+      formData.set("name", sanitize(nameInput.value));
+      formData.set("phone", sanitize(phoneInput.value));
+      formData.set("email", sanitize(emailInput.value));
+      formData.set("message", sanitize(messageInput.value));
 
-        try {
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: formData,
-            headers: { "Accept": "application/json" },
-            credentials: "omit"
-          });
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" },
+          credentials: "omit"
+        });
 
-          if (response.ok) {
-            localStorage.setItem("lastSubmitTime", Date.now().toString());
-            form.reset();
-            successMsg.style.display = "block";
-          } else {
-            alert("❌ அனுப்ப முடியவில்லை.");
-            submitBtn.disabled = false;
-            isSubmitting = false;
-          }
-
-        } catch {
-          alert("❌ Network error.");
-          submitBtn.disabled = false;
-          isSubmitting = false;
+        if (response.ok) {
+          localStorage.setItem("lastSubmitTime", Date.now().toString());
+          form.reset();
+          successMsg.style.display = "block";
+        } else {
+          alert("❌ அனுப்ப முடியவில்லை.");
         }
-      });
-    });
-  });
-
-  /* ============================
-     🔒 ANTI-COPY PROTECTION
-  ============================ */
-
-  // Disable right-click
-  document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-  });
-
-  // Disable selection
-  document.addEventListener("selectstart", function (e) {
-    if (
-      e.target.tagName !== "INPUT" &&
-      e.target.tagName !== "TEXTAREA"
-    ) {
-      e.preventDefault();
+      } catch {
+        alert("❌ Network error.");
+      } finally {
+        submitBtn.disabled = false;
+        isSubmitting = false;
+      }
     }
-  });
 
-  // Disable copy event
-  document.addEventListener("copy", function (e) {
-    e.preventDefault();
-    alert("❌ Copying content is disabled on this website.");
-  });
-
-  // Disable common shortcuts
-  document.addEventListener("keydown", function (e) {
-    const key = e.key.toLowerCase();
-
-    if (
-      (e.ctrlKey && ["c", "u", "s", "p", "a", "x", "v"].includes(key)) ||
-      (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(key)) ||
-      key === "f12"
-    ) {
-      e.preventDefault();
-      return false;
+    if (typeof grecaptcha !== 'undefined' && grecaptcha.ready) {
+      grecaptcha.ready(() => {
+        grecaptcha.execute(SITE_KEY, { action: "submit" })
+          .then(token => doSubmit(token))
+          .catch(() => doSubmit(""));
+      });
+    } else {
+      doSubmit("");
     }
   });
 
