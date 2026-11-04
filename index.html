@@ -11,10 +11,10 @@
     default-src 'self';
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-    script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://checkout.razorpay.com;
-    connect-src 'self' https://formspree.io https://www.google.com https://api.razorpay.com;
-    img-src 'self' data: https://www.gstatic.com https://www.google.com;
-    frame-src https://www.google.com https://api.razorpay.com;
+    script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net;
+    connect-src 'self' https://formspree.io https://www.google.com;
+    img-src 'self' data: https://www.gstatic.com https://www.google.com https://api.qrserver.com;
+    frame-src https://www.google.com;
     base-uri 'self';
     form-action 'self' https://formspree.io;
     object-src 'none';
@@ -24,8 +24,8 @@
   <!-- 🛡️ reCAPTCHA Library -->
   <script src="https://www.google.com/recaptcha/api.js?render=6Ld5L1gsAAAAANznU_17Wn9cbvPO3OSeWy-Z1RZn"></script>
 
-  <!-- 💳 Payment Gateway (Razorpay) -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- 📱 UPI QR Code Generator Library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="DENY">
@@ -2079,6 +2079,63 @@
     </div>
   </div>
 
+  <!-- Modal for UPI QR Payment -->
+  <div class="modal" id="upiModal">
+    <div class="modal-content" style="max-width: 440px; text-align: center;">
+      <button class="close-modal" onclick="closeUpiModal()">&times;</button>
+      
+      <div style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; background: rgba(27, 67, 50, 0.08); border-radius: 50%; margin-bottom: 10px;">
+        <span style="font-size: 26px;">📱</span>
+      </div>
+
+      <h2 style="font-size: 1.4rem; margin-bottom: 4px; color: var(--primary);" id="upiModalTitle">UPI மூலம் பணம் செலுத்துங்கள்</h2>
+      <p style="font-size: 12px; color: var(--text-light); margin-bottom: 14px;" id="upiModalSubtitle">Scan QR with GPay / PhonePe / Paytm / Any UPI App</p>
+
+      <!-- Payable Amount Box -->
+      <div style="background: linear-gradient(135deg, rgba(27,67,50,0.06), rgba(212,175,55,0.12)); border: 1.5px solid var(--accent); border-radius: 14px; padding: 12px 16px; margin-bottom: 14px;">
+        <div style="font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px;" id="upiPayableLabel">செலுத்த வேண்டிய தொகை (Total Payable)</div>
+        <div id="upiAmountDisplay" style="font-size: 32px; font-weight: 800; color: var(--primary); margin: 2px 0;">₹0</div>
+        <div style="font-size: 11px; color: var(--primary-light);" id="upiPayeeLabel">பெறுநர் (Payee): <strong>JOTHIZ</strong></div>
+      </div>
+
+      <!-- QR Code Container -->
+      <div style="background: #ffffff; border: 2px solid var(--border); border-radius: 16px; padding: 14px; display: inline-block; margin-bottom: 14px; box-shadow: var(--shadow-sm); width: 100%; max-width: 250px;">
+        <div id="upiQrCode" style="display: flex; justify-content: center; align-items: center; min-height: 200px;">
+          <!-- QR SVG / Image -->
+        </div>
+        <div style="margin-top: 8px; font-size: 11px; color: var(--text-light); font-weight: 600; letter-spacing: 0.5px;">
+          GPay • PhonePe • Paytm • BHIM
+        </div>
+      </div>
+
+      <!-- UPI ID Copy Bar -->
+      <div style="background: #f8f9f8; border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 16px;">
+        <div style="text-align: left; overflow: hidden;">
+          <div style="font-size: 10px; color: var(--text-light); text-transform: uppercase;">UPI ID:</div>
+          <div style="font-weight: 700; font-size: 13px; color: var(--primary); word-break: break-all;" id="upiIdText">8838662641@apl</div>
+        </div>
+        <button type="button" onclick="copyUpiId()" id="copyUpiBtn" style="background: var(--primary); color: white; border: none; padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: var(--transition);">
+          📋 Copy
+        </button>
+      </div>
+
+      <!-- Mobile Direct Open UPI App button (visible only on mobile) -->
+      <a id="mobileUpiBtn" href="#" style="display: none; width: 100%; background: #0084ff; color: white; text-decoration: none; padding: 12px; border-radius: 12px; font-weight: 600; font-size: 14px; margin-bottom: 10px; text-align: center; box-shadow: 0 4px 12px rgba(0,132,255,0.25);">
+        📱 Open GPay / PhonePe App
+      </a>
+
+      <!-- Confirm Order Button -->
+      <button type="button" class="confirm-btn" onclick="confirmUpiPayment()" style="width: 100%; margin-top: 0;" id="upiConfirmBtn">
+        ✅ பணம் செலுத்திவிட்டேன் (Confirm on WhatsApp)
+      </button>
+
+      <!-- Back / Cancel Button -->
+      <button type="button" onclick="backToOrderModal()" style="background: none; border: none; color: var(--text-light); font-size: 13px; margin-top: 10px; cursor: pointer; padding: 6px; text-decoration: underline;" id="upiBackBtn">
+        ← முகவரியை மாற்று / Back
+      </button>
+    </div>
+  </div>
+
   <!-- Variety Selection Modal for Cart -->
   <div class="modal" id="varietyModal">
     <div class="modal-content">
@@ -2553,7 +2610,13 @@
           pil7_t: "Chemical Free",
           pil7_d: "No Preservatives or Artificial Colors",
           pil8_t: "Fair Price",
-          pil8_d: "Direct Production - Genuine Pricing"
+          pil8_d: "Direct Production - Genuine Pricing",
+          upi_title: "Pay via UPI",
+          upi_sub: "Scan QR with GPay / PhonePe / Paytm / Any UPI App",
+          upi_payable: "Total Payable",
+          upi_payee: "Payee: JOTHIZ",
+          upi_paid_btn: "✅ Payment Done (Confirm on WhatsApp)",
+          upi_back: "← Edit Address / Back"
         },
         ta: {
           title: "JOTHIZ | கவுந்தப்பாடி நாட்டுச்சர்க்கரை, பவானி ஜமுக்காளம் & இயற்கை தயாரிப்புகள்",
@@ -2608,7 +2671,13 @@
           pil7_t: "இரசாயனம் அற்றது",
           pil7_d: "நிறமூட்டிகள் மற்றும் கெமிக்கல் இல்லை",
           pil8_t: "நியாயமான விலை",
-          pil8_d: "நேரடி தயாரிப்பு - குறைந்த விலை"
+          pil8_d: "நேரடி தயாரிப்பு - குறைந்த விலை",
+          upi_title: "UPI மூலம் பணம் செலுத்துங்கள்",
+          upi_sub: "GPay / PhonePe / Paytm செயலியில் QR Code-ஐ ஸ்கேன் செய்யவும்",
+          upi_payable: "செலுத்த வேண்டிய தொகை (Total Payable)",
+          upi_payee: "பெறுநர் (Payee): JOTHIZ",
+          upi_paid_btn: "✅ பணம் செலுத்திவிட்டேன் (Confirm on WhatsApp)",
+          upi_back: "← முகவரியை மாற்று / Back"
         }
       };
 
@@ -2636,6 +2705,12 @@
       updateText('labelAddress', lang.cust_addr);
       updateText('labelPayment', lang.pay_mode);
       updateText('submitBtn', lang.btn_email);
+      updateText('upiModalTitle', lang.upi_title);
+      updateText('upiModalSubtitle', lang.upi_sub);
+      updateText('upiPayableLabel', lang.upi_payable);
+      updateText('upiPayeeLabel', lang.upi_payee);
+      updateText('upiConfirmBtn', lang.upi_paid_btn);
+      updateText('upiBackBtn', lang.upi_back);
 
       // New Sections
       updateText('storyTitle', lang.story_h2);
@@ -3095,7 +3170,7 @@
       p_mode = val;
     }
 
-    function processFinalOrder() {
+    function processFinalOrder(paymentStatus) {
       const name = document.getElementById('custName').value.trim();
       const phone = document.getElementById('custPhone').value.trim();
       const addr = document.getElementById('custAddress').value.trim();
@@ -3130,7 +3205,14 @@
         });
       }
 
-      msg += `--------------------------\n*Total Amount:* ₹${total}\n*Payment:* ${p_mode}\n*Address:* ${addr}\n--------------------------\nநன்றி! 🙏`;
+      let paymentDisplay = p_mode;
+      if (paymentStatus === 'UPI_PAID' || p_mode === 'GPay / PhonePe') {
+        paymentDisplay = `GPay / PhonePe (UPI: ${businessUPI}) - Paid ✅`;
+      } else if (p_mode === 'Cash on Delivery') {
+        paymentDisplay = `Cash on Delivery (COD) 💵`;
+      }
+
+      msg += `--------------------------\n*Total Amount:* ₹${total}\n*Payment:* ${paymentDisplay}\n*Address:* ${addr}\n--------------------------\nநன்றி! 🙏`;
 
       const encodedMsg = encodeURIComponent(msg);
       // Use window.location.href instead of window.open to avoid popup blockers
@@ -3177,41 +3259,114 @@
         orderDetails = `Cart Items (${cart.length} types)`;
       }
 
-      // For Static Sites, we use the "Razorpay Standard Checkout" 
-      const options = {
-        "key": "rzp_test_YOUR_KEY_HERE", // User needs to replace this
-        "amount": totalAmount * 100,
-        "currency": "INR",
-        "name": "JOTHIZ",
-        "description": orderDetails,
-        "image": "jothiz_logo.png",
-        "handler": function (response) {
-          alert("Payment Successful! TXN ID: " + response.razorpay_payment_id);
-          processFinalOrder(response.razorpay_payment_id);
-        },
-        "prefill": {
-          "name": name,
-          "contact": phone
-        },
-        "theme": {
-          "color": "#1b4332"
-        }
-      };
+      // Open UPI QR Modal for both Desktop & Mobile
+      openUpiPaymentModal(totalAmount, orderDetails);
+    }
 
-      // Check if UPI link is better (for mobile)
-      if (/Android|iPhone|iPad/i.test(navigator.userAgent) && p_mode === 'GPay / PhonePe') {
-        const upiUrl = `upi://pay?pa=${businessUPI}&pn=JOTHIZ&am=${totalAmount}&tn=Order_${Date.now()}&cu=INR`;
-        window.location.href = upiUrl;
-        // After redirect, we still need to process order, so we'll show a prompt
-        setTimeout(() => {
-          if (confirm("Have you completed the payment? Click OK to send your order via WhatsApp.")) {
-            processFinalOrder("UPI_PAID");
-          }
-        }, 3000);
-      } else {
-        const rzp1 = new Razorpay(options);
-        rzp1.open();
+    function openUpiPaymentModal(totalAmount, orderDetails) {
+      // Hide orderModal
+      closeModal('orderModal');
+
+      // Update amount display
+      const upiDisplay = document.getElementById('upiAmountDisplay');
+      if (upiDisplay) upiDisplay.innerText = "₹" + totalAmount;
+
+      // Build standard UPI URL
+      const upiUrl = "upi://pay?pa=" + businessUPI + "&pn=JOTHIZ&am=" + totalAmount + "&tn=Order_" + Date.now() + "&cu=INR";
+
+      // On mobile devices, enable the direct UPI open button
+      const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+      const mobileBtn = document.getElementById('mobileUpiBtn');
+      if (mobileBtn) {
+        if (isMobile) {
+          mobileBtn.href = upiUrl;
+          mobileBtn.style.display = 'block';
+        } else {
+          mobileBtn.style.display = 'none';
+        }
       }
+
+      // Generate dynamic QR code
+      const qrContainer = document.getElementById('upiQrCode');
+      qrContainer.innerHTML = '';
+      let generated = false;
+
+      if (typeof qrcode === 'function') {
+        try {
+          const qr = qrcode(0, 'M');
+          qr.addData(upiUrl);
+          qr.make();
+          qrContainer.innerHTML = qr.createSvgTag({ scalable: true, margin: 1 });
+          const svg = qrContainer.querySelector('svg');
+          if (svg) {
+            svg.style.width = '190px';
+            svg.style.height = '190px';
+            svg.style.display = 'block';
+            svg.style.margin = '0 auto';
+          }
+          generated = true;
+        } catch (err) {
+          console.warn("QR code SVG generation failed, using fallback:", err);
+        }
+      }
+
+      if (!generated) {
+        qrContainer.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(upiUrl) + '" alt="UPI QR Code" style="width:190px;height:190px;display:block;margin:0 auto;border-radius:8px;" />';
+      }
+
+      document.getElementById('upiModal').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+    }
+
+    function copyUpiId() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(businessUPI).then(() => {
+          showCopySuccess();
+        }).catch(() => {
+          fallbackCopyText(businessUPI);
+        });
+      } else {
+        fallbackCopyText(businessUPI);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showCopySuccess();
+      } catch (e) {
+        prompt("UPI ID:", text);
+      }
+      document.body.removeChild(ta);
+    }
+
+    function showCopySuccess() {
+      const btn = document.getElementById('copyUpiBtn');
+      if (!btn) return;
+      const orig = btn.innerText;
+      btn.innerText = "✔️ Copied!";
+      btn.style.background = "#28a745";
+      setTimeout(() => {
+        btn.innerText = orig;
+        btn.style.background = "var(--primary)";
+      }, 2000);
+    }
+
+    function backToOrderModal() {
+      closeModal('upiModal');
+      document.getElementById('orderModal').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+    }
+
+    function confirmUpiPayment() {
+      closeModal('upiModal');
+      processFinalOrder('UPI_PAID');
     }
 
     /* --- NEW: Email Order Function --- */
@@ -3227,6 +3382,7 @@
 
     function closeVarietyModal() { closeModal('varietyModal'); }
     function closeOrderModal() { closeModal('orderModal'); }
+    function closeUpiModal() { closeModal('upiModal'); }
     function closeAll() {
       document.getElementById('cartSidebar').classList.remove('open');
       document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
